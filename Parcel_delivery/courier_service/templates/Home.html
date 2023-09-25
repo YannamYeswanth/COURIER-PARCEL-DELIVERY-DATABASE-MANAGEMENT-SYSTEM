@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
+      body{
+        background-color: rgb(236, 234, 234);
+      }
       nav{
         background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
       }
@@ -17,17 +20,29 @@
       }
       .navbar-na{
         text-align: center;
-        border-width: 100px;
+        /* border-width: 40%; */
         padding: 5px;
         border-radius: 5px;
       }
+
       .btn{
         background-color: rgb(222, 222, 28);
-        
+        /* margin-right: 3%; */
       }
       .btn:hover{
         background-color: rgb(195, 195, 45);
         
+      }
+      .promotions{
+        display: inline-block;
+        margin-left: 3%;
+      }
+      .card{
+        text-align: center; 
+       
+        margin-top: 5%;
+        display: inline-block;
+
       }
     </style>
 </head>
@@ -49,6 +64,42 @@
         </div>
       </nav>
       
+      <div class="promotions" >
+        <h3>Bringing the world closer, one <span style="color:rgb(10, 74, 193) ;">parcel</span> at a time</h3>
+        <h1>We are India's Largest </h1>
+        <span style="color:rgb(51, 89, 197); font-size: 40px; font-weight: 600;">Courier Service <span style="color: black;">Providers</span></span>
+       
+      </div>
+      <div class="card" style="width: 18rem; margin-left: 8%;">
+        <div class="card-body">
+          <h5 class="card-title">Place Order</h5>
+          <p class="card-text">Schedule a delivery in just a few clicks.</p>
+          <a href="#" class="btn btn-primary" style="color: black;">Place Order</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;margin-right: 5%">
+        <div class="card-body">
+          <h5 class="card-title">Track Parcel</h5>
+          <p class="card-text">Stay informed about your delivery status</p>
+          <a href="#" class="btn btn-primary" style="color: black;">Track Here</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem; margin-left: 50%;">
+        <div class="card-body">
+          <h5 class="card-title">Estimate Price</h5>
+          <p class="card-text">Calculate shipping costs with ease.</p>
+          <a href="#" class="btn btn-primary" style="color: black;">Estimate</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;margin-right: 5%">
+        <div class="card-body">
+          <h5 class="card-title">Explore Locations</h5>
+          <p class="card-text">Find delivery solutions near you.</p>
+          <a href="#" class="btn btn-primary" style="color: black;">Find Locations</a>
+        </div>
+      </div>
+
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
