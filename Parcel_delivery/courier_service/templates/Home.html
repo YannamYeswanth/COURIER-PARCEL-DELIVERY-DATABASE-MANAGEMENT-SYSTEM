@@ -55,7 +55,16 @@
         margin-left: 3%;
         margin-top: 10%;
         color: white;
+        animation: moveRight 0.7s linear forwards; 
       }
+      @keyframes moveRight {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(2%);
+        }
+    }
       .cards{
         display: flex;
         flex-wrap: wrap;
