@@ -40,11 +40,61 @@
         color: rgb(16, 43, 220); /* Change text color on hover for better visibility */
       }
       .sster {
-        height: 15%;
-        padding: 15%;
-        border-top-left-radius: 60%;
-        border-bottom-right-radius: 60%;
-    }
+            /* height: 230px; */
+            margin-top: 0%;
+            margin-bottom: 0%;
+            padding: 15%;
+            border-top-left-radius: 60%;
+            border-bottom-right-radius: 60%;
+            color: white;
+            animation: moveRight 0.57s linear forwards;  /* Adjust duration as needed */
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(2%);
+            }
+        }
+        .pluspoints{
+            margin-bottom: 2%;
+            height: 40px;
+            /* border-top-left-radius: 60%; */
+            border-top-right-radius: 20%;
+            border-bottom-left-radius: 20%;
+            background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
+            /* background-color: rgb(246, 146, 6); */
+            color: white;
+            
+            text-align: center;
+            font-size: large;
+            font-weight: 600;
+            width: 70%;
+        }
+        #one{
+            animation: moveRight 0.6s linear forwards;
+        }
+        #two{
+            animation: moveRight 0.7s linear forwards;
+        }
+        #three{
+            animation: moveRight 0.8s linear forwards;
+        }
+        #four{
+            animation: moveRight 0.9s linear forwards;
+        }
+        img {
+            margin-top: 10%;
+            margin-left: 10%;
+            text-align: center;
+
+    width: 30px;
+    height: 30px;
+}
+        
+  
 
   </style>
   <body>
@@ -64,28 +114,39 @@
           </div>
         </div>
     </nav>
+    
     <div class="container">
       <div class="row">
         <div class="col" style="margin-top: 10%;">
-          <div class="container my-3 sster" style="background-color: rgb(46, 243, 177);">
-            <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <div class="container my-3 sster" style="margin-bottom: 3%; padding: 3%;" >
+            
+            <h3>Send with confidence, order with ease.</h3>
+            <h1 style="font-weight: 700;"><span style="color: yellow; font-size:50px;">E</span> delivery Services</h1>
+            <h3>– your trusted partner in <span style="color: yellow;">courier</span> convenience.</h3>
           </div>
-          <div class="container my-3 sster" style="background-color: rgb(46, 243, 177);">
-            <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <div class="container my-3 sster" style="margin-top: 3%; padding: 3%;">
+            <h3><span style="color: yellow;">E</span> delivery Ensures</h3>
+            <div class="pluspoints" id="one">Safe Packaging</div>
+            <div class="pluspoints" id="two">Secured Delivery</div>
+            <div class="pluspoints" id="three">Reasonable Shipping Costs</div>
+            <div class="pluspoints" id="four">Reliable Statistics</div>  
+          </div>
+          <div class="container my-3 sster"style="margin-bottom: 0%; padding: 3%;" >
+            <img src="https://prodwebimage.ecomexpress.in/parcels_since_inception_50be16b3a9.svg">
+            <h4>20+ Parcels Ordered</h4>
             
           </div>
-          <div class="container my-3 sster" style="background-color: rgb(46, 243, 177);">
-            <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <div class="container my-3 sster" style="margin: 0%; padding: 0%;">
+            <img src="https://prodwebimage.ecomexpress.in/cities_and_town_c0339d4e15.svg">
+            <h4>10+ Major Cities Covered</h4>
             
           </div>
-          <div class="container my-3 sster" style="background-color: rgb(46, 243, 177);">
-            <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+          <div class="container my-3 sster" style="margin: 0%; padding: 0%;">
+            <img src="https://prodwebimage.ecomexpress.in/Delivery_center_7ecfe7c729.svg">
+            <h4>10+ Delivery Centers</h4>
             
           </div>
-          <div class="container my-3 sster" style="background-color: rgb(46, 243, 177);">
-            <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-
-          </div>
+          
         </div>
         <div class="col" style="margin-top: 10%;">        
           <div class="container" >
@@ -191,7 +252,7 @@
                 </div>
               </div>
       
-              <button type="submit" class="btn btn-primary m-4" style="background-color: green;">Submit</button>
+              <button type="submit" class="btn btn-primary m-4" style="background-color: rgb(251, 251, 7); color: black;">Submit</button>
             </form>
           </div>
         </div>
@@ -202,6 +263,8 @@
       <hr style="border-top: 1px solid #ccc; margin: 20px 0;">
       <p>&copy; 2023 E delivery Services. All rights reserved.</p>
   </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+ 
+</body>
 </html>
