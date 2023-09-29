@@ -55,14 +55,16 @@
         margin-left: 3%;
         margin-top: 10%;
         color: white;
-        animation: moveRight 0.7s linear forwards; 
+        animation: slideUp 1.2s ease-in-out; 
       }
-      @keyframes moveRight {
+      @keyframes slideUp {
         0% {
-            transform: translateX(-100%);
+            opacity: 0;
+            transform: translateY(50px);
         }
         100% {
-            transform: translateX(2%);
+            opacity: 1;
+            transform: translateY(0);
         }
     }
       .cards{
