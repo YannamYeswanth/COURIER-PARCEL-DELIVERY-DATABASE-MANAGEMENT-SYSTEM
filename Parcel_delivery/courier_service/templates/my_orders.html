@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Include Bootstrap CSS and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body{
+       
+           
+       
+        background-color: #191919; 
+        /* background-image: url(https://img.freepik.com/premium-vector/warehouse-worker-loading-boxes-truck-courier-delivery-guy-carrying-cardboard-container-packages-parcels-truck-warehouse-worker_327176-201.jpg); */
+        background-size: 100% 30%;
+        background-repeat: no-repeat;
+      }
+      nav{
+        background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
+        
+      }
+      .navbar-brand{
+          color: white ;
+          font-size: 35px;
+          
+      }
+      .navbar-na{
+        text-align: center;
+        /* border-width: 40%; */
+        padding: 2%;
+        border-radius: 2%;
+        
+      }
+
+      .btn{
+        background-color: rgb(222, 222, 28);
+        /* margin-right: 3%; */
+      }
+      
+      .btn:hover {
+        background-color: rgb(195, 195, 45);
+        color: rgb(16, 43, 220); 
+      }
+      .dot {
+            width: 20px;
+            height: 20px;
+            /* border-radius: 50%; */
+        }
+        .green-dot {
+            background-color: #00FF00;
+        }
+        .grey-dot {
+            background-color: #828282;
+        }
+        .line {
+            margin-top: 5px;
+            width: 48%;
+            height: 10px;
+            background-color: #828282; /* Color of the line */
+        }
+        .line1 {
+            margin-top: 5px;
+            width: 48%;
+            height: 10px;
+            background-color: #00FF00; /* Color of the line */
+        }
+        .line2 {
+            margin-top: 5px;
+            width: 48%;
+            height: 10px;
+            background: linear-gradient(to right, #828282, #00FF00); /* Gradient from grey to green */
+            background-size: 200% 100%; /* Initialize background size */
+            animation: colorChange 2s linear infinite;
+        }
+        @keyframes colorChange {
+            100% { background-position: -100% 0; } 
+            0% { background-position: 100% 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
+        <div class="container-fluid" >
+          <h1 class="navbar-brand" ><span style=" color: rgb(251, 251, 7); font-size: 50px">E</span> delivery</h1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse"  id="navbarNavAltMarkup" style="text-align: center; margin-left: 25%;">
+            <div class="navbar-na">
+              <a  type="button" class="btn ">Home</a>
+              <a type="button" class="btn ">About</a>
+              <a type="button" class="btn ">Contact</a>
+              <a type="button" class="btn ">Help</a>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <div class="container border border-2 shadow rounded rounded-5 border-black p-3" style="background-color: antiquewhite; margin-top: 10%;">
+        <div class="m-2">
+            <h3 style="display: inline;">Order Id: </h3><p style="display: inline; font-size: x-large;">2209192765</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Date: </h3><p style="display: inline; font-size: x-large;">1st Oct 2023</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Time: </h3><p style="display: inline; font-size: x-large;">11:38 am</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">From: </h3><p style="display: inline; font-size: x-large;">Indore, Madya Pradesh</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">To: </h3><p style="display: inline; font-size: x-large;">Hyderabad, Telangana</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Track Id: </h3><p style="display: inline; font-size: x-large;">IH115137</p>
+        </div> 
+        <div class="container mt-5 text-center">
+
+            <div class="d-flex justify-content-between">
+                <div class="dot green-dot"></div>
+                <div class="line2"></div>
+                <div class="dot grey-dot"></div>
+                <div class="line"></div>
+                <div class="dot grey-dot"></div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div><h5>Shipped from Indore</h5></div>
+                
+                <div><h5>Arrived Hyderabad</h5></div>
+                
+                <div><h5>Delivered</h5></div>
+            </div>
+        </div> 
+        <div class="container mt-3">
+            <button type="button" class="btn btn-primary" style="background-color: #828282;">Track parcel</button>
+        </div>
+    </div>  
+    <div class="container border border-2 shadow rounded rounded-5 border-black p-3" style="background-color: antiquewhite; margin-top: 10%;">
+        <div class="m-2">
+            <h3 style="display: inline;">Order Id: </h3><p style="display: inline; font-size: x-large;">2209192543</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Date: </h3><p style="display: inline; font-size: x-large;">23rd Sep 2023</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Time: </h3><p style="display: inline; font-size: x-large;">9:46 am</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">From: </h3><p style="display: inline; font-size: x-large;">Indore, Madya Pradesh</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">To: </h3><p style="display: inline; font-size: x-large;">Chennai, Tamil Nadu</p>
+        </div> 
+        <div class="m-2">
+            <h3 style="display: inline;">Track Id: </h3><p style="display: inline; font-size: x-large;">IC114097</p>
+        </div> 
+        <div class="container mt-5 text-center">
+
+            <div class="d-flex justify-content-between">
+                <div class="dot green-dot"></div>
+                <div class="line1"></div>
+                <div class="dot green-dot"></div>
+                <div class="line1"></div>
+                <div class="dot green-dot"></div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div><h5>Shipped from Indore</h5></div>
+                
+                <div><h5>Arrived at Chennai</h5></div>
+                
+                <div><h5>Delivered</h5></div>
+            </div>
+        </div> 
+    </div>  
+    <footer class="text-center py-4">
+      <hr style="border-top: 1px solid white; margin: 20px 0;">
+      <p style="color: white">&copy; 2023 E Delivery Services. All rights reserved.</p>
+  </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
