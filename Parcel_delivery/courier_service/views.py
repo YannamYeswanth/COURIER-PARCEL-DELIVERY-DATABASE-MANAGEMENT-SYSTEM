@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Orders
+from courier_service.models import user_details,Orders,Contact
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
@@ -63,6 +63,13 @@ def signupxtra(request):
         return redirect('home')
     return render(request,'signupxtra.html')
 def ContactUs(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        message=request.POST.get('message')
+        mssg=Contact.objects.create(name=name,email=email,message=message)
+        mssg.save()
+        messages.success(request, 'Your message has been delivered')
     return render(request, 'ContactUs.html')
 def About(request):
     return render(request, 'About.html')

@@ -40,11 +40,14 @@ class Employees(models.Model):
     State=models.CharField(max_length=50)
     Pin_Code=models.IntegerField()
     Salary=models.IntegerField()
-    Branch_Id=models.ForeignKey(Branches,on_delete=models.CASCADE)
-    Department_Id=models.ForeignKey(Department,on_delete=models.CASCADE)
+    Branch_Id=models.ForeignKey(Branches,null=True,on_delete=models.CASCADE)
+    Department_Id=models.ForeignKey(Department,null=True,on_delete=models.CASCADE)
     Manager_Id= models.ForeignKey('self',null=True,blank=True,on_delete=models.CASCADE)
 
-
+class Contact(models.Model):
+    name=models.CharField(max_length=50)
+    email=models.EmailField()
+    message=models.TextField()
 class Orders(models.Model):
     Order_Id=models.IntegerField(primary_key=True)
     Order_Name=models.CharField(max_length=50)
