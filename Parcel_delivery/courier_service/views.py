@@ -94,6 +94,8 @@ def place_parcel(request):
         return HttpResponse("saved.")
     return render(request, 'place_parcel.html')
 def track_parcel(request):
+     
     return render(request, 'parcel.html')
 def estimate(request):
+      
     return render(request, 'estimate.html')

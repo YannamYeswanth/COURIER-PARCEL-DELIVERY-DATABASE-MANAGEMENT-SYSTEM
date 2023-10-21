@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class user_details(models.Model):
-    UserId=models.IntegerField()
+    UserId=models.IntegerField(primary_key=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     Contact_Number=models.BigIntegerField(default=0)
     Email=models.EmailField(default='null')
@@ -12,8 +12,6 @@ class user_details(models.Model):
     City=models.CharField(max_length=50,default='null')
     State=models.CharField(max_length=50,default='null')
     Pin_Code=models.IntegerField(default=0)
-
-
     
 class Branches(models.Model):
     Branch_Id=models.IntegerField(primary_key=True)
