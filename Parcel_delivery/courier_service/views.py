@@ -1,21 +1,11 @@
-<<<<<<< Updated upstream
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
-from django.contrib import messages
-from django.shortcuts import redirect
 from datetime import datetime
-from .models import User,Orders
-
-
-=======
-from django.shortcuts import render,redirect
-from courier_service.models import user_details
+from django.shortcuts import render,redirect,HttpResponse
+from courier_service.models import user_details,Orders
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
->>>>>>> Stashed changes
+
 # Create your views here.
 
 def home(request):
@@ -44,7 +34,7 @@ def signup(request):
         
         user=User.objects.create(username=name,password=make_password(pas1))
         user.save()
-        user_det=user_details.objects.create(user=user)
+        user_det=user_details.objects.create(user=user,UserId=len(user_details.objects.all())+1)
         user_det.save()
         users=authenticate(username=name, password=pas1)
         if users is not None:
@@ -98,8 +88,8 @@ def place_parcel(request):
         orders=Orders.objects.all()
         n=len(orders)+1
         Curr_datetime=datetime.now()
-        # User_Id =User.objects.get(id=request.user.id)
-        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode)        
+        User_Id =user_details.objects.get(user=request.user)
+        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=User_Id)        
         neworder.save()
         return HttpResponse("saved.")
     return render(request, 'place_parcel.html')

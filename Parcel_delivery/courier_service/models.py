@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-import uuid
+
 # Create your models here.
 class user_details(models.Model):
-    UserId=models.UUIDField(default=uuid.uuid4)
+    UserId=models.IntegerField()
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     Contact_Number=models.BigIntegerField(default=0)
     Email=models.EmailField(default='null')
@@ -71,6 +71,6 @@ class Orders(models.Model):
     Order_Status=models.CharField(max_length=50,default="Not yet delivered.")
     Order_Type=models.CharField(max_length=50)
     delivery_charge=models.IntegerField(null=True,blank=True)
-    User_Id=models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    User_Id=models.ForeignKey(user_details,on_delete=models.CASCADE,null=True,blank=True)
     Sender_Employee_Id=models.ForeignKey(Employees,related_name='employee1',on_delete=models.CASCADE,null=True,blank=True)
     Receiver_Name_Employee_Id=models.ForeignKey(Employees,related_name='employee2',on_delete=models.CASCADE,null=True,blank=True)
