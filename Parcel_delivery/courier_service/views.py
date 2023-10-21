@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
@@ -7,12 +8,70 @@ from datetime import datetime
 from .models import User,Orders
 
 
+=======
+from django.shortcuts import render,redirect
+from courier_service.models import user_details
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
+>>>>>>> Stashed changes
 # Create your views here.
 
 def home(request):
     return render(request, 'Home.html')
-# def login(request):
-    # return render(request, 'Login.html')
+def Login(request):
+    if request.method=='POST':
+        name=request.POST.get('username')
+        pas=request.POST.get('password')
+        user=authenticate(username=name, password=pas)
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.warning(request, 'Wrong Username or password')
+            return render(request, 'login.html')
+    return render(request,'login.html')
+def signup(request):
+      if request.method=="POST":
+        name=request.POST.get('username')
+        pas1=request.POST.get('pas1')
+        pas2=request.POST.get('pas2')
+        
+        if pas1!=pas2:
+            messages.warning(request, 'password not same')
+            return render(request, 'signup.html')
+        
+        user=User.objects.create(username=name,password=make_password(pas1))
+        user.save()
+        user_det=user_details.objects.create(user=user)
+        user_det.save()
+        users=authenticate(username=name, password=pas1)
+        if users is not None:
+            login(request,users)
+            return redirect('signupxtra')
+      return render(request,'signup.html')
+def signupxtra(request):
+    if request.method=="POST":
+        h_no=request.POST.get('H_No')
+        street=request.POST.get('street')
+        city=request.POST.get('city')
+        state=request.POST.get('state')
+        pincode=request.POST.get('pincode')
+        email=request.POST.get('email')
+        contact=request.POST.get('c_no')
+        user=request.user
+        new_user=user_details.objects.filter(user=user)[0]
+        new_user.Contact_Number=contact
+        new_user.City=city
+        new_user.State=state
+        new_user.Pin_Code=pincode
+        new_user.Street=street
+        new_user.House_No=h_no
+        new_user.Email=email
+        new_user.save()
+        return redirect('home')
+    return render(request,'signupxtra.html')
 def ContactUs(request):
     return render(request, 'ContactUs.html')
 def About(request):

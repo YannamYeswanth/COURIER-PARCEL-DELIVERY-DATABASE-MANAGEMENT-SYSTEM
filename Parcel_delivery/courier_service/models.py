@@ -1,16 +1,19 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+import uuid
 # Create your models here.
-class User(models.Model):
-    UserId=models.IntegerField()
-    name=models.CharField(max_length=50)
-    Contact_Number=models.BigIntegerField()
-    Email=models.EmailField()
-    House_No=models.CharField(max_length=50)
-    Street=models.CharField(max_length=50)
-    City=models.CharField(max_length=50)
-    State=models.CharField(max_length=50)
-    Pin_Code=models.IntegerField()
+class user_details(models.Model):
+    UserId=models.UUIDField(default=uuid.uuid4)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    Contact_Number=models.BigIntegerField(default=0)
+    Email=models.EmailField(default='null')
+    House_No=models.CharField(max_length=50,default='null')
+    Street=models.CharField(max_length=50,default='null')
+    City=models.CharField(max_length=50,default='null')
+    State=models.CharField(max_length=50,default='null')
+    Pin_Code=models.IntegerField(default=0)
+
+
     
 class Branches(models.Model):
     Branch_Id=models.IntegerField(primary_key=True)

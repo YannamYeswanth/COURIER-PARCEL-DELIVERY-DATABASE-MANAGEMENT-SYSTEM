@@ -1,48 +1,57 @@
 <!doctype html>
-<html lang="en" >
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E Delivery | SignUp page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 
-    <body class=" align-items-center p-4" style="background-image: url(https://media.istockphoto.com/id/1411757433/vector/3d-vector-delivery-van-with-box-cargo-delivery-and-online-shopping-concept.jpg?s=612x612&w=0&k=20&c=ZWmugzSvVn5OrCKdjA6HKnJt_HFIYAtGH2885V0xTlc=); background-repeat: no-repeat; background-size: cover;">
-        
-        <main class="form-signin m-5">
-            <form>
-                <h1 class="navbar-brand" style="font-size: 100px"><span style=" color: rgb(251, 251, 7); font-size: 150px">E</span> delivery</h1>
-                <!--<img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --> 
-                <h1 class="h3 mb-3 fw-normal">Please Sign up</h1>
+<body class=" align-items-center p-4"
+    style="background-image: url(https://media.istockphoto.com/id/1411757433/vector/3d-vector-delivery-van-with-box-cargo-delivery-and-online-shopping-concept.jpg?s=612x612&w=0&k=20&c=ZWmugzSvVn5OrCKdjA6HKnJt_HFIYAtGH2885V0xTlc=); background-repeat: no-repeat; background-size: cover;">
 
-                <div class="form-floating mb-1" style="width: 40%;">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-1" style="width: 40%;">
-                <input type="password" class="form-control" id="floatingPassword1" placeholder="Password">
+    <main class="form-signin m-5">
+        <form method="post">
+            {% csrf_token %}
+            <h1 class="navbar-brand" style="font-size: 100px"><span
+                    style=" color: rgb(251, 251, 7); font-size: 150px">E</span> delivery</h1>
+            <!--<img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+            <h1 class="h3 mb-3 fw-normal">Please Sign up</h1>
+
+            <div class="form-floating mb-1" style="width: 40%;">
+                <input type="text" class="form-control" id="floatingInput" name="username">
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating mb-1" style="width: 40%;">
+                <input type="password" class="form-control" id="floatingPassword1" name="pas1">
                 <label for="floatingPassword">Password</label>
-                </div>
-                <div class="form-floating" style="width: 40%;">
-                <input type="password" class="form-control" id="floatingPassword2" placeholder="Password">
+            </div>
+            <div class="form-floating" style="width: 40%;">
+                <input type="password" class="form-control" id="floatingPassword2" name="pas2">
                 <label for="floatingPassword">Confirm Password</label>
-                </div>
+            </div>
 
-                <div class="form-check text-start my-3">
+            <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" checked>
                 <label class="form-check-label" for="flexCheckDefault">
                     Remember me
                 </label>
-                </div>
-                <a href="Home.html" class="btn btn-primary w-20 py-2" type="submit">Sign up</a>
-            </form>
-        </main>
-        <div class="m-5">
-            <h4>Already have an account? Login now.</h4>
-            <a class="btn btn-primary" href="login.html" role="button">Login</a>
-        </div>
-        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
+            </div>
+            <button class="btn btn-primary w-20 py-2" type="submit">Sign up</button>
+        </form>
+    </main>
+    <div class="m-5">
+        <h4>Already have an account? Login now.</h4>
+        <a class="btn btn-primary" href="login.html" role="button">Login</a>
+    </div>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
 </html>
