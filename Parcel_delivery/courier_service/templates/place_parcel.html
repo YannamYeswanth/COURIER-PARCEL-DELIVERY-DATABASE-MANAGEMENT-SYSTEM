@@ -154,13 +154,13 @@
               <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
                 <h3>Parcel Details</h3><br>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" id="floatingInput" name="ordername" placeholder="name@example.com">
                   <label for="floatingInput">Order name</label>
                 </div>
                 <div class="row">
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" name="weight" aria-label="Default select example">
                         <option selected>Weight of the parcel</option>
                         <option value="1">Below 5kg</option>
                         <option value="2">5kg to 10kg</option>
@@ -174,7 +174,7 @@
                   </div>
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" name="deliverymode" aria-label="Default select example">
                         <option selected>Parcel delivery mode</option>
                         <option value="1">Normal delivery</option>
                         <option value="2">Fast delivery</option>
@@ -190,23 +190,23 @@
                 <h3>To Address</h3><br>
       
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" name="receivername" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Receiver's name</label>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" name="houseno" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">House/Room/Door No.</label>
                 </div>
                   
                 
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" name='street' id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Street</label>
                 </div>
                 <div class="row">
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" name="city" aria-label="Default select example">
                         <option selected>City</option>
                         <option value="1">Hyderabad</option>
                         <option value="2">Chennai</option>
@@ -221,7 +221,7 @@
                   </div>
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" name="state" aria-label="Default select example">
                         <option selected>State</option>
                         <option value="1">Telangana</option>
                         <option value="2">Tamilnadu</option>
@@ -236,7 +236,7 @@
                   </div>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="number" class="form-control" name="pincode" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Pincode</label>
                 </div>
               </div>
@@ -244,19 +244,19 @@
                 <h3>From Address</h3><br>
       
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" name="houseno2" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">House/Room/Door No.</label>
                 </div>
                   
                 
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="text" class="form-control" name="street2" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Street</label>
                 </div>
                 <div class="row">
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" name="city2" aria-label="Default select example">
                         <option selected>City</option>
                         <option value="1">Hyderabad</option>
                         <option value="2">Chennai</option>
@@ -271,7 +271,7 @@
                   </div>
                   <div class="col">
                     <div class="mb-3">
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" class="state2" aria-label="Default select example">
                         <option selected>State</option>
                         <option value="1">Telangana</option>
                         <option value="2">Tamilnadu</option>
@@ -286,7 +286,7 @@
                   </div>
                 </div>
                 <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+                  <input type="number" class="form-control" name="pincode2" id="floatingInput" placeholder="name@example.com">
                   <label for="floatingInput">Pincode</label>
                 </div>
               </div>
