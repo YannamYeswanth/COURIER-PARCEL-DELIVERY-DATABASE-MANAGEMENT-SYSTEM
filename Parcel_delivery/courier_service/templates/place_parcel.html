@@ -150,7 +150,8 @@
         </div>
         <div class="col" style="margin-top: 10%;">        
           <div class="container" >
-            <form>
+            <form method="post">
+              {% csrf_token %}
               <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
                 <h3>Parcel Details</h3><br>
                 <div class="form-floating mb-3">
