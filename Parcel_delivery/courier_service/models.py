@@ -44,10 +44,6 @@ class Employees(models.Model):
     Department_Id=models.ForeignKey(Department,null=True,on_delete=models.CASCADE)
     Manager_Id= models.ForeignKey('self',null=True,blank=True,on_delete=models.CASCADE)
 
-class Contact(models.Model):
-    name=models.CharField(max_length=50)
-    email=models.EmailField()
-    message=models.TextField()
 class Orders(models.Model):
     Order_Id=models.IntegerField(primary_key=True)
     Order_Name=models.CharField(max_length=50)
@@ -75,3 +71,8 @@ class Orders(models.Model):
     User_Id=models.ForeignKey(user_details,on_delete=models.CASCADE,null=True,blank=True)
     Sender_Employee_Id=models.ForeignKey(Employees,related_name='employee1',on_delete=models.CASCADE,null=True,blank=True)
     Receiver_Name_Employee_Id=models.ForeignKey(Employees,related_name='employee2',on_delete=models.CASCADE,null=True,blank=True)
+
+class Contacts(models.Model):
+    name=models.CharField(max_length=50)
+    email=models.EmailField()
+    message=models.TextField()
