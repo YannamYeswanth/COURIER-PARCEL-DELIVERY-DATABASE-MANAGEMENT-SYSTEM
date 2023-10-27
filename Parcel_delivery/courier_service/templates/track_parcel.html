@@ -122,22 +122,16 @@
             <div class="card-body py-5 px-md-5">
               <div class="container">
                 <h2><b>Track Your</b> Order</h2>
-        <div class="btn-group my-2" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-dark" for="btnradio1">Mobile Number</label>
         
-          <input type="radio" class="btn-check" name="orderid" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-dark" for="btnradio2">Order Id</label>
-        </div>
         <div class="container">
-          <form method="post" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="max-width: 420px;">
+          <form method="post"  class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" style="max-width: 420px;">
             {% csrf_token %}
-            <input type="search" class="form-control my-2" placeholder="Order Id" aria-label="Search">
+            <input type="search" class="form-control my-2" name="orderid" placeholder="Order Id" aria-label="Search">
             <div class="mx-auto my-2">
-              <button class="btn btn-dark" type="button" style="padding-left: 40px;padding-right: 40px;">Track Order</button>
+              <button class="btn btn-dark" type="submit" style="padding-left: 40px;padding-right: 40px;">Track Order</button>
             </div>
           </form>
-         
+          <div id="map"></div>
         </div>
          
               </div>
@@ -148,7 +142,7 @@
     </div>
   </div>
   <!-- Jumbotron -->
-  <div id="map"></div>
+ 
 </section>
 <!-- Section: Design Block -->
 <div class="container">

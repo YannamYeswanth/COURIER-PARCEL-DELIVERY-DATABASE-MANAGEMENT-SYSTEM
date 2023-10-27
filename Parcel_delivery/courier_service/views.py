@@ -132,15 +132,16 @@ def place_parcel(request):
     return render(request, 'place_parcel.html')
 def track_parcel(request):
     if request.method=='POST':
+        # return render(request, 'estimate.html')
         orderid=request.POST.get('orderid')
         #   order=Orders.objects.get(Order_Id=orderid)
-        status=order.Order_Status
+        # status=order.Order_Status
         #   context={
         #       'status': status
         #   }
         try:
-          order = Orders.objects.get(Order_id=orderid)
-          location=order.Order_Location
+          order = Orders.objects.get(Order_Id=orderid)
+          location=order.Order_location
           order_location = {
             "latitude": location.latitude,
             "longitude": location.longitude,
