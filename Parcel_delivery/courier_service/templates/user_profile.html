@@ -106,13 +106,14 @@
                 </div>
             </div>
             <div class="column col-md-8 col-sm-12" style="background-color: #0d1340;">
-                <h2 style="display: inline-block; color: aliceblue;">User Name</h2><span class="ps-2"  style="color: aliceblue;">city,country</span>
-                <h4 class="pt-2 pb-2"  style="color: aliceblue;">User ID: xxxxxxxxxxx</h4>
+                <h2 style="display: inline-block; color: aliceblue;">{{User Name}}</h2><span class="ps-2"  style="color: aliceblue;">{{city}},India</span>
+                <h4 class="pt-2 pb-2"  style="color: aliceblue;">User ID: {{userid}}</h4>
                 <div class="btn-toolbar pt-2" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                       <button type="button" class="btn btn-outline-light">Personal Information</button>
                       <button type="button" class="btn btn-outline-light">Account Information</button>
-                      <button type="button" class="btn btn-outline-light">Edit</button>
+                      <a href="Help.html" type="button" class="btn btn-outline-light">Edit</a>
+
                     </div>
                 </div>
                 <table class="table table-striped pt-2 pb-2 mt-5 pt-2">
@@ -125,27 +126,35 @@
                     <tbody>
                       <tr>
                         <th scope="row">Name </th>
-                        <td>User 1</td>
+                        <td>{{name}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Mobile Number</th>
-                        <td>+91 xxxxxxxxxx</td>
+                        <td>+91 {{number}}</td>
                       </tr>
                       <tr>
                         <th scope="row">E-mail</th>
-                        <td>abc@gmail.com</td>
+                        <td>{{mail}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">House.No</th>
+                        <td>{{h.no}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Street</th>
+                        <td>{{street}}</td>
                       </tr>
                       <tr>
                         <th scope="row">City</th>
-                        <td>Indore</td>
+                        <td>{{city}}</td>
                       </tr>
                       <tr>
                         <th scope="row">State</th>
-                        <td>Madhya Pradesh</td>
+                        <td>{{state}}</td>
                       </tr>
                       <tr>
                         <th scope="row">PIN Code</th>
-                        <td>4520xx</td>
+                        <td>{{pin}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Date Of Birth</th>
