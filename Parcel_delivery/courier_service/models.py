@@ -43,6 +43,10 @@ class Employees(models.Model):
     Branch_Id=models.ForeignKey(Branches,null=True,on_delete=models.CASCADE)
     Department_Id=models.ForeignKey(Department,null=True,on_delete=models.CASCADE)
     Manager_Id= models.ForeignKey('self',null=True,blank=True,on_delete=models.CASCADE)
+class cities(models.Model):
+    name=models.CharField(max_length=50)
+    latitude=models.FloatField()
+    longitude=models.FloatField()
 
 class Orders(models.Model):
     Order_Id=models.IntegerField(primary_key=True)
@@ -66,6 +70,7 @@ class Orders(models.Model):
     To_State=models.CharField(max_length=50,null=True)
     To_Pin_Code=models.IntegerField()
     Order_Status=models.CharField(max_length=50,default="Not yet delivered.")
+    Order_location=models.ForeignKey(cities,on_delete=models.CASCADE,null=True,blank=True)
     Order_Type=models.CharField(max_length=50)
     delivery_charge=models.IntegerField(null=True,blank=True)
     User_Id=models.ForeignKey(user_details,on_delete=models.CASCADE,null=True,blank=True)

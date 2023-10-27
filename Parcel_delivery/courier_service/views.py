@@ -1,41 +1,41 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Contacts,Orders
+from courier_service.models import user_details,Contacts,Orders,cities
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 # Create your views here.
-cities={
-    'Thiruvananthapuram':(1,1),
-    'Chennai':(1,1),
-    'Bengaluru':(1,1),
-    'Hyderabad':(1,1),
-    'Mumbai':(1,1),
-    'Panaji':(1,1),
-    'Bhopal':(1,1),
-    'Amaravathi':(1,1),
-    'Raipur':(1,1),
-    'Bhubaneswar':(1,1),
-    'Gandhinagar':(1,1),
-    'Shimla':(1,1),
-    'Chandigarh':(1,1),
-    'Lucknow':(1,1),
-    'Dehradun':(1,1),
-    'Jaipur':(1,1),
-    'Kolkata':(1,1),
-    'Gangtok':(1,1),
-    'Itanagar':(1,1),
-    'Aizawl':(1,1),
-    'Imphal':(1,1),
-    'Agartala':(1,1),
-    'Dispur':(1,1),
-    'Kohima':(1,1),
-    'Patna':(1,1),
-    'Shillong':(1,1),
-    'Amritsar':(1,1),
-    'Ranchi':(1,1),
+citie={
+    'Thiruvananthapuram':(8.52,76.94),
+    'Chennai':(13.08,80.27),
+    'Bengaluru':(12.97,77.59),
+    'Hyderabad':(17.38,78.48),
+    'Mumbai':(19.07,72.88),
+    'Panaji':(15.29,74.12),
+    'Bhopal':(23.26,77.41),
+    'Amaravathi':(16.57,80.35),
+    'Raipur':(21.27,81.86),
+    'Bhubaneswar':(20.29,85.82),
+    'Gandhinagar':(23.21,72.63),
+    'Shimla':(31.10,77.26),
+    'Chandigarh':(30.73,79.78),
+    'Lucknow':(26.84,80.94),
+    'Dehradun':(30.31,78.03),
+    'Jaipur':(26.91,75.78),
+    'Kolkata':(22.57,88.36),
+    'Gangtok':(27.33,88.61),
+    'Itanagar':(27.08,93.60),
+    'Aizawl':(23.72,92.71),
+    'Imphal':(24.81,93.93),
+    'Agartala':(23.83,91.28),
+    'Dispur':(26.14,91.77),
+    'Kohima':(25.29,94.83),
+    'Patna':(25.59,85.13),
+    'Shillong':(25.27,91.77),
+    'Amritsar':(31.55,74.34),
+    'Ranchi':(23.34,85.31),
 }
 def home(request):
     return render(request, 'Home.html')
@@ -133,5 +133,14 @@ def track_parcel(request):
      
     return render(request, 'parcel.html')
 def estimate(request):
-      
+    if request.method=='POST':
+        city1=request.POST.get('to_city')
+        city2=request.POST.get('from_city')
+        weight=request.POST.get('weight')
+        h=request.POST.get('height')
+        l=request.POST.get('length')
+        w=request.POST.get('width')
+        vol=l*h*w
+        # dist=((cities[city1][0]-cities[city2][0])**2)+((cities[city1][1]-cities[city2][1])**2)
+        # dist=dist**(1/2)
     return render(request, 'estimate.html')
