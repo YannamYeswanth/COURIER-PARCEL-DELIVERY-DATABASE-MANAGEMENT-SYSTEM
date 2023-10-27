@@ -7,7 +7,36 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 # Create your views here.
-
+cities={
+    'Thiruvananthapuram':(1,1),
+    'Chennai':(1,1),
+    'Bengaluru':(1,1),
+    'Hyderabad':(1,1),
+    'Mumbai':(1,1),
+    'Panaji':(1,1),
+    'Bhopal':(1,1),
+    'Amaravathi':(1,1),
+    'Raipur':(1,1),
+    'Bhubaneshwar':(1,1),
+    'Gandhinagar':(1,1),
+    'Shimla':(1,1),
+    'Srinagar':(1,1),
+    'Chandigadh':(1,1),
+    'Lucknow':(1,1),
+    'Deheradun':(1,1),
+    'Jaipur':(1,1),
+    'Kolkata':(1,1),
+    'New Delhi':(1,1),
+    'Gangtok':(1,1),
+    'Itanagar':(1,1),
+    'Aizwal':(1,1),
+    'Imphal':(1,1),
+    'Agartala':(1,1),
+    'Dispur':(1,1),
+    'Kohima':(1,1),
+    'Patna':(1,1),
+    'Shillong':(1,1),
+}
 def home(request):
     return render(request, 'Home.html')
 def Login(request):
