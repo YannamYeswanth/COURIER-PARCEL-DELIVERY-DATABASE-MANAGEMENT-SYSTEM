@@ -124,14 +124,37 @@ def place_parcel(request):
         orders=Orders.objects.all()
         n=len(orders)+1
         Curr_datetime=datetime.now()
-        User_Id =user_details.objects.get(user=request.user)
-        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=User_Id)        
+        User=user_details.objects.get(user=request.user)
+        Userid=User.UserId
+        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=Userid)        
         neworder.save()
         return HttpResponse("saved.")
     return render(request, 'place_parcel.html')
 def track_parcel(request):
-     
-    return render(request, 'parcel.html')
+    if request.method=='POST':
+        orderid=request.POST.get('orderid')
+        #   order=Orders.objects.get(Order_Id=orderid)
+        status=order.Order_Status
+        #   context={
+        #       'status': status
+        #   }
+        try:
+          order = Orders.objects.get(Order_id=orderid)
+          location=order.Order_Location
+          order_location = {
+            "latitude": location.latitude,
+            "longitude": location.longitude,
+        }
+        except Orders.DoesNotExist:
+          order_location = None
+
+        return render(request, 'track_parcel.html',{"order_location": order_location})
+    return render(request, 'track_parcel.html')
 def estimate(request):
       
     return render(request, 'estimate.html')
+
+# def user_profile(request):
+#     User=user_details.objects.get(user=request.user)
+    
+    
