@@ -1,144 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Delivery | About Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+{% extends "layout.html" %}
+{% block csslink %}
+{% endblock %}
+{% block inpagestyle %}
+body{
+    background-image: url(https://i.pinimg.com/474x/ec/5c/d9/ec5cd9f0428c94b39a271f0d73fa5e50.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color:white;
+} {% endblock %}
+
+{% block pagebody %}
+<section id="about-us" class="container" style="margin-top: 15px">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-description">
+                At <strong>E delivery</strong>, we are more than just a courier service. We are your trusted partners in
+                delivering promises, connections, and success.
+            </p>
+            <p class="section-description">
+                Founded in 2022, we've come a long way from our humble beginnings. Today, we proudly serve
+                individuals, businesses, and e-commerce platforms across India and beyond.
+            </p>
+            <p class="section-description">
+                Our commitment to excellence is unwavering. We invest in cutting-edge technology, a dedicated
+                workforce, and sustainable practices to ensure your parcels are delivered swiftly.
+               
+            </p>
+            <p class="section-description">
+                With a global network, we bring the world closer to you, one parcel at a time. Join us on our
+                mission to redefine the future of courier services and explore new horizons in logistics.
+            </p>
+        </div>
+        <div class="col-md-6">
+            
+            <img src="https://media.istockphoto.com/id/951514270/photo/glad-to-work-with-you.jpg?s=170667a&w=0&k=20&c=8R_S00P4S9KT9lNSQuEp7U6bOz8hM9QBirOKn8L9Exk=" alt="About Us Image" class="img-fluid">
+        </div>
+    </div>
+</section>
+
+
+<section id="team" class="container">
+    <h2 class="section-title">Our Team</h2>
+    <p class="section-description">
+        Meet the talented individuals who drive our success. Our diverse team brings together expertise from various
+        fields to ensure that every delivery is a success story.
+    </p>
    
-    <style>
-        body{
-            background-image: url(https://i.pinimg.com/474x/ec/5c/d9/ec5cd9f0428c94b39a271f0d73fa5e50.jpg);
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            color:white;
-        }
+</section>
 
-          nav{
-            background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
-            
-          }
-          .navbar-brand{
-              color: white ;
-              font-size: 35px;
-              
-          }
-          .navbar-na{
-            text-align: center;
-            /* border-width: 40%; */
-            padding: 2%;
-            border-radius: 2%;
-            
-          }
-    
-          .navbar-na a{
-            background-color: rgb(222, 222, 28);
-            /* margin-right: 3%; */
-          }
+<section id="mission-vision" class="container">
+    <h2 class="section-title">Mission & Vision</h2>
+    <p class="section-description">
+        <strong>Mission:</strong> To connect people and businesses, bridging distances with efficient, reliable,
+        and eco-friendly courier services.
+    </p>
+    <p class="section-description">
+        <strong>Vision:</strong> To be the leading courier service provider globally, setting new standards in
+        delivery excellence and sustainability.
+    </p>
+</section>
 
-          .btn{
-            background-color: rgb(222, 222, 28);
-            /* margin-right: 3%; */
-          }
-          
-          .btn:hover {
-            background-color: rgb(195, 195, 45);
-            color: rgb(16, 43, 220); /* Change text color on hover for better visibility */
-          }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
-        <div class="container-fluid" >
-          <h1 class="navbar-brand" ><span style=" color: rgb(251, 251, 7); font-size: 50px">E</span> delivery</h1>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse"  id="navbarNavAltMarkup" style="text-align: center; margin-left: 25%;">
-            <div class="navbar-na">
-                <a href="/Home" type="button" class="btn ">Home</a>
-                <a href="/About" type="button" class="btn ">About</a>
-                <a href="/ContactUs" type="button" class="btn ">Contact</a>
-                <a href="/Help" type="button" class="btn ">Help</a>
-            </div>
-          </div>
-        </div>
-        <div class="nav justify-content-end"><a href="login.html" type="button" class="btn">Login</a></div>
-        <div class="nav justify-content-end" style="padding-left: 3%;padding-right:3%;"><a href="user_profile.html" type="button" ><img class="rounded-circle mb-3" src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Generic placeholder image" width="30" height="30"></a></div>
-      </nav>
-
-    
-    <section id="about-us" class="container" style="margin-top: 10%;">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="section-title">About Us</h2>
-                <p class="section-description">
-                    At <strong>E delivery</strong>, we are more than just a courier service. We are your trusted partners in
-                    delivering promises, connections, and success.
-                </p>
-                <p class="section-description">
-                    Founded in 2022, we've come a long way from our humble beginnings. Today, we proudly serve
-                    individuals, businesses, and e-commerce platforms across India and beyond.
-                </p>
-                <p class="section-description">
-                    Our commitment to excellence is unwavering. We invest in cutting-edge technology, a dedicated
-                    workforce, and sustainable practices to ensure your parcels are delivered swiftly.
-                   
-                </p>
-                <p class="section-description">
-                    With a global network, we bring the world closer to you, one parcel at a time. Join us on our
-                    mission to redefine the future of courier services and explore new horizons in logistics.
-                </p>
-            </div>
-            <div class="col-md-6">
-                
-                <img src="https://media.istockphoto.com/id/951514270/photo/glad-to-work-with-you.jpg?s=170667a&w=0&k=20&c=8R_S00P4S9KT9lNSQuEp7U6bOz8hM9QBirOKn8L9Exk=" alt="About Us Image" class="img-fluid">
-            </div>
-        </div>
-    </section>
-
-    
-    <section id="team" class="container">
-        <h2 class="section-title">Our Team</h2>
-        <p class="section-description">
-            Meet the talented individuals who drive our success. Our diverse team brings together expertise from various
-            fields to ensure that every delivery is a success story.
-        </p>
-       
-    </section>
-
-    <section id="mission-vision" class="container">
-        <h2 class="section-title">Mission & Vision</h2>
-        <p class="section-description">
-            <strong>Mission:</strong> To connect people and businesses, bridging distances with efficient, reliable,
-            and eco-friendly courier services.
-        </p>
-        <p class="section-description">
-            <strong>Vision:</strong> To be the leading courier service provider globally, setting new standards in
-            delivery excellence and sustainability.
-        </p>
-    </section>
-
-    <section id="values" class="container">
-        <h2 class="section-title">Our Values</h2>
-        <p class="section-description">
-            Our values guide every action we take and every decision we make:
-        </p>
-        <ul class="list-unstyled">
-            <li class="value-item">Customer-Centricity: Putting our customers at the heart of everything we do.</li>
-            <li class="value-item">Reliability: Delivering on our promises, every time.</li>
-            <li class="value-item">Innovation: Embracing technology and sustainability for a brighter future.</li>
-            <li class="value-item">Integrity: Upholding the highest ethical standards in our business practices.</li>
-            <li class="value-item">Teamwork: Collaborating to achieve greatness together.</li>
-        </ul>
-    </section>
-
-    <footer class="text-center py-4">
-        <hr style="border-top: 1px solid #ccc; margin: 20px 0;">
-        <p>&copy; 2023 E delivery Services. All rights reserved.</p>
-    </footer>
-
-    
-
-</body>
-</html>
+<section id="values" class="container">
+    <h2 class="section-title">Our Values</h2>
+    <p class="section-description">
+        Our values guide every action we take and every decision we make:
+    </p>
+    <ul class="list-unstyled">
+        <li class="value-item">Customer-Centricity: Putting our customers at the heart of everything we do.</li>
+        <li class="value-item">Reliability: Delivering on our promises, every time.</li>
+        <li class="value-item">Innovation: Embracing technology and sustainability for a brighter future.</li>
+        <li class="value-item">Integrity: Upholding the highest ethical standards in our business practices.</li>
+        <li class="value-item">Teamwork: Collaborating to achieve greatness together.</li>
+    </ul>
+</section>
+{% endblock %}

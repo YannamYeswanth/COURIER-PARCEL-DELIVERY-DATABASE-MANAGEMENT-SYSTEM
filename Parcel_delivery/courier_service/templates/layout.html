@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Delivery | Home</title>
+    {% block loadstatic %} {% endblock %}
+    <!-- Include Bootstrap CSS and JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- another link -->
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    {% block csslink %} {% endblock %}
+    <style>
+        {% block inpagestyle %} {% endblock %}
+    </style>
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a003bf63f9.js" crossorigin="anonymous"></script>
+    {% block inpagescript %} {% endblock %}
+</head>
+<body>
+    <!--navbar-->
+
+    <nav class="main_navbar">
+        <div class="logo"><h1>E <span>delivery</span></h1></div>
+        <div class="main_navbar_mid_component">
+          <ul>
+            <li class="navbar_middle_links"><a href="/"><button class="navbar_middle_buttons">Home</button></a></li>
+            <li class="navbar_middle_links"><a href="/About"><button class="navbar_middle_buttons">About</button></a></li>
+            <li class="navbar_middle_links"><a href="/ContactUs"><button class="navbar_middle_buttons">Contact</button></a></li>
+            <li class="navbar_middle_links"><a href="/Help"><button class="navbar_middle_buttons">Help</button></a></li>
+          </ul>
+        </div>
+        <div class="main_navbar_end_component">
+          <ul>
+            <li class="navbar_end_links"><a href="/login"><button class="navbar_end_buttons">Login</button></a></li>
+            <li class="navbar_end_links"><a href="user_profile.html"><button class="navbar_end_buttons" id="user_icon_button"><i class="fa-solid fa-user"></i></button></a></li>
+          </ul>
+        </div>
+        <div class="toggle_navbar_button">
+          <button onclick="shownavbar()" style="cursor: pointer;"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div class="side_bar">
+          <ul>
+            <li><button class="disable" onclick="hidenavbar()"><p><i class="fa-solid fa-xmark"></i></p></button></li>
+            <li><a href="/"><button><p>Home</p></button></a></li>
+            <li><a href="/About"><button><p>About</p></button></a></li>
+            <li><a href="/ContactUs"><button><p>Contact</p></button></a></li>
+            <li><a href="/Help"><button><p>Help</p></button></a></li>
+            <li><a href="/login"><button><p>Login</p></button></a></li>
+            <li><a href="user_profile.html"><button><p>User</p></button></a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <!--body-->
+    {% block pagebody %} {% endblock %}
+    <!-- footer -->
+    <footer class="text-center py-4">
+      <hr style="border-top: 1px solid white; margin: 20px 0;">
+      
+      <p style="color: white">&copy; 2023 E Delivery Services. All rights reserved.</p>
+  </footer>
+    
+    
+</body>
+<!-- another script -->
+<script src="{% static 'script/navscript.js' %}"></scrip>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>

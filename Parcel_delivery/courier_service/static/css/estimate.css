@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open-Sans',sans-serif;
+}
+
+body{
+    background-image: url(https://thumbs.dreamstime.com/b/businessman-pressing-calculator-calculating-cost-estimating-laptop-businessman-pressing-calculator-calculating-215014049.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.estimate_main_container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .estimate_main_container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .estimate_main_container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .estimate_main_container {
+      width: 1170px;
+    }
+  }
+
+.estimate_main_container > form{
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 1000px){
+  .estimate_main_container > form{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+  select,input {
+    font-size: 1em;
+    padding:10px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+    appearance: none;
+    margin: 10px;
+    background: darkgrey;
+    outline: none;
+    border: none;
+  }
+
+option:hover{
+  background: blue;
+}
+
+#sub_button{
+  background-color: yellow;
+  height:50px;
+  width:120px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border-radius: 10px;
+  margin:30px;
+  border: none;
+  cursor: pointer;
+}
+
+#sub_button:hover{
+  background-color: orangered;
+}
+
+.to_estimate_box ,.from_estimate_box, .parcel_detail_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1.6px solid #000;
+  margin: 10px;
+  background-color: #d6d6d6;
+}
+
+.to_estimate_box ,.from_estimate_box,.parcel_detail_box{
+  width: 55%;
+  min-width: 400px;
+  max-width: 600px;
+  border-radius: 12px;
+}
+
+.to_estimate_box h3,.from_estimate_box h3, .parcel_detail_box h3{
+  font-size: 1.6rem;
+  color: rgba(33,37,41,1);
+  margin: 10px 5px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.to_estimate_box select,.from_estimate_box select, .parcel_detail_box select,.parcel_detail_box > input{
+  width: 90%;
+  margin: 10px 0px;
+  background-color: #fff;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.parcel_detail_box > input{
+  cursor: text
+}
+
+.to_estimate_box,.from_estimate_box , .parcel_detail_box {
+  margin: 30px;
+}
+
+.declaration_box{
+  display: flex;
+  height: 110px;
+  justify-content: center;
+  align-items: center;
+  border: 1.6px solid #000;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #d6d6d6;
+}
