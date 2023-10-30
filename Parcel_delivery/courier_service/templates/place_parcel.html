@@ -1,326 +1,159 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E Delivery | Place Order</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <style>
-      body{
-        background-color: #191919; 
-        background-color: #0a0027;
-        /* background-image: url(https://img.freepik.com/premium-vector/warehouse-worker-loading-boxes-truck-courier-delivery-guy-carrying-cardboard-container-packages-parcels-truck-warehouse-worker_327176-201.jpg); */
-        background-size: 100% 40%;
-        background-repeat: no-repeat;
-      }
-      nav{
-        background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
-        
-      }
-      .navbar-brand{
-          color: white ;
-          font-size: 35px;
-          
-      }
-      .navbar-na{
-        text-align: center;
-        /* border-width: 40%; */
-        padding: 2%;
-        border-radius: 2%;
-        
-      }
+{% extends "layout.html" %}
+{% block loadstatic %} {% load static %} {% endblock %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static 'css/place.css' %}">
+{% endblock %}
+{% block pagebody %}
+<div class="place_order_container">
+  <div class="content_of_place_order">
+  <div class="place_order_text">
+      <h3>Send with confidence, order with ease.</h3>
+      <p class="intro-text"><span style="color: yellow; font-size: 1.8em;">E</span> delivery Services<br/>
+          – your trusted partner in courier convenience.</p>
 
-      .btn{
-        background-color: rgb(222, 222, 28);
-        /* margin-right: 3%; */
-      }
-      
-      .btn:hover {
-        background-color: rgb(195, 195, 45);
-        color: rgb(16, 43, 220); /* Change text color on hover for better visibility */
-      }
-      .sster {
-            /* height: 230px; */
-            margin-top: 0%;
-            margin-bottom: 0%;
-            padding: 15%;
-            border-top-left-radius: 60%;
-            border-bottom-right-radius: 60%;
-            color: white;
-            animation: moveRight 0.57s linear forwards;  /* Adjust duration as needed */
-        }
-
-        @keyframes moveRight {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(2%);
-            }
-        }
-        .pluspoints{
-            margin-bottom: 2%;
-            height: 40px;
-            /* border-top-left-radius: 60%; */
-            border-top-right-radius: 20%;
-            border-bottom-left-radius: 20%;
-            background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
-            /* background-color: rgb(246, 146, 6); */
-            color: white;
-            
-            text-align: center;
-            font-size: large;
-            font-weight: 600;
-            width: 70%;
-        }
-        #one{
-            animation: moveRight 0.6s linear forwards;
-        }
-        #two{
-            animation: moveRight 0.7s linear forwards;
-        }
-        #three{
-            animation: moveRight 0.8s linear forwards;
-        }
-        #four{
-            animation: moveRight 0.9s linear forwards;
-        }
-        img {
-            margin-top: 10%;
-            margin-left: 10%;
-            text-align: center;
-            width: 30px;
-            height: 30px;
-       }   
-       
-  </style>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
-      <div class="container-fluid" >
-        <h1 class="navbar-brand" ><span style=" color: rgb(251, 251, 7); font-size: 50px">E</span> delivery</h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse"  id="navbarNavAltMarkup" style="text-align: center; margin-left: 25%;">
-          <div class="navbar-na">
-            <a href="/Home" type="button" class="btn ">Home</a>
-                <a href="/About" type="button" class="btn ">About</a>
-                <a href="/ContactUs" type="button" class="btn ">Contact</a>
-                <a href="/Help" type="button" class="btn ">Help</a>
-          </div>
-        </div>
-      </div>
-      <div class="nav justify-content-end"><a href="login.html" type="button" class="btn">Login</a></div>
-        <div class="nav justify-content-end" style="padding-left: 3%;padding-right:3%;"><a href="user_profile.html" type="button" ><img class="rounded-circle mb-3" src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Generic placeholder image" width="30" height="30"></a></div>
-    </nav>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col" style="margin-top: 10%;">
-          <div class="container my-3 sster" style="margin-bottom: 3%; padding: 3%;" >
-            
-            <h3>Send with confidence, order with ease.</h3>
-            <h1 style="font-weight: 700;"><span style="color: yellow; font-size:50px;">E</span> delivery Services</h1>
-            <h3>– your trusted partner in <span style="color: yellow;">courier</span> convenience.</h3>
-          </div>
-          <div class="container my-3 sster" style="margin-top: 3%; padding: 3%;">
-            <h3><span style="color: yellow;">E</span> delivery Ensures</h3>
-            <div class="pluspoints" id="one">Safe Packaging</div>
-            <div class="pluspoints" id="two">Secured Delivery</div>
-            <div class="pluspoints" id="three">Reasonable Shipping Costs</div>
-            <div class="pluspoints" id="four">Reliable Statistics</div>  
-          </div>
-          <div class="container my-3 sster"style="margin-bottom: 0%; padding: 3%;" >
-            <img src="https://prodwebimage.ecomexpress.in/parcels_since_inception_50be16b3a9.svg">
-            <h4>20+ Parcels Ordered</h4>
+      <p class="intro-text" style="padding-top: 50px; margin-bottom: 8px;">E delivery Ensures</p>
+      <ul class="characters">
+          <li>Safe Packaging</li>
+          <li>Secured Delivery</li>
+          <li>Reasonable Shipping Costs</li>
+          <li>Reliable Statistics</li>
+      </ul>
+      <ul class="achievements">
+          <li><i class="fa-solid fa-box"></i><p>20+ Parcels Ordered</p></li>
+          <li><i class="fa-solid fa-location-dot"></i><p>10+ Major Cities Covered</p></li>
+          <li><i class="fa-solid fa-house"></i><p>10+ Delivery Centers</p></li>
+      </ul>
+  </div>
+  <div class="place_order_forms">
+      <form method="post">
+        {% csrf_token %}
+          <div class="parcel_details">
+            <h3>Parcel Details</h3>
+            <div class="parcel_detail_input">
+              <input type="text" id="floatingInput" name="ordername" required>
+              <label for="floatingInput">Order name</label>
+            </div>
+            <div class="flex_double_items">
+                  <select class="form-select" name="weight" aria-label="Default select example">
+                    <option selected="">Weight of the parcel</option>
+                    <option value="1">Below 5kg</option>
+                    <option value="2">5kg to 10kg</option>
+                    <option value="3">10kg to 20 kg</option>
+                    <option value="4">20kg to 30 kg</option>
+                    <option value="5">Above 30kg</option>
+                  </select>
+                 
+              
+                  <select class="form-select" name="deliverymode" aria-label="Default select example">
+                    <option selected="">Parcel delivery mode</option>
+                    <option value="1">Normal delivery</option>
+                    <option value="2">Fast delivery</option>
+                    <option value="3">Super fast delivery</option>
+                    <option value="4">Instant delivery</option>
+                  </select>
+              </div>  
             
           </div>
-          <div class="container my-3 sster" style="margin: 0%; padding: 0%;">
-            <img src="https://prodwebimage.ecomexpress.in/cities_and_town_c0339d4e15.svg">
-            <h4>10+ Major Cities Covered</h4>
+          <div class="to_adress_details">
+            <h3>To Address</h3>
+            <div class="parcel_detail_input">
+              <input type="text" name="receivername" id="floatingInput" required>
+              <label for="floatingInput">Receiver's name</label>
+            </div>
+            <div class="parcel_detail_input">
+              <input type="text" name="houseno" id="floatingInput" required>
+              <label for="floatingInput">House/Room/Door No.</label>
+            </div>
+            <div class="parcel_detail_input">
+              <input type="text" name='street' id="floatingInput" required>
+              <label for="floatingInput">Street</label>
+            </div>
             
-          </div>
-          <div class="container my-3 sster" style="margin: 0%; padding: 0%;">
-            <img src="https://prodwebimage.ecomexpress.in/Delivery_center_7ecfe7c729.svg">
-            <h4>10+ Delivery Centers</h4>
-            
-          </div>
-          
-        </div>
-        <div class="col" style="margin-top: 10%;">        
-          <div class="container" >
-            <form method="post">
-              {% csrf_token %}
-              <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
-                <h3>Parcel Details</h3><br>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="floatingInput" name="ordername" placeholder="name@example.com">
-                  <label for="floatingInput">Order name</label>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" name="weight" aria-label="Default select example">
-                        <option selected>Weight of the parcel</option>
-                        <option value="1">Below 5kg</option>
-                        <option value="2">5kg to 10kg</option>
-                        <option value="3">10kg to 20 kg</option>
-                        <option value="4">20kg to 30 kg</option>
-                        <option value="5">Above 30kg</option>
-                      </select>
-                      
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="First name" aria-label="First name"> -->
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" name="deliverymode" aria-label="Default select example">
-                        <option selected>Parcel delivery mode</option>
-                        <option value="1">Normal delivery</option>
-                        <option value="2">Fast delivery</option>
-                        <option value="3">Super fast delivery</option>
-                        <option value="4">Instant delivery</option>
-                      </select>
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"> -->
-                  </div>
-                </div>
-              </div>
-              <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);" >
-                <h3>To Address</h3><br>
-      
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="receivername" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Receiver's name</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="houseno" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">House/Room/Door No.</label>
-                </div>
-                  
+            <div class="flex_double_items">
+                  <select class="form-select" name="city" aria-label="Default select example">
+                    <option selected="">City</option>
+                    <option value="1">Hyderabad</option>
+                    <option value="2">Chennai</option>
+                    <option value="3">Benguluru</option>
+                    <option value="4">Mumbai</option>
+                    <option value="5">Delhi</option>
+                    <option value="6">Indore</option>
+                    <option value="7">Kolkata</option>
+                  </select>
                 
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name='street' id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Street</label>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" name="city" aria-label="Default select example">
-                        <option selected>City</option>
-                        <option value="1">Hyderabad</option>
-                        <option value="2">Chennai</option>
-                        <option value="3">Benguluru</option>
-                        <option value="4">Mumbai</option>
-                        <option value="5">Delhi</option>
-                        <option value="6">Indore</option>
-                        <option value="7">Kolkata</option>
-                      </select>
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="First name" aria-label="First name"> -->
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" name="state" aria-label="Default select example">
-                        <option selected>State</option>
-                        <option value="1">Telangana</option>
-                        <option value="2">Tamilnadu</option>
-                        <option value="3">Karnataka</option>
-                        <option value="4">Maharashtra</option>
-                        <option value="5">Delhi</option>
-                        <option value="6">Madhya Pradesh</option>
-                        <option value="7">West Bengal</option>
-                      </select>
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"> -->
-                  </div>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" name="pincode" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Pincode</label>
-                </div>
+            
+                  <select class="form-select" name="state" aria-label="Default select example">
+                    <option selected="">State</option>
+                    <option value="1">Telangana</option>
+                    <option value="2">Tamilnadu</option>
+                    <option value="3">Karnataka</option>
+                    <option value="4">Maharashtra</option>
+                    <option value="5">Delhi</option>
+                    <option value="6">Madhya Pradesh</option>
+                    <option value="7">West Bengal</option>
+                  </select>
               </div>
-              <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
-                <h3>From Address</h3><br>
-      
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="houseno2" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">House/Room/Door No.</label>
-                </div>
-                  
-                
-                <div class="form-floating mb-3">
-                  <input type="text" class="form-control" name="street2" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Street</label>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" name="city2" aria-label="Default select example">
-                        <option selected>City</option>
-                        <option value="1">Hyderabad</option>
-                        <option value="2">Chennai</option>
-                        <option value="3">Benguluru</option>
-                        <option value="4">Mumbai</option>
-                        <option value="5">Delhi</option>
-                        <option value="6">Indore</option>
-                        <option value="7">Kolkata</option>
-                      </select>
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="First name" aria-label="First name"> -->
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <select class="form-select" class="state2" aria-label="Default select example">
-                        <option selected>State</option>
-                        <option value="1">Telangana</option>
-                        <option value="2">Tamilnadu</option>
-                        <option value="3">Karnataka</option>
-                        <option value="4">Maharashtra</option>
-                        <option value="5">Delhi</option>
-                        <option value="6">Madhya Pradesh</option>
-                        <option value="7">West Bengal</option>
-                      </select>
-                    </div>
-                    <!-- <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"> -->
-                  </div>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" name="pincode2" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Pincode</label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary m-4" style="background-color: rgb(251, 251, 7); color: black;">Submit</button>
-            </form>
+            <div class="parcel_detail_input" name="pincode" id="floatingInput">
+              <input type="number" required>
+              <label for="floatingInput">Pincode</label>
+            </div>
           </div>
-        </div>
-
-      </div>
-    </div>
-   
-    <hr class="featurette-divider">
-
-    <div class="row featurette" style="background-color: #222222;">
-      <div class="col-md-7" style="margin-top: 7%; text-align: center;">
-        
-        
-        <h2 style="color: white;">A Description of our <span style="color: rgb(251, 251, 7);">Delivery Partners</span></h2>
-        <p style="text-align: center; color:white;">At E Delivery, our dedicated team of delivery professionals is the backbone of our service. Our delivery boys are not just employees; they are the friendly faces that represent our commitment to excellence. Each member of our team undergoes rigorous background checks and training programs to ensure they are not only reliable but also equipped with the skills necessary to provide outstanding service. From their recognizable uniforms and IDs to their dedication to safety protocols, our delivery boys prioritize the well-being of our customers and their parcels. With optimized routes and state-of-the-art technology, they ensure timely deliveries while maintaining a friendly and professional demeanor. We believe in the power of great customer service, and our delivery boys are here to uphold that promise. They are not just delivery personnel; they are trusted members of our community who take pride in serving you. Your satisfaction is their top priority, and we encourage you to provide feedback and share your positive experiences. At E Delivery, our delivery boys are more than a team; they are your partners in convenience and reliability.</p>
-      </div>
-      <div class="col-md-5" style="padding: 0; margin-top: 0;">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://media.istockphoto.com/id/1386232790/photo/shot-of-a-young-man-receiving-his-delivery-from-the-courier.webp?b=1&s=170667a&w=0&k=20&c=wyeTWNVXACEvpbQMHalp6h9mm8QBadgm8-QnhbxVX8E=" style="height: 500px; width: 500px;">
-      </div>
-    </div>
-
+          <div class="from_adress_details">
+            <h3>From Address</h3>
+            <div class="parcel_detail_input">
+              <input type="text" name="houseno2" id="floatingInput" required>
+              <label for="floatingInput">House/Room/Door No.</label>
+            </div>
+            
+            <div class="parcel_detail_input">
+              <input type="text" name="street2" id="floatingInput" required>
+              <label for="floatingInput">Street</label>
+            </div>
+              <div class="flex_double_items">
+                
+                  <select class="form-select" name="city2" aria-label="Default select example">
+                      <option selected="">City</option>
+                      <option value="1">Hyderabad</option>
+                      <option value="2">Chennai</option>
+                      <option value="3">Benguluru</option>
+                      <option value="4">Mumbai</option>
+                      <option value="5">Delhi</option>
+                      <option value="6">Indore</option>
+                      <option value="7">Kolkata</option>
+                  </select>
+                  
+                  
+                  <select class="form-select" name="state2" aria-label="Default select example">
+                      <option selected="">State</option>
+                      <option value="1">Telangana</option>
+                      <option value="2">Tamilnadu</option>
+                      <option value="3">Karnataka</option>
+                      <option value="4">Maharashtra</option>
+                      <option value="5">Delhi</option>
+                      <option value="6">Madhya Pradesh</option>
+                      <option value="7">West Bengal</option>
+                  </select>
+              </div>
+            <div class="parcel_detail_input">
+              <input type="number" name="pincode2" id="floatingInput" required>
+              <label for="floatingInput">Pincode</label>
+            </div>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+  </div>
+</div>
+</div>
+<div class="container">
+<div class="row featurette" style="background-color: #222222;">
+  <div class="col-md-7" style="margin-top: 7%; text-align: center;">
     
     
-    <footer class="text-center py-4" style="color: #ccc;">
-      <hr style="border-top: 1px solid #ccc; margin: 20px 0;">
-      <p>&copy; 2023 E delivery Services. All rights reserved.</p>
-  </footer>
-    
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
- 
-</body>
-</html>
+    <h2 style="color: white;">A Description of our <span style="color: rgb(251, 251, 7);">Delivery Partners</span></h2>
+    <p style="text-align: center; color:white;">At E Delivery, our dedicated team of delivery professionals is the backbone of our service. Our delivery boys are not just employees; they are the friendly faces that represent our commitment to excellence. Each member of our team undergoes rigorous background checks and training programs to ensure they are not only reliable but also equipped with the skills necessary to provide outstanding service. From their recognizable uniforms and IDs to their dedication to safety protocols, our delivery boys prioritize the well-being of our customers and their parcels. With optimized routes and state-of-the-art technology, they ensure timely deliveries while maintaining a friendly and professional demeanor. We believe in the power of great customer service, and our delivery boys are here to uphold that promise. They are not just delivery personnel; they are trusted members of our community who take pride in serving you. Your satisfaction is their top priority, and we encourage you to provide feedback and share your positive experiences. At E Delivery, our delivery boys are more than a team; they are your partners in convenience and reliability.</p>
+  </div>
+  <div class="col-md-5" style="padding: 0; margin-top: 0;">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://media.istockphoto.com/id/1386232790/photo/shot-of-a-young-man-receiving-his-delivery-from-the-courier.webp?b=1&amp;s=170667a&amp;w=0&amp;k=20&amp;c=wyeTWNVXACEvpbQMHalp6h9mm8QBadgm8-QnhbxVX8E=" style="height: 500px; width: 500px;">
+  </div>
+</div></div>
+{% endblock %}
