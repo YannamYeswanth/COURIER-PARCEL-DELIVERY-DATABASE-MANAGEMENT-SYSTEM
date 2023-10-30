@@ -57,10 +57,12 @@ def signup(request):
         pas1=request.POST.get('pas1')
         pas2=request.POST.get('pas2')
         
+        if User.objects.filter(username=name).exists():
+            messages.error(request,'This usename is already in use. Please use another one')
+            return render(request,'signup.html')        
         if pas1!=pas2:
             messages.warning(request, 'password not same')
-            return render(request, 'signup.html')
-        
+            return render(request, 'signup.html')       
         user=User.objects.create(username=name,password=make_password(pas1))
         user.save()
         user_det=user_details.objects.create(user=user,UserId=len(user_details.objects.all())+1)
@@ -156,13 +158,36 @@ def estimate(request):
         city1=request.POST.get('to_city')
         city2=request.POST.get('from_city')
         weight=request.POST.get('weight')
+        tod=request.POST.get('type')
         h=request.POST.get('height')
         l=request.POST.get('length')
         w=request.POST.get('width')
+        l=int(l)
+        w=int(w)
+        h=int(h)
         vol=l*h*w
-        # dist=((cities[city1][0]-cities[city2][0])**2)+((cities[city1][1]-cities[city2][1])**2)
-        # dist=dist**(1/2)
-    return render(request, 'estimate.html')
+        cit1=cities.objects.filter(name=city1)[0]
+        cit2=cities.objects.filter(name=city2)[0]
+        lat1,long1=cit1.latitude,cit1.longitude
+        lat2,long2=cit2.latitude,cit2.longitude
+        dist=(lat1-lat2)**2+(long1-long2)**2
+        dist=dist**(1/2)
+        weight=int(weight)
+        value=1
+        # if tod=='Normal delivery':
+        #     value=1 
+        # elif tod=='Fast delivery':
+        #     value=1.5 
+        # elif tod=='Super fats delivery':
+        #     value=2
+        # else:
+        #     value=2.5
+        cost=(dist*58000+1500)*(vol*50)*weight*value
+        time=int((dist*30+1)/value)
+        context={'cost':cost,'time':time,}
+        return render(request,'estimate.html',context)
+    context={'cost':0.00,'time':2}
+    return render(request, 'estimate.html',context)
 
 # def user_profile(request):
 #     User=user_details.objects.get(user=request.user)

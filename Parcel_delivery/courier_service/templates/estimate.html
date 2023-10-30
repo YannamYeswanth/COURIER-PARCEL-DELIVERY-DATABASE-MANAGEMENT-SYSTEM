@@ -70,8 +70,8 @@
     <div class="container text-center">
         <div class="row">
           <div class="col" style="margin-top: 10%;">
-            <form>
-
+            <form method="post">
+                {% csrf_token %}
                 <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);" >
                     
                     <h3>To Address</h3><br><br>
@@ -89,15 +89,15 @@
                   </select>
                 </div>
                   <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="to_city">
                       <option selected>City</option>
-                      <option value="1">Hyderabad</option>
-                      <option value="2">Chennai</option>
-                      <option value="3">Benguluru</option>
-                      <option value="4">Mumbai</option>
-                      <option value="5">Delhi</option>
-                      <option value="6">Indore</option>
-                      <option value="7">Kolkata</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Benguluru">Benguluru</option>
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Indore">Indore</option>
+                      <option value="Kolkata">Kolkata</option>
                     </select>
                   </div>
                 </div>
@@ -118,39 +118,38 @@
                     </select>
                   </div>
                   <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="from_city">
                       <option selected>City</option>
-                      <option value="1">Hyderabad</option>
-                      <option value="2">Chennai</option>
-                      <option value="3">Benguluru</option>
-                      <option value="4">Mumbai</option>
-                      <option value="5">Delhi</option>
-                      <option value="6">Indore</option>
-                      <option value="7">Kolkata</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                      <option value="Chennai">Chennai</option>
+                      <option value="Benguluru">Benguluru</option>
+                      <option value="Mumbai">Mumbai</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Indore">Indore</option>
+                      <option value="Kolkata">Kolkata</option>
                     </select>
                   </div>
                 </div>
         
-              </form>            
-            </div>
-            <div class="col" style="margin-top: 10%;">
-              <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
-                <h3>Parcel Details</h3><br><br>
-                
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
-                  <label for="floatingInput">Height of the parcel (in cm)</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="floatingPassword" placeholder="Password">
+              </div>
+              <div class="col" style="margin-top: 10%;">
+                <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
+                  <h3>Parcel Details</h3><br><br>
+                  
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="height">
+                    <label for="floatingInput">Height of the parcel (in cm)</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingPassword" name="length">
                     <label for="floatingPassword">Length of the parcel (in cm)</label>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="number" class="form-control" id="floatingPassword" name="width">
                     <label for="floatingPassword">Width of the parcel (in cm)</label>
                   </div>
                   <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="weight">
                       <option selected>Weight of the parcel</option>
                       <option value="1">Below 5kg</option>
                       <option value="2">5kg to 10kg</option>
@@ -161,7 +160,7 @@
                     
                   </div>
                   <div class="mb-3">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="type">
                       <option selected>Parcel delivery mode</option>
                       <option value="1">Normal delivery</option>
                       <option value="2">Fast delivery</option>
@@ -172,13 +171,14 @@
                 </div>
                 <button type="submit" class="btn btn-primary m-4" style="background-color: rgb(251, 251, 7); color: black;">Estimate price</button>
               </div>
-
+              
+            </form>            
         </div>
     </div>
     <div class="container text-center">
         <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234); font-size: larger;">
-            The estimate price of your parcel delivery is 00.00 Rs. <br>
-            Your parcel takes 3 - 5 days for the delivery.
+            The estimate price of your parcel delivery is {{cost}} Rs. <br>
+            Your parcel takes {{time}} days for the delivery.
         </div>
     </div>
     <div class="container" style="color: #ccc; font-size: smaller;">
