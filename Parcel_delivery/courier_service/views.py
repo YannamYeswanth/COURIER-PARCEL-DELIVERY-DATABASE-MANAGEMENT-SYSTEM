@@ -11,6 +11,8 @@ import geopy.distance
 def home(request):
     return render(request, 'Home.html')
 def Login(request):
+
+    context={'message':''}
     if request.method=='POST':
         name=request.POST.get('username')
         pas=request.POST.get('password')
@@ -19,23 +21,24 @@ def Login(request):
             login(request,user)
             return redirect('home')
         else:
-            messages.warning(request, 'Wrong Username or password')
-            return render(request, 'login.html')
-    return render(request,'login.html')
+            context['message']='Wrong Username or password'
+            return render(request, 'login.html',context)
+    return render(request,'login.html',context)
 def signup(request):
+      context={'message':''}
       if request.method=="POST":
         name=request.POST.get('username')
         pas1=request.POST.get('pas1')
         pas2=request.POST.get('pas2')
         if name=='' or pas1=='' or pas2=='':
-            messages.error(request,'Please fill out the credentials')
-            return render(request,'signup.html')
+            context['message']='Please fill out the credentials'
+            return render(request,'signup.html',context)
         if User.objects.filter(username=name).exists():
-            messages.error(request,'This usename is already in use. Please use another one')
-            return render(request,'signup.html')        
+            context['message']='This usename is already in use. Please use another one'
+            return render(request,'signup.html',context)        
         if pas1!=pas2:
-            messages.warning(request, 'password not same')
-            return render(request, 'signup.html')       
+            context['message']='passwords are not same'
+            return render(request, 'signup.html',context)       
         user=User.objects.create(username=name,password=make_password(pas1))
         user.save()
         user_det=user_details.objects.create(user=user,UserId=len(user_details.objects.all())+1)
@@ -44,7 +47,7 @@ def signup(request):
         if users is not None:
             login(request,users)
             return redirect('signupxtra')
-      return render(request,'signup.html')
+      return render(request,'signup.html',context)
 def signupxtra(request):
     if request.method=="POST":
         h_no=request.POST.get('H_No')
@@ -133,20 +136,31 @@ def track_parcel(request):
     return render(request, 'track_parcel.html')
 def estimate(request):
     places=Branches.objects.all()
+    context={
+        'cost':0,
+        'time':2,
+        'places':places,
+        'message1':'',
+        'message2':'',
+        'message3':'',
+    }
     if request.method=='POST':
         city1=request.POST.get('to_city')
         city2=request.POST.get('from_city')
-        if city1=='0' or city2=='0':
-            messages.warning(request,'Provide the cities')
-            return render(request,'estimate.html')
+        if city1=='0':
+            context['message1']='Provide the city'
+            return render(request,'estimate.html',context)
+        if city2=='0':
+            context['message2']='Provide the city'
+            return render(request,'estimate.html',context)
         weight=request.POST.get('weight')
-        tod=request.POST.get('type')
+        tod=request.POST.get('deliverymode')
         h=request.POST.get('height')
         l=request.POST.get('length')
         w=request.POST.get('width')
         if h=='' or l=='' or w=='':
-            messages.warning(request,'Provide parcel details correctly')
-            return render(request,'estimate')
+            context['message3']='Provide parcel details correctly'
+            return render(request,'estimate.html',context)
         l=int(l)
         w=int(w)
         h=int(h)
@@ -162,11 +176,9 @@ def estimate(request):
         value=int(tod)
         cost=int(((dist*0.01+500)+(vol*0.0001))*weight*value)
         time=int((dist*0.01)/value)+1
-        
-
-        context={'cost':cost,'time':time,'places':places,}
+        context['cost']=cost
+        context['time']=time
         return render(request,'estimate.html',context)
-    context={'cost':0.00,'time':2,'places':places,}
     return render(request, 'estimate.html',context)
 
 # def user_profile(request):
