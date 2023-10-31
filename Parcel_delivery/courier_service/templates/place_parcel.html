@@ -95,17 +95,17 @@
           <div class="from_adress_details">
             <h3>From Address</h3>
             <div class="parcel_detail_input">
-              <input type="text" name="houseno2" id="floatingInput" required>
+              <input type="text" name="houseno2" id="floatingInput" value="{{user.House_No}}" required>
               <label for="floatingInput">House/Room/Door No.</label>
             </div>
             
             <div class="parcel_detail_input">
-              <input type="text" name="street2" id="floatingInput" required>
+              <input type="text" name="street2" value="{{user.Street}}" id="floatingInput" required>
               <label for="floatingInput">Street</label>
             </div>
               <div class="flex_double_items">
                 
-                  <select class="form-select" id="city2" name="city2" aria-label="Default select example">
+                  <select class="form-select" id="city2" value="{{user.City}}" name="city2" aria-label="Default select example">
                     <option value="0">City</option>
                     {% for i in places %}
                     <option value="{{i.City}}">{{i.City}}</option>
@@ -114,7 +114,7 @@
                   </select>
                   
                   
-                  <select class="form-select" id="state2" name="state2" aria-label="Default select example">
+                  <select class="form-select" id="state2" name="state2" value="{{user.State}}" aria-label="Default select example">
                     <option value="0">State</option>
                     {% for i in places %}
                       <option value="{{i.State}}">{{i.State}}</option>
@@ -123,7 +123,7 @@
                   </select>
               </div>
             <div class="parcel_detail_input">
-              <input type="number" name="pincode2" id="floatingInput" required>
+              <input type="number" name="pincode2" id="floatingInput" value="{{user.Pin_Code}}" required>
               <label for="floatingInput">Pincode</label>
             </div>
           </div>

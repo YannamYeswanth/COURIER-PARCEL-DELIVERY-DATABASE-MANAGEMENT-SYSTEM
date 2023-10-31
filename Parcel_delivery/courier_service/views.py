@@ -88,9 +88,12 @@ def Help(request):
     return render(request, 'Help.html')
 def place_parcel(request):
     places=Branches.objects.all()
+    users = user_details.objects.get(user=request.user)
     context={
         'places':places,
+        'user' : users,
     }
+
     if request.method=='POST':
         # return render(request, 'Help.html')
         ordername=request.POST.get('ordername')
