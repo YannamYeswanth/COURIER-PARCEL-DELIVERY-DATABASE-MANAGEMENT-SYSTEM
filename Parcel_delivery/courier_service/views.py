@@ -1,45 +1,18 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Contacts,Orders,cities
+from courier_service.models import user_details,Contacts,Orders,cities,Branches
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+import geopy.distance
 
 # Create your views here.
-citie={
-    'Thiruvananthapuram':(8.52,76.94),
-    'Chennai':(13.08,80.27),
-    'Bengaluru':(12.97,77.59),
-    'Hyderabad':(17.38,78.48),
-    'Mumbai':(19.07,72.88),
-    'Panaji':(15.29,74.12),
-    'Bhopal':(23.26,77.41),
-    'Amaravathi':(16.57,80.35),
-    'Raipur':(21.27,81.86),
-    'Bhubaneswar':(20.29,85.82),
-    'Gandhinagar':(23.21,72.63),
-    'Shimla':(31.10,77.26),
-    'Chandigarh':(30.73,79.78),
-    'Lucknow':(26.84,80.94),
-    'Dehradun':(30.31,78.03),
-    'Jaipur':(26.91,75.78),
-    'Kolkata':(22.57,88.36),
-    'Gangtok':(27.33,88.61),
-    'Itanagar':(27.08,93.60),
-    'Aizawl':(23.72,92.71),
-    'Imphal':(24.81,93.93),
-    'Agartala':(23.83,91.28),
-    'Dispur':(26.14,91.77),
-    'Kohima':(25.29,94.83),
-    'Patna':(25.59,85.13),
-    'Shillong':(25.27,91.77),
-    'Amritsar':(31.55,74.34),
-    'Ranchi':(23.34,85.31),
-}
 def home(request):
     return render(request, 'Home.html')
 def Login(request):
+
+    context={'message':''}
     if request.method=='POST':
         name=request.POST.get('username')
         pas=request.POST.get('password')
@@ -48,21 +21,24 @@ def Login(request):
             login(request,user)
             return redirect('home')
         else:
-            messages.warning(request, 'Wrong Username or password')
-            return render(request, 'login.html')
-    return render(request,'login.html')
+            context['message']='Wrong Username or password'
+            return render(request, 'login.html',context)
+    return render(request,'login.html',context)
 def signup(request):
+      context={'message':''}
       if request.method=="POST":
         name=request.POST.get('username')
         pas1=request.POST.get('pas1')
         pas2=request.POST.get('pas2')
-        
+        if name=='' or pas1=='' or pas2=='':
+            context['message']='Please fill out the credentials'
+            return render(request,'signup.html',context)
         if User.objects.filter(username=name).exists():
-            messages.error(request,'This usename is already in use. Please use another one')
-            return render(request,'signup.html')        
+            context['message']='This usename is already in use. Please use another one'
+            return render(request,'signup.html',context)        
         if pas1!=pas2:
-            messages.warning(request, 'password not same')
-            return render(request, 'signup.html')       
+            context['message']='passwords are not same'
+            return render(request, 'signup.html',context)       
         user=User.objects.create(username=name,password=make_password(pas1))
         user.save()
         user_det=user_details.objects.create(user=user,UserId=len(user_details.objects.all())+1)
@@ -71,7 +47,7 @@ def signup(request):
         if users is not None:
             login(request,users)
             return redirect('signupxtra')
-      return render(request,'signup.html')
+      return render(request,'signup.html',context)
 def signupxtra(request):
     if request.method=="POST":
         h_no=request.POST.get('H_No')
@@ -79,8 +55,12 @@ def signupxtra(request):
         city=request.POST.get('city')
         state=request.POST.get('state')
         pincode=request.POST.get('pincode')
+        if pincode=='':
+            pincode=0
         email=request.POST.get('email')
         contact=request.POST.get('c_no')
+        if contact=='':
+            contact=0
         user=request.user
         new_user=user_details.objects.filter(user=user)[0]
         new_user.Contact_Number=contact
@@ -123,12 +103,13 @@ def place_parcel(request):
         city2=request.POST.get('city2')
         state2=request.POST.get('state2')
         pincode2=request.POST.get('pincode2')
+        ord_loc=cities.objects.filter(name=city2)[0]
         orders=Orders.objects.all()
         n=len(orders)+1
         Curr_datetime=datetime.now()
         User=user_details.objects.get(user=request.user)
         Userid=User.UserId
-        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=Userid)        
+        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=Userid,Order_location=ord_loc)        
         neworder.save()
         return HttpResponse("saved.")
     return render(request, 'place_parcel.html')
@@ -154,14 +135,32 @@ def track_parcel(request):
         return render(request, 'track_parcel.html',{"order_location": order_location})
     return render(request, 'track_parcel.html')
 def estimate(request):
+    places=Branches.objects.all()
+    context={
+        'cost':0,
+        'time':2,
+        'places':places,
+        'message1':'',
+        'message2':'',
+        'message3':'',
+    }
     if request.method=='POST':
         city1=request.POST.get('to_city')
         city2=request.POST.get('from_city')
+        if city1=='0':
+            context['message1']='Provide the city'
+            return render(request,'estimate.html',context)
+        if city2=='0':
+            context['message2']='Provide the city'
+            return render(request,'estimate.html',context)
         weight=request.POST.get('weight')
-        tod=request.POST.get('type')
+        tod=request.POST.get('deliverymode')
         h=request.POST.get('height')
         l=request.POST.get('length')
         w=request.POST.get('width')
+        if h=='' or l=='' or w=='':
+            context['message3']='Provide parcel details correctly'
+            return render(request,'estimate.html',context)
         l=int(l)
         w=int(w)
         h=int(h)
@@ -170,23 +169,16 @@ def estimate(request):
         cit2=cities.objects.filter(name=city2)[0]
         lat1,long1=cit1.latitude,cit1.longitude
         lat2,long2=cit2.latitude,cit2.longitude
-        dist=(lat1-lat2)**2+(long1-long2)**2
-        dist=dist**(1/2)
+        co1=(lat1,long1)
+        co2=(lat2,long2)
+        dist=geopy.distance.geodesic(co1,co2).km
         weight=int(weight)
-        value=1
-        # if tod=='Normal delivery':
-        #     value=1 
-        # elif tod=='Fast delivery':
-        #     value=1.5 
-        # elif tod=='Super fats delivery':
-        #     value=2
-        # else:
-        #     value=2.5
-        cost=(dist*58000+1500)*(vol*50)*weight*value
-        time=int((dist*30+1)/value)
-        context={'cost':cost,'time':time,}
+        value=int(tod)
+        cost=int(((dist*0.01+500)+(vol*0.0001))*weight*value)
+        time=int((dist*0.01)/value)+1
+        context['cost']=cost
+        context['time']=time
         return render(request,'estimate.html',context)
-    context={'cost':0.00,'time':2}
     return render(request, 'estimate.html',context)
 
 def user_profile(request):

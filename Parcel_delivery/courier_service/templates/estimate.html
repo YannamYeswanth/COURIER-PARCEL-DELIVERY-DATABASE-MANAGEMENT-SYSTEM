@@ -6,59 +6,60 @@
 {% block pagebody %}
 <div class="estimate_main_container">
             
-  <form>
+  <form method="post">
+        {% csrf_token %}
       <div class="address_container">
           <div class="to_estimate_box">
               <h3>To Address</h3>        
-              <label for="state"></label>
-              <select id="state" name="state">
-                  <option value="state">State</option>
-                  <option value="telangana">Telangana</option>
-                  <option value="tamilnadu">Tamil Nadu</option>
-                  <option value="karnataka">Karnataka</option>
-                  <option value="maharashtra">Maharashtra</option>
+              <label for="state1"></label>
+              <select id="state1" name="state">
+                  <option value="0">State</option>
+                  {% for i in places %}
+                    <option value="{{i.State}}">{{i.State}}</option>
+                    
+                  {% endfor %}
+                  {% comment %} <option value="Tamilnadu">Tamil Nadu</option>
+                  <option value="Karnataka">Karnataka</option> {% endcomment %}
+                  {% comment %} <option value="maharashtra">Maharashtra</option>
                   <option value="delhi">Delhi</option>
                   <option value="madhyapradesh">Madhya Pradesh</option>
-                  <option value="westbengal">West Bengal</option>
+                  <option value="westbengal">West Bengal</option> {% endcomment %}
               </select>
-              <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
+              <label for="city1"></label>
+              <select id="city1" name="to_city">
+                  <option value="0">City</option>
+                  {% for i in places %}
+                  <option value="{{i.City}}">{{i.City}}</option>
+                  
+                {% endfor %}
+                  {% comment %} <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Kolkata">Kolkata</option> {% endcomment %}
               </select>
+              <div class="container m-3" style="color: red;">{{message1}}</div>
           </div>
 
           <div class="from_estimate_box">
               <h3>From Address</h3>        
-              <label for="state"></label>
-              <select id="state" name="state">
-                  <option value="state">State</option>
-                  <option value="telangana">Telangana</option>
-                  <option value="tamilnadu">Tamil Nadu</option>
-                  <option value="karnataka">Karnataka</option>
-                  <option value="maharashtra">Maharashtra</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="madhyapradesh">Madhya Pradesh</option>
-                  <option value="westbengal">West Bengal</option>
+              <label for="state2"></label>
+              <select id="state2" name="state">
+                  <option value="0">State</option>
+                  {% for i in places %}
+                    <option value="{{i.State}}">{{i.State}}</option>
+                    
+                  {% endfor %}
               </select>
 
-              <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
-              </select>
+              <label for="city2"></label>
+              <select id="city2" name="from_city">
+                <option value="0">City</option>
+                {% for i in places %}
+                <option value="{{i.City}}">{{i.City}}</option>
+                
+              {% endfor %}
+            </select>
+            <div class="container m-3" style="color: red;">{{message2}}</div>
           </div>
       </div>
       <div class="box_2">
@@ -73,37 +74,108 @@
               <label for="width"></label>
               <input type="number" id="width" name="width" placeholder="Width of parcel (in cm)">
               
-              <label for="state"></label>
-              <select id="state" name="state">
-                  <option value="state">State</option>
-                  <option value="telangana">Telangana</option>
-                  <option value="tamilnadu">Tamil Nadu</option>
-                  <option value="karnataka">Karnataka</option>
-                  <option value="maharashtra">Maharashtra</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="madhyapradesh">Madhya Pradesh</option>
-                  <option value="westbengal">West Bengal</option>
+              <label for="weight"></label>
+              <select class="form-select" name="weight" aria-label="Default select example">
+                {% comment %} <option selected="">Weight of the parcel</option> {% endcomment %}
+                <option value="1">Below 5kg</option>
+                <option value="2">5kg to 10kg</option>
+                <option value="3">10kg to 20 kg</option>
+                <option value="4">20kg to 30 kg</option>
+                <option value="5">Above 30kg</option>
               </select>
 
               <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
+              <select class="form-select" name="deliverymode" aria-label="Default select example">
+                {% comment %} <option selected="">Parcel delivery mode</option> {% endcomment %}
+                <option value="1">Normal delivery</option>
+                <option value="2">Fast delivery</option>
+                <option value="3">Super fast delivery</option>
+                <option value="4">Instant delivery</option>
               </select>
+              <div class="container m-3" style="color: red;">{{message3}}</div>
           </div>
       
           <input type="submit" value="Estimate Price" id="sub_button" >
       </div>
   </form>
   
-  <div class="declaration_box"><p>The estimate price of your parcel delivery is 00.00 Rs.
-      Your parcel takes 3 - 5 days for the delivery.</p></div>
+  <div class="declaration_box"><p>The estimate price of your parcel delivery is {{cost}} Rs.
+      Your parcel takes {{time}} days for the delivery.</p></div>
   <p style="background-color: aliceblue;">(*)This is just an estimate price. The actual price details may differ slightly and will be informed through mail.</p>
 </div>
+<script>
+    document.getElementById("state1").addEventListener("change", function() {
+        const firstSelect = this;
+        const secondSelect = document.getElementById("city1");
+        const selectedValue = firstSelect.value;
+        var data =[
+            {% for i in places %}
+                ["{{i.State}}","{{i.City}}"],
+            {% endfor %}
+        ]
+        // Clear existing options in the second select
+        secondSelect.innerHTML = "";
+        for(var i=0; i<data.length;i++){
+            var pl=data[i];
+            if(selectedValue === pl[0]){
+                secondSelect.options.add(new Option(pl[1],pl[1]));
+            }
+        }
+    });
+    document.getElementById("state2").addEventListener("change", function() {
+        const firstSelect = this;
+        const secondSelect = document.getElementById("city2");
+        const selectedValue = firstSelect.value;
+        var data =[
+            {% for i in places %}
+                ["{{i.State}}","{{i.City}}"],
+            {% endfor %}
+        ]
+        // Clear existing options in the second select
+        secondSelect.innerHTML = "";
+        for(var i=0; i<data.length;i++){
+            var pl=data[i];
+            if(selectedValue === pl[0]){
+                secondSelect.options.add(new Option(pl[1],pl[1]));
+            }
+        }
+    });
+    document.getElementById("city2").addEventListener("change", function() {
+        const firstSelect = this;
+        const secondSelect = document.getElementById("state2");
+        const selectedValue = firstSelect.value;
+        var data =[
+            {% for i in places %}
+                ["{{i.State}}","{{i.City}}"],
+            {% endfor %}
+        ]
+        // Clear existing options in the second select
+        secondSelect.innerHTML = "";
+        for(var i=0; i<data.length;i++){
+            var pl=data[i];
+            if(selectedValue === pl[1]){
+                secondSelect.options.add(new Option(pl[0],pl[0]));
+            }
+        }
+    });
+    document.getElementById("city1").addEventListener("change", function() {
+        const firstSelect = this;
+        const secondSelect = document.getElementById("state1");
+        const selectedValue = firstSelect.value;
+        var data =[
+            {% for i in places %}
+                ["{{i.State}}","{{i.City}}"],
+            {% endfor %}
+        ]
+        // Clear existing options in the second select
+        secondSelect.innerHTML = "";
+        for(var i=0; i<data.length;i++){
+            var pl=data[i];
+            if(selectedValue === pl[1]){
+                secondSelect.options.add(new Option(pl[0],pl[0]));
+            }
+        }
+    });
+</script>
+
 {% endblock %}
