@@ -112,10 +112,12 @@
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                       <button type="button" class="btn btn-outline-light">Personal Information</button>
                       <button type="button" class="btn btn-outline-light">Account Information</button>
-                      <a href="/edit" type="button" class="btn btn-outline-light">Edit</a>
+                      <a href="Help.html" type="button" class="btn btn-outline-light">Edit</a>
 
                     </div>
                 </div>
+                <form method="post">
+                    {% csrf_token %}
                 <table class="table table-striped pt-2 pb-2 mt-5 pt-2">
                     <thead>
                       <tr>
@@ -126,42 +128,46 @@
                     <tbody>
                       <tr>
                         <th scope="row">Name </th>
-                        <td>{{name}}</td>
+                        <td>{{user_profile.user}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Mobile Number</th>
-                        <td>+91 {{number}}</td>
+                        <td> <input type="text" name="number" id="email" value="{{ user_profile.Contact_Number }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">E-mail</th>
-                        <td>{{mail}}</td>
+                        <td> <input type="text" name="email" id="email" value="{{ user_profile.Email }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">House.No</th>
-                        <td>{{h_no}}</td>
+                        <td> <input type="text" name="h_no" id="email" value="{{ user_profile.House_No }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">Street</th>
-                        <td>{{street}}</td>
+                        <td> <input type="text" name="street" id="email" value="{{ user_profile.Street }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">City</th>
-                        <td>{{city}}</td>
+                        <td> <input type="text" name="city" id="email" value="{{ user_profile.City }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">State</th>
-                        <td>{{state}}</td>
+                        <td> <input type="text" name="state" id="email" value="{{ user_profile.State }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">PIN Code</th>
-                        <td>{{pin}}</td>
+                        <td> <input type="text" name="pin" id="email" value="{{ user_profile.Pin_Code }}"></td>
                       </tr>
                       <tr>
                         <th scope="row">Date Of Birth</th>
                         <td>xx/xx/xxxx</td>
                       </tr>
+                     
                     </tbody>
                   </table>
+                  <button class="btn btn-primary w-20 py-2" type="submit">Save Changes</button>
+
+                </form>
             </div>
         </div>
     </div>

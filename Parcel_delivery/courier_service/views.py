@@ -185,7 +185,38 @@ def estimate(request):
         return render(request,'estimate.html',context)
     return render(request, 'estimate.html',context)
 
-# def user_profile(request):
-#     User=user_details.objects.get(user=request.user)
+def user_profile(request):
+    User=user_details.objects.get(user=request.user)
+    context={
+        'city' : User.City,
+        "userid" : User.UserId,
+        'street' : User.Street,
+        "state" : User.State,
+        "Name" : User.user,
+        "name" : User.user,
+        "number" : User.Contact_Number,
+        "mail" : User.Email,
+        "h_no" : User.House_No,
+        "state" : User.State,
+        "pin" : User.Pin_Code,
+    }
+    return render(request, 'user_profile.html',context)
     
-    
+def edit(request):
+    user_profile = user_details.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        # Handle the form submission
+        # user_profile.user = request.POST.get('name')
+        user_profile.Email = request.POST.get('email', '')
+        user_profile.Contact_Number = request.POST.get('number', '')
+        user_profile.House_No = request.POST.get('h_no', '')
+        user_profile.Street = request.POST.get('street', '')
+        user_profile.City = request.POST.get('city', '')
+        user_profile.State = request.POST.get('state', '')
+        user_profile.Pin_Code = request.POST.get('pin', '')
+        # Update other fields as needed
+        user_profile.save()
+        return redirect('user_profile')  # Redirect to the profile page after editing
+
+    return render(request, 'edit_profile.html', {'user_profile': user_profile})
