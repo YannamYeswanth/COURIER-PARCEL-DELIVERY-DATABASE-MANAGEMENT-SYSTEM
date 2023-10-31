@@ -6,13 +6,14 @@
 {% block pagebody %}
 <div class="estimate_main_container">
             
-  <form>
+  <form method="post">
+        {% csrf_token %}
       <div class="address_container">
           <div class="to_estimate_box">
               <h3>To Address</h3>        
               <label for="state"></label>
               <select id="state" name="state">
-                  <option value="state">State</option>
+                  <option value="0">State</option>
                   <option value="telangana">Telangana</option>
                   <option value="tamilnadu">Tamil Nadu</option>
                   <option value="karnataka">Karnataka</option>
@@ -22,15 +23,15 @@
                   <option value="westbengal">West Bengal</option>
               </select>
               <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
+              <select id="city" name="to_city">
+                  <option value="0">City</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Kolkata">Kolkata</option>
               </select>
           </div>
 
@@ -38,7 +39,7 @@
               <h3>From Address</h3>        
               <label for="state"></label>
               <select id="state" name="state">
-                  <option value="state">State</option>
+                  <option value="0">State</option>
                   <option value="telangana">Telangana</option>
                   <option value="tamilnadu">Tamil Nadu</option>
                   <option value="karnataka">Karnataka</option>
@@ -49,16 +50,16 @@
               </select>
 
               <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
-              </select>
+              <select id="city" name="from_city">
+                <option value="0">City</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Indore">Indore</option>
+                <option value="Kolkata">Kolkata</option>
+            </select>
           </div>
       </div>
       <div class="box_2">
@@ -73,28 +74,23 @@
               <label for="width"></label>
               <input type="number" id="width" name="width" placeholder="Width of parcel (in cm)">
               
-              <label for="state"></label>
-              <select id="state" name="state">
-                  <option value="state">State</option>
-                  <option value="telangana">Telangana</option>
-                  <option value="tamilnadu">Tamil Nadu</option>
-                  <option value="karnataka">Karnataka</option>
-                  <option value="maharashtra">Maharashtra</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="madhyapradesh">Madhya Pradesh</option>
-                  <option value="westbengal">West Bengal</option>
+              <label for="weight"></label>
+              <select class="form-select" name="weight" aria-label="Default select example">
+                {% comment %} <option selected="">Weight of the parcel</option> {% endcomment %}
+                <option value="1">Below 5kg</option>
+                <option value="2">5kg to 10kg</option>
+                <option value="3">10kg to 20 kg</option>
+                <option value="4">20kg to 30 kg</option>
+                <option value="5">Above 30kg</option>
               </select>
 
               <label for="city"></label>
-              <select id="city" name="city">
-                  <option value="city">City</option>
-                  <option value="hyderabad">Hyderabad</option>
-                  <option value="chennai">Chennai</option>
-                  <option value="bengaluru">Bengaluru</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="delhi">Delhi</option>
-                  <option value="indore">Indore</option>
-                  <option value="kolkata">Kolkata</option>
+              <select class="form-select" name="deliverymode" aria-label="Default select example">
+                {% comment %} <option selected="">Parcel delivery mode</option> {% endcomment %}
+                <option value="1">Normal delivery</option>
+                <option value="2">Fast delivery</option>
+                <option value="3">Super fast delivery</option>
+                <option value="4">Instant delivery</option>
               </select>
           </div>
       
@@ -102,8 +98,8 @@
       </div>
   </form>
   
-  <div class="declaration_box"><p>The estimate price of your parcel delivery is 00.00 Rs.
-      Your parcel takes 3 - 5 days for the delivery.</p></div>
+  <div class="declaration_box"><p>The estimate price of your parcel delivery is {{cost}} Rs.
+      Your parcel takes {{time}} days for the delivery.</p></div>
   <p style="background-color: aliceblue;">(*)This is just an estimate price. The actual price details may differ slightly and will be informed through mail.</p>
 </div>
 {% endblock %}
