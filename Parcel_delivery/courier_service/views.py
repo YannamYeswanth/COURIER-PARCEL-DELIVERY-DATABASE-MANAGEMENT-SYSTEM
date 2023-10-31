@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Contacts,Orders,cities
+from courier_service.models import user_details,Contacts,Orders,cities,Branches
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
@@ -132,6 +132,7 @@ def track_parcel(request):
         return render(request, 'track_parcel.html',{"order_location": order_location})
     return render(request, 'track_parcel.html')
 def estimate(request):
+    places=Branches.objects.all()
     if request.method=='POST':
         city1=request.POST.get('to_city')
         city2=request.POST.get('from_city')
@@ -143,6 +144,9 @@ def estimate(request):
         h=request.POST.get('height')
         l=request.POST.get('length')
         w=request.POST.get('width')
+        if h=='' or l=='' or w=='':
+            messages.warning(request,'Provide parcel details correctly')
+            return render(request,'estimate')
         l=int(l)
         w=int(w)
         h=int(h)
@@ -158,9 +162,11 @@ def estimate(request):
         value=int(tod)
         cost=int(((dist*0.01+500)+(vol*0.0001))*weight*value)
         time=int((dist*0.01)/value)+1
-        context={'cost':cost,'time':time,}
+        
+
+        context={'cost':cost,'time':time,'places':places,}
         return render(request,'estimate.html',context)
-    context={'cost':0.00,'time':2}
+    context={'cost':0.00,'time':2,'places':places,}
     return render(request, 'estimate.html',context)
 
 # def user_profile(request):
