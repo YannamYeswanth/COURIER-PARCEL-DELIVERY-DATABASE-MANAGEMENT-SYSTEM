@@ -87,6 +87,10 @@ def About(request):
 def Help(request):
     return render(request, 'Help.html')
 def place_parcel(request):
+    places=Branches.objects.all()
+    context={
+        'places':places,
+    }
     if request.method=='POST':
         # return render(request, 'Help.html')
         ordername=request.POST.get('ordername')
@@ -112,7 +116,7 @@ def place_parcel(request):
         neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=Userid,Order_location=ord_loc)        
         neworder.save()
         return HttpResponse("saved.")
-    return render(request, 'place_parcel.html')
+    return render(request, 'place_parcel.html',context)
 def track_parcel(request):
     if request.method=='POST':
         # return render(request, 'estimate.html')
