@@ -127,7 +127,12 @@
               <label for="floatingInput">Pincode</label>
             </div>
           </div>
+          {%if user.is_authenticated%}
           <button type="submit">Submit</button>
+          {%else%}  
+          <div style="color:red">Login First to place parcel.</div> 
+          <button type="submit" style="background-color: yellow" disabled>Submit</button>
+          {%endif%}
         </form>
   </div>
 </div>
@@ -218,4 +223,7 @@
       }
   });
 </script>
+
+    <!-- Include Bootstrap JS (for any required functionality) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 {% endblock %}

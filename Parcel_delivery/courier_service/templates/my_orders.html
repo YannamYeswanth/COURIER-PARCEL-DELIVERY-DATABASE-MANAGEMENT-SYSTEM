@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E Delivery | My orders</title>
-    <!-- Include Bootstrap CSS and JavaScript -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+{% extends "layout.html" %}
+{% block inpagestyle %}
       body{
        
            
@@ -77,42 +70,27 @@
             100% { background-position: -100% 0; } 
             0% { background-position: 100% 0; }
         }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
-        <div class="container-fluid" >
-          <h1 class="navbar-brand" ><span style=" color: rgb(251, 251, 7); font-size: 50px">E</span> delivery</h1>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse"  id="navbarNavAltMarkup" style="text-align: center; margin-left: 25%;">
-            <div class="navbar-na">
-                <a href="/Home" type="button" class="btn ">Home</a>
-                <a href="/About" type="button" class="btn ">About</a>
-                <a href="/ContactUs" type="button" class="btn ">Contact</a>
-                <a href="/Help" type="button" class="btn ">Help</a>
-            </div>
-          </div>
-        </div>
+        {% endblock %}
+        {% block pagebody %}
         
-        <div class="nav justify-content-end" style="padding-left: 3%;padding-right:3%;"><a href="user_profile.html" type="button" ><img class="rounded-circle mb-3" src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Generic placeholder image" width="30" height="30"></a></div>
-      </nav>
+      
+      {%if orders %}
+      {%for i in orders%}
     <div class="container border border-2 shadow rounded rounded-5 border-black p-3" style="background-color: antiquewhite; margin-top: 10%;">
         <div class="m-2">
-            <h3 style="display: inline;">Order Id: </h3><p style="display: inline; font-size: x-large;">2209192765</p>
+            <h3 style="display: inline;">Order Id: </h3><p style="display: inline; font-size: x-large;">{{i.Order_Id}}</p>
         </div> 
         <div class="m-2">
-            <h3 style="display: inline;">Date: </h3><p style="display: inline; font-size: x-large;">1st Oct 2023</p>
+            <h3 style="display: inline;">Booked Date: </h3><p style="display: inline; font-size: x-large;">{{i.booked_date}}</p>
         </div> 
         <div class="m-2">
             <h3 style="display: inline;">Time: </h3><p style="display: inline; font-size: x-large;">11:38 am</p>
         </div> 
         <div class="m-2">
-            <h3 style="display: inline;">From: </h3><p style="display: inline; font-size: x-large;">Indore, Madya Pradesh</p>
+            <h3 style="display: inline;">From: </h3><p style="display: inline; font-size: x-large;">{{i.From_City}},{{i.From_State}}</p>
         </div> 
         <div class="m-2">
-            <h3 style="display: inline;">To: </h3><p style="display: inline; font-size: x-large;">Hyderabad, Telangana</p>
+            <h3 style="display: inline;">To: </h3><p style="display: inline; font-size: x-large;">{{i.To_City}},{{i.To_State}}</p>
         </div> 
         <div class="m-2">
             <h3 style="display: inline;">Track Id: </h3><p style="display: inline; font-size: x-large;">IH115137</p>
@@ -127,59 +105,21 @@
                 <div class="dot grey-dot"></div>
             </div>
             <div class="d-flex justify-content-between">
-                <div><h5>Shipped from Indore</h5></div>
+                <div><h5>Shipped from {{i.From_City}}</h5></div>
                 
-                <div><h5>Arrived Hyderabad</h5></div>
+                {% comment %} <div><h5>Arrived Hyderabad</h5></div> {% endcomment %}
                 
-                <div><h5>Delivered</h5></div>
+                <div><h5>{{i.Order_Status}}</h5></div>
             </div>
         </div> 
-        <div class="container mt-3">
-            <button type="button" class="btn btn-primary" style="background-color: #828282;">Track parcel</button>
-        </div>
-    </div>  
-    <div class="container border border-2 shadow rounded rounded-5 border-black p-3" style="background-color: antiquewhite; margin-top: 10%;">
-        <div class="m-2">
-            <h3 style="display: inline;">Order Id: </h3><p style="display: inline; font-size: x-large;">2209192543</p>
-        </div> 
-        <div class="m-2">
-            <h3 style="display: inline;">Date: </h3><p style="display: inline; font-size: x-large;">23rd Sep 2023</p>
-        </div> 
-        <div class="m-2">
-            <h3 style="display: inline;">Time: </h3><p style="display: inline; font-size: x-large;">9:46 am</p>
-        </div> 
-        <div class="m-2">
-            <h3 style="display: inline;">From: </h3><p style="display: inline; font-size: x-large;">Indore, Madya Pradesh</p>
-        </div> 
-        <div class="m-2">
-            <h3 style="display: inline;">To: </h3><p style="display: inline; font-size: x-large;">Chennai, Tamil Nadu</p>
-        </div> 
-        <div class="m-2">
-            <h3 style="display: inline;">Track Id: </h3><p style="display: inline; font-size: x-large;">IC114097</p>
-        </div> 
-        <div class="container mt-5 text-center">
 
-            <div class="d-flex justify-content-between">
-                <div class="dot green-dot"></div>
-                <div class="line1"></div>
-                <div class="dot green-dot"></div>
-                <div class="line1"></div>
-                <div class="dot green-dot"></div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div><h5>Shipped from Indore</h5></div>
-                
-                <div><h5>Arrived at Chennai</h5></div>
-                
-                <div><h5>Delivered</h5></div>
-            </div>
-        </div> 
+        {% comment %} <div class="container mt-3">
+            <button type="button" class="btn btn-primary" style="background-color: #828282;">Track parcel</button>
+        </div> {% endcomment %}
     </div>  
-    <footer class="text-center py-4">
-      <hr style="border-top: 1px solid white; margin: 20px 0;">
-      <p style="color: white">&copy; 2023 E Delivery Services. All rights reserved.</p>
-  </footer>
+    {%endfor%}
+    {%else%}
+      <h2 style="color: white; justify-content:center; align-items:center; margin-top: 10%; margin-bottom: 10%; margin-left: 10%;">Your Orders History Appear Here!</h2> 
+    {%endif%}
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
-</html>
+{%endblock%}

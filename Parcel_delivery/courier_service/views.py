@@ -86,44 +86,81 @@ def About(request):
     return render(request, 'About.html')
 def Help(request):
     return render(request, 'Help.html')
+
+
 def place_parcel(request):
-    places=Branches.objects.all()
-    users = user_details.objects.get(user=request.user)
-    context={
-        'places':places,
-        'user' : users,
+    places = Branches.objects.all()
+    user = None
+
+    if request.user.is_authenticated:
+      user = user_details.objects.get(user=request.user)
+
+      if request.method == 'POST':
+        ordername = request.POST.get('ordername')
+        weight = request.POST.get('weight')
+        deliverymode = request.POST.get('deliverymode')
+        receivername = request.POST.get('receivername')
+        houseno = request.POST.get('houseno')
+        street = request.POST.get('street')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        pincode = request.POST.get('pincode')
+        houseno2 = request.POST.get('houseno2')
+        street2 = request.POST.get('street2')
+        city2 = request.POST.get('city2')
+        state2 = request.POST.get('state2')
+        pincode2 = request.POST.get('pincode2')
+        ord_loc = cities.objects.filter(name=city2)[0]
+
+        orders = Orders.objects.all()
+        n = len(orders) + 1
+        n+=26734595
+        curr_datetime = datetime.now()
+        user = user_details.objects.get(user=request.user)
+
+        new_order = Orders.objects.create(
+            Order_Id=n,
+            Order_Name=ordername,
+            Parcel_Weight=weight,
+            booked_date=curr_datetime,
+            From_House_No=houseno,
+            From_Street=street,
+            From_City=city,
+            From_State=state,
+            From_Pin_Code=pincode,
+            Receiver_Name=receivername,
+            To_House_No=houseno2,
+            To_Street=street2,
+            To_City=city2,
+            To_State=state2,
+            To_Pin_Code=pincode2,
+            Order_Type=deliverymode,
+            User_Id=user,
+            Order_location=ord_loc
+        )
+
+        new_order.save()
+        return HttpResponse("Saved.")
+
+    context = {
+        'places': places,
+        # 'user': user,
     }
 
-    if request.method=='POST':
-        # return render(request, 'Help.html')
-        ordername=request.POST.get('ordername')
-        weight=request.POST.get('weight') 
-        deliverymode=request.POST.get('deliverymode')
-        receivername=request.POST.get('receivername')
-        houseno=request.POST.get('houseno')
-        street=request.POST.get('street')
-        city=request.POST.get('city')
-        state=request.POST.get('state')
-        pincode=request.POST.get('pincode')
-        houseno2=request.POST.get('houseno2')
-        street2=request.POST.get('street2')
-        city2=request.POST.get('city2')
-        state2=request.POST.get('state2')
-        pincode2=request.POST.get('pincode2')
-        ord_loc=cities.objects.filter(name=city2)[0]
-        orders=Orders.objects.all()
-        n=len(orders)+1
-        Curr_datetime=datetime.now()
-        User=user_details.objects.get(user=request.user)
-        Userid=User.UserId
-        neworder=Orders.objects.create(Order_Id=n,Order_Name=ordername,Parcel_Weight=weight,booked_date=Curr_datetime,From_House_No=houseno,From_Street=street,From_City=city, From_State=state,From_Pin_Code=pincode,Receiver_Name=receivername,To_House_No=houseno2,To_Street=street2,To_City=city2,To_State=state2,To_Pin_Code=pincode2,Order_Type=deliverymode,User_Id=User,Order_location=ord_loc)        
-        neworder.save()
-        return HttpResponse("saved.")
-    return render(request, 'place_parcel.html',context)
+    return render(request, 'place_parcel.html', context)
+
 def track_parcel(request):
     if request.method=='POST':
         # return render(request, 'estimate.html')
+        
         orderid=request.POST.get('orderid')
+        if orderid=="":
+          order_location = None
+          context={
+              "order_location": order_location,
+              "message" : "Enter valid order id."
+          }
+          return render(request, 'track_parcel.html',{})   
         #   order=Orders.objects.get(Order_Id=orderid)
         # status=order.Order_Status
         #   context={
@@ -140,7 +177,8 @@ def track_parcel(request):
           order_location = None
 
         return render(request, 'track_parcel.html',{"order_location": order_location})
-    return render(request, 'track_parcel.html')
+    order_location = None
+    return render(request, 'track_parcel.html',{"order_location": order_location})
 def estimate(request):
     places=Branches.objects.all()
     context={
@@ -190,6 +228,7 @@ def estimate(request):
 
 def user_profile(request):
     User=user_details.objects.get(user=request.user)
+    orders = Orders.objects.filter(User_Id=User).order_by('booked_date')[:5]
     context={
         'city' : User.City,
         "userid" : User.UserId,
@@ -202,6 +241,8 @@ def user_profile(request):
         "h_no" : User.House_No,
         "state" : User.State,
         "pin" : User.Pin_Code,
+        "orders" : orders
+        
     }
     return render(request, 'user_profile.html',context)
     
@@ -229,4 +270,9 @@ def edit(request):
     return render(request, 'edit_profile.html', context)
 
 def my_orders(request):
-    return render(request, 'edit_profile.html')
+    User=user_details.objects.get(user=request.user)
+    orders = Orders.objects.filter(User_Id=User).order_by('booked_date')[:5]
+    context={
+        'orders' : orders
+    }
+    return render(request, 'my_orders.html',context)

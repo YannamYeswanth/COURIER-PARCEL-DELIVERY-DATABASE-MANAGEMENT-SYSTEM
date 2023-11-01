@@ -78,7 +78,14 @@
           <button class="btn btn-dark" type="submit" style="padding-left: 40px;padding-right: 40px;">Track Order</button>
         </div>
       </form>
+      {% comment %} {%if message%} {% endcomment %}
+        
+      {% comment %} {%endif%} {% endcomment %}
+      {%if order_location%}
       <div id="map"></div>
+      {%else%}
+      <div style="color: red">Enter valid Order Id</div>
+      {%endif%}
     </div>
      
           </div>
