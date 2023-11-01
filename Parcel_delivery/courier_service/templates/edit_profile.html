@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<style>
+{% extends "layout.html" %}
+{% block inpagestyle %}
+
+{% comment %} <style> {% endcomment %}
     body{
         background-color: #0a0027;
     }
@@ -36,9 +31,9 @@
       background-color: rgb(195, 195, 45);
       color: rgb(16, 43, 220); 
     }
-</style>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
+    {% endblock %}
+    {% block pagebody %}
+  {% comment %} <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
     <div class="container-fluid" >
       <h1 class="navbar-brand" ><span style=" color: rgb(251, 251, 7); font-size: 50px">E</span> delivery</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +49,7 @@
       </div>
     </div>
     <div class="nav justify-content-end" style="padding-left: 3%;padding-right:3%;"><a href="user_profile.html" type="button" ><img class="rounded-circle mb-3" src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg" alt="Generic placeholder image" width="30" height="30"></a></div>
-  </nav>
+  </nav> {% endcomment %}
 <div style="background-color: #0a0027; margin-top: 7%;">
     <div class="container user_profile_container">
         <div class="row">
@@ -65,7 +60,21 @@
                     <p style="color: aliceblue;">(Last 5 orders appear here)</p>
                     <hr style="color: aliceblue;"/>
                     <div style="height: 50vh;" class="overflow-auto">
+                      {%if orders %}
+                         {%for i in orders%}
+                             
                         <div class="pt-2">
+                            <h5 style="color: aliceblue;">Order Id</h5>
+                            <p style="color: aliceblue;">{{i.Order_Id}}</p>
+                            <h6 style="color: aliceblue;">Delivery Status</h6>
+                            <p style="color: aliceblue;">{{i.Order_Status}}</p>
+                            <hr style="color: aliceblue;"/>
+                        </div>
+                        {%endfor%}
+                      {%else%}
+                      <h5 style="color: aliceblue;">You haven't place a parcel yet.</h5>
+                      {%endif%}
+                        {% comment %} <div class="pt-2">
                             <h5 style="color: aliceblue;">Order Id</h5>
                             <p style="color: aliceblue;">xxxxxxxxxxxx</p>
                             <h6 style="color: aliceblue;">Delivery Status</h6>
@@ -92,22 +101,15 @@
                             <h6 style="color: aliceblue;">Delivery Status</h6>
                             <p style="color: aliceblue;">abc</p>
                             <hr style="color: aliceblue;"/>
-                        </div>
-                        <div class="pt-2">
-                            <h5 style="color: aliceblue;">Order Id</h5>
-                            <p style="color: aliceblue;">xxxxxxxxxxxx</p>
-                            <h6 style="color: aliceblue;">Delivery Status</h6>
-                            <p style="color: aliceblue;">abc</p>
-                            <hr style="color: aliceblue;"/>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                 <div class="pb-2">
                     <a href="my_orders.html" class="btn btn-primary">Go to my orders</a>
                 </div>
             </div>
             <div class="column col-md-8 col-sm-12" style="background-color: #0d1340;">
-                <h2 style="display: inline-block; color: aliceblue;">{{Name}}</h2><span class="ps-2"  style="color: aliceblue;">{{city}},India</span>
-                <h4 class="pt-2 pb-2"  style="color: aliceblue;">User ID: {{userid}}</h4>
+                <h2 style="display: inline-block; color: aliceblue;">{{user_profile.user}}</h2><span class="ps-2"  style="color: aliceblue;">{{ user_profile.City }},India</span>
+                <h4 class="pt-2 pb-2"  style="color: aliceblue;">User ID: {{user_profile.UserId}}</h4>
                 <div class="btn-toolbar pt-2" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
                       <button type="button" class="btn btn-outline-light">Personal Information</button>
@@ -172,6 +174,6 @@
         </div>
     </div>
 </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</html>
+{% endblock %}
+{% comment %} </body> {% endcomment %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> {% endcomment %}

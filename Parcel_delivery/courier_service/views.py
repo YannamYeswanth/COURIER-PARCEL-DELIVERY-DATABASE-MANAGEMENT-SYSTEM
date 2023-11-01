@@ -207,7 +207,11 @@ def user_profile(request):
     
 def edit(request):
     user_profile = user_details.objects.get(user=request.user)
-
+    orders = Orders.objects.filter(User_Id=user_profile).order_by('booked_date')[:5]
+    context={
+        'user_profile': user_profile,
+        'orders' : orders
+    }
     if request.method == 'POST':
         # Handle the form submission
         # user_profile.user = request.POST.get('name')
@@ -222,4 +226,4 @@ def edit(request):
         user_profile.save()
         return redirect('user_profile')  # Redirect to the profile page after editing
 
-    return render(request, 'edit_profile.html', {'user_profile': user_profile})
+    return render(request, 'edit_profile.html', context)
