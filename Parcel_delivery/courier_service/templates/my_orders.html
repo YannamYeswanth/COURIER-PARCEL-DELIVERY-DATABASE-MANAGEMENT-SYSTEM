@@ -70,6 +70,18 @@
             100% { background-position: -100% 0; } 
             0% { background-position: 100% 0; }
         }
+        .centered-content {
+            text-align: center;
+            color: white;
+            {% comment %} background: #f0f0f0; {% endcomment %}
+            padding: 20px;
+            {% comment %} border: 1px solid #ccc; {% endcomment %}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
         {% endblock %}
         {% block pagebody %}
         
@@ -119,7 +131,8 @@
     </div>  
     {%endfor%}
     {%else%}
-      <h2 style="color: white; justify-content:center; align-items:center; margin-top: 10%; margin-bottom: 10%; margin-left: 10%;">Your Orders History Appear Here!</h2> 
+      <h2 class="centered-content">Your Orders History Appear Here!</h2> 
+
     {%endif%}
     
 {%endblock%}
