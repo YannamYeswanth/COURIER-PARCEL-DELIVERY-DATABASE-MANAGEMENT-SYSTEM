@@ -227,3 +227,6 @@ def edit(request):
         return redirect('user_profile')  # Redirect to the profile page after editing
 
     return render(request, 'edit_profile.html', context)
+
+def my_orders(request):
+    return render(request, 'edit_profile.html')

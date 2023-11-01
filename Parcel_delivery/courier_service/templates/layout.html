@@ -33,8 +33,13 @@
         </div>
         <div class="main_navbar_end_component">
           <ul>
-            <li class="navbar_end_links"><a href="/login"><button class="navbar_end_buttons">Login</button></a></li>
-            <li class="navbar_end_links"><a href="/user_profile"><button class="navbar_end_buttons" id="user_icon_button"><i class="fa-solid fa-user"></i></button></a></li>
+            {% if user.is_authenticated %}
+            <li class="navbar_end_links" id="elogout"><a href="{% url 'logout' %}"><button class="navbar_end_buttons">Logout</button></a></li>
+            <li class="navbar_end_links" id="euser"><a href="/user_profile"><button class="navbar_end_buttons" id="user_icon_button"><i class="fa-solid fa-user"></i></button></a></li>
+            {%else%}
+            <li class="navbar_end_links" id="elogin"><a href="/login"><button class="navbar_end_buttons">Login</button></a></li>
+            {% endif %}
+
           </ul>
         </div>
         <div class="toggle_navbar_button">
@@ -47,8 +52,9 @@
             <li><a href="/About"><button><p>About</p></button></a></li>
             <li><a href="/ContactUs"><button><p>Contact</p></button></a></li>
             <li><a href="/Help"><button><p>Help</p></button></a></li>
-            <li><a href="/login"><button><p>Login</p></button></a></li>
-            <li><a href="/user_profile"><button><p>User</p></button></a></li>
+            <li id="login"><a href="/login"><button><p>Login</p></button></a></li>
+            <li id="logout"><a href="/login"><button><p>Logout</p></button></a></li>
+            <li id="user"><a href="/user_profile"><button><p>User</p></button></a></li>
           </ul>
         </div>
       </nav>
