@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee</title>
-    <link rel="stylesheet" href="{% static 'css/employee.css' %}">
+    <link rel="stylesheet" href="{% static "css/employee.css" %}">
 </head>
 <body>
     <div class="employee_container">
         <div class="employee_container_control">
             <div class="employee_details">
-                <div style="height: 100px; width: 100px; border-radius: 50%; background-color: aqua;"></div>
-                <h1>Employee name</h1>
+                <!--To provide the image of employee please provide the style of below div background image-->
+                <div class="emp_img"></div>
+                <h1 style="color: aliceblue;">Employee name</h1>
                 <div class="emp_detail_container">
                     <table>
                         <tr>
@@ -44,7 +45,7 @@
             </div>
 
             <div class="parcel_details">
-                <h3>Details of next parcels to be delivered</h3>
+                <h3 style="color: aliceblue;">Details of next parcels to be delivered</h3>
                 <div class="order_card">
                     <table>
                         <tr>
