@@ -232,7 +232,7 @@ def estimate(request):
         dist=geopy.distance.geodesic(co1,co2).km
         weight=int(weight)
         value=int(tod)
-        cost=int(((dist*1+500)+(vol*0.0001))*weight*value)
+        cost=int(((dist*0.4+50)+(vol*0.0001))*weight*value/2)
         time=int((dist*0.01)/value)+1
         context['cost']=cost
         context['time']=time
