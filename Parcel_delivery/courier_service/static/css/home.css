@@ -157,3 +157,19 @@ ul{
 .company_feature_card p{
     color: #fff;
 }
+
+.caption-container {
+    background-color: black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.caption-text {
+    color: white;
+    text-align: center;
+}
+.row img {
+  width: 100%; 
+  height: 300px; 
+  object-fit: cover;
+}
