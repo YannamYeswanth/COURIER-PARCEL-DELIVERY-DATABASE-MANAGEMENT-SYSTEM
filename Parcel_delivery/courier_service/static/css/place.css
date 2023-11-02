@@ -193,3 +193,31 @@ form button:hover{
         transform: translateX(2%);
     }
 }
+
+.pluspoints{
+    margin-bottom: 2%;
+    height: 40px;
+    /* border-top-left-radius: 60%; */
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
+    /* background-color: rgb(246, 146, 6); */
+    color: white;
+    
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    width: 70%;
+}
+#one{
+    animation: moveRight 0.6s linear forwards;
+}
+#two{
+    animation: moveRight 0.7s linear forwards;
+}
+#three{
+    animation: moveRight 0.8s linear forwards;
+}
+#four{
+    animation: moveRight 0.9s linear forwards;
+}
