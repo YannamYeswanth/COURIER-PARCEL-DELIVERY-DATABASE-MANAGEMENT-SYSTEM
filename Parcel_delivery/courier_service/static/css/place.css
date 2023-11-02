@@ -179,3 +179,17 @@ form button{
 form button:hover{
     background-color: orangered;
 }
+
+.place_order_text{
+    animation: moveRight 2s ;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    
+    100% {
+        transform: translateX(2%);
+    }
+}
