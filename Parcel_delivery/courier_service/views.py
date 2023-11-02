@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
 from courier_service.models import user_details,Contacts,Orders,cities,Branches
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -275,4 +275,17 @@ def my_orders(request):
     context={
         'orders' : orders
     }
-    return render(request, 'my_orders.html',context)
+    return render(request, 'employee.html',context)
+
+
+# Check if the user is in the 'staff' group
+def staff(request):
+ user = request.user
+ if user.groups.filter(name='staff').exists():
+    # User is in the 'staff' group
+    # You can add your logic here for staff members
+    return render(request, 'employee.html')
+ else:
+    # User is not in the 'staff' group
+    # Handle this case as needed
+    return render(request, 'Home.html')
