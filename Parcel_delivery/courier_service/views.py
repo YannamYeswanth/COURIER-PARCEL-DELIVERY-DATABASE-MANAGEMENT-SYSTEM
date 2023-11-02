@@ -275,13 +275,13 @@ def my_orders(request):
     context={
         'orders' : orders
     }
-    return render(request, 'employee.html',context)
+    return render(request, 'my_orders.html',context)
 
 
 # Check if the user is in the 'staff' group
 def staff(request):
  user = request.user
- if user.groups.filter(name='staff').exists():
+ if user.is_staff:
     # User is in the 'staff' group
     # You can add your logic here for staff members
     return render(request, 'employee.html')
