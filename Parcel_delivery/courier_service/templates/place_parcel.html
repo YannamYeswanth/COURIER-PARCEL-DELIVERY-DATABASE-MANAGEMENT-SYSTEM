@@ -61,6 +61,10 @@
               <label for="floatingInput">Receiver's name</label>
             </div>
             <div class="parcel_detail_input">
+              <input type="text" name="number" id="floatingInput" required>
+              <label for="floatingInput">Receiver's Contact Number</label>
+            </div>
+            <div class="parcel_detail_input">
               <input type="text" name="houseno" id="floatingInput" required>
               <label for="floatingInput">House/Room/Door No.</label>
             </div>
@@ -127,6 +131,7 @@
               <label for="floatingInput">Pincode</label>
             </div>
           </div>
+          <div style="color: green">{{message}}</div>
           {%if user.is_authenticated%}
           <button type="submit">Submit</button>
           {%else%}  

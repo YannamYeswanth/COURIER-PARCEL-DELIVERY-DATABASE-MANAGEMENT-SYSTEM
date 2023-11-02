@@ -64,6 +64,7 @@ class Orders(models.Model):
     From_State=models.CharField(max_length=50)
     From_Pin_Code=models.IntegerField()
     Receiver_Name=models.CharField(max_length=50)
+    Receiver_Contact_Number=models.BigIntegerField()
     To_House_No=models.CharField(max_length=50)
     To_Street=models.CharField(max_length=50)
     To_City=models.CharField(max_length=50)

@@ -13,32 +13,32 @@
             <div class="employee_details">
                 <!--To provide the image of employee please provide the style of below div background image-->
                 <div class="emp_img"></div>
-                <h1 style="color: aliceblue;">Employee name</h1>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1>
                 <div class="emp_detail_container">
                     <table>
                         <tr>
                         <td>Name </td>
-                        <td>xxxxxxxxxx</td>
+                        <td>{{e.Name}}</td>
                         </tr>
                         <tr>
                         <td>No. of Parcels delivered</td>
-                        <td>y</td>
+                        <td>0</td>
                         </tr>
                         <tr>
                         <td>No. of Parcels pending to be delivered</td>
-                        <td>z</td>
+                        <td>{{y}}</td>
                         </tr>
                         <tr>
                         <td>Rating</td>
-                        <td>aa</td>
+                        <td>4</td>
                         </tr>
                         <tr>
                         <td>Average Working Hours</td>
-                        <td>h</td>
+                        <td>8</td>
                         </tr>
                         <tr>
-                        <td>Attendance</td>
-                        <td>a</td>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
                         </tr>
                     </table>
                 </div>
@@ -46,106 +46,32 @@
 
             <div class="parcel_details">
                 <h3 style="color: aliceblue;">Details of next parcels to be delivered</h3>
+                {%if orders%}
+                 {%for i in orders%}
                 <div class="order_card">
                     <table>
                         <tr>
                             <td>Order Id</td>
-                            <td>1234</td>
+                            <td>{{i.Order_Id}}</td>
                         </tr>
                         <tr>
                             <td>Address</td>
-                            <td>Colony 786, house no: 420</td>
+                            <td>{{i.To_House_No}},{{i.To_Street}},{{i.To_City}},{{i.To_State}},{{i.To_Pin_Code}}</td>
                         </tr>
                         <tr>
                             <td>Receiver's Name</td>
-                            <td>Ram</td>
+                            <td>{{i.Receiver_Name}}</td>
                         </tr>
                         <tr>
                             <td>Contact</td>
-                            <td>+91 9999999999</td>
+                            <td>+91 {{i.Receiver_Contact_Number}}</td>
                         </tr>
                     </table>
                 </div>
-                <div class="order_card">
-                    <table>
-                        <tr>
-                            <td>Order Id</td>
-                            <td>1234</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Colony 786, house no: 420</td>
-                        </tr>
-                        <tr>
-                            <td>Receiver's Name</td>
-                            <td>Ram</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
-                            <td>+91 9999999999</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="order_card">
-                    <table>
-                        <tr>
-                            <td>Order Id</td>
-                            <td>1234</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Colony 786, house no: 420</td>
-                        </tr>
-                        <tr>
-                            <td>Receiver's Name</td>
-                            <td>Ram</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
-                            <td>+91 9999999999</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="order_card">
-                    <table>
-                        <tr>
-                            <td>Order Id</td>
-                            <td>1234</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Colony 786, house no: 420</td>
-                        </tr>
-                        <tr>
-                            <td>Receiver's Name</td>
-                            <td>Ram</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
-                            <td>+91 9999999999</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="order_card">
-                    <table>
-                        <tr>
-                            <td>Order Id</td>
-                            <td>1234</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Colony 786, house no: 420</td>
-                        </tr>
-                        <tr>
-                            <td>Receiver's Name</td>
-                            <td>Ram</td>
-                        </tr>
-                        <tr>
-                            <td>Contact</td>
-                            <td>+91 9999999999</td>
-                        </tr>
-                    </table>
-                </div>
+                {%endfor%}
+                {%else%}
+                <div>You Have No orders To be Delivered.</div>
+                {%endif%}
             </div>
         </div>
     </div>

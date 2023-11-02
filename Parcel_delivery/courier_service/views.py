@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Contacts,Orders,cities,Branches
+from courier_service.models import user_details,Contacts,Orders,cities,Branches,Employees
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
@@ -100,6 +100,7 @@ def place_parcel(request):
         weight = request.POST.get('weight')
         deliverymode = request.POST.get('deliverymode')
         receivername = request.POST.get('receivername')
+        receivernumber=request.POST.get('number')
         houseno = request.POST.get('houseno')
         street = request.POST.get('street')
         city = request.POST.get('city')
@@ -117,7 +118,10 @@ def place_parcel(request):
         n+=26734595
         curr_datetime = datetime.now()
         user = user_details.objects.get(user=request.user)
-
+        branch=Branches.objects.get(City=city)
+        employee=Employees.objects.filter(Branch_Id=branch)[0]
+        branch2=Branches.objects.get(City=city2)
+        employee2=Employees.objects.filter(Branch_Id=branch2)[0]
         new_order = Orders.objects.create(
             Order_Id=n,
             Order_Name=ordername,
@@ -129,6 +133,7 @@ def place_parcel(request):
             From_State=state,
             From_Pin_Code=pincode,
             Receiver_Name=receivername,
+            Receiver_Contact_Number=receivernumber,
             To_House_No=houseno2,
             To_Street=street2,
             To_City=city2,
@@ -136,11 +141,19 @@ def place_parcel(request):
             To_Pin_Code=pincode2,
             Order_Type=deliverymode,
             User_Id=user,
-            Order_location=ord_loc
+            Order_location=ord_loc,
+            Sender_Employee_Id=employee,
+            Receiver_Name_Employee_Id=employee2
+
         )
 
         new_order.save()
-        return HttpResponse("Saved.")
+        context = {
+        'places': places,
+        'message' : "Your order details has been recorded. Our delivery boy comes to your doorstep by tomorrow.",
+        # 'user': user,
+    }
+        return redirect('place_parcel')
 
     context = {
         'places': places,
@@ -282,9 +295,15 @@ def my_orders(request):
 def staff(request):
  user = request.user
  if user.is_staff:
-    # User is in the 'staff' group
-    # You can add your logic here for staff members
-    return render(request, 'employee.html')
+    employee=Employees.objects.get(Employee_Id=user.username)
+    orders=Orders.objects.filter(Sender_Employee_Id=employee)
+    
+    context={
+        'orders':orders,
+        'e':employee,
+        'y':len(orders)
+    }
+    return render(request, 'employee.html',context)
  else:
     # User is not in the 'staff' group
     # Handle this case as needed
