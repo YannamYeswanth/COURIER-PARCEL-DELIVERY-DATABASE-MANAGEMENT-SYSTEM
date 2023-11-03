@@ -153,7 +153,7 @@ def place_parcel(request):
         'message' : "Your order details has been recorded. Our delivery boy comes to your doorstep by tomorrow.",
         # 'user': user,
     }
-        return redirect('place_parcel')
+        return render(request, 'place_parcel.html', context)
 
     context = {
         'places': places,

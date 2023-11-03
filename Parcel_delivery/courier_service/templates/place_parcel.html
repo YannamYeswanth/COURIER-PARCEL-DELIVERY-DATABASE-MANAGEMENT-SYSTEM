@@ -5,6 +5,7 @@
 {% endblock %}
 {% block pagebody %}
 <div class="place_order_container">
+  <div style="color: rgb(4, 223, 4); font-size: larger; font-weight: bold;">{{message}}</div>
   <div class="content_of_place_order">
   <div class="place_order_text">
       <h3>Send with confidence, order with ease.</h3>
@@ -131,7 +132,7 @@
               <label for="floatingInput">Pincode</label>
             </div>
           </div>
-          <div style="color: green">{{message}}</div>
+
           {%if user.is_authenticated%}
           <button type="submit">Submit</button>
           {%else%}  
