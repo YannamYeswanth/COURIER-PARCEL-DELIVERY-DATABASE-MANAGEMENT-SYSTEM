@@ -127,23 +127,23 @@ def place_parcel(request):
             Order_Name=ordername,
             Parcel_Weight=weight,
             booked_date=curr_datetime,
-            From_House_No=houseno,
-            From_Street=street,
-            From_City=city,
-            From_State=state,
-            From_Pin_Code=pincode,
+            From_House_No=houseno2,
+            From_Street=street2,
+            From_City=city2,
+            From_State=state2,
+            From_Pin_Code=pincode2,
             Receiver_Name=receivername,
             Receiver_Contact_Number=receivernumber,
-            To_House_No=houseno2,
-            To_Street=street2,
-            To_City=city2,
-            To_State=state2,
-            To_Pin_Code=pincode2,
+            To_House_No=houseno,
+            To_Street=street,
+            To_City=city,
+            To_State=state,
+            To_Pin_Code=pincode,
             Order_Type=deliverymode,
             User_Id=user,
             Order_location=ord_loc,
-            Sender_Employee_Id=employee,
-            Receiver_Name_Employee_Id=employee2
+            Sender_Employee_Id=employee2,
+            Receiver_Name_Employee_Id=employee
 
         )
 
@@ -284,7 +284,7 @@ def edit(request):
 
 def my_orders(request):
     User=user_details.objects.get(user=request.user)
-    orders = Orders.objects.filter(User_Id=User).order_by('booked_date')[:5]
+    orders = Orders.objects.filter(User_Id=User).order_by('-booked_date')
     context={
         'orders' : orders
     }
@@ -304,6 +304,31 @@ def staff(request):
         'y':len(orders)
     }
     return render(request, 'employee.html',context)
+ else:
+    # User is not in the 'staff' group
+    # Handle this case as needed
+    return render(request, 'Home.html')
+def edit_orders(request):
+ user = request.user
+ if user.is_staff:
+    employee=Employees.objects.get(Employee_Id=user.username)
+    orders=Orders.objects.filter(Sender_Employee_Id=employee)
+    
+    context={
+        'orders':orders,
+        'e':employee,
+        'y':len(orders)
+    }
+    if request.method=='POST':
+        orderid=request.POST.get('OrderId')
+        status=request.POST.get('status')
+        loc=request.POST.get('location')
+        order=Orders.objects.filter(Order_Id=orderid)[0]
+        order.Order_Status=status
+        order.Order_location=cities.objects.filter(name=loc)[0]
+        order.save()
+        return redirect('staff')
+    return render(request, 'edit_orders.html',context)
  else:
     # User is not in the 'staff' group
     # Handle this case as needed

@@ -51,16 +51,19 @@
                 <div class="btn-group mr-2" role="group" aria-label="First group">
 
     
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Update Orders</a>
-                
-                  </div>
-                 {%for i in orders%}
-                <div class="order_card">
-                    <table>
-                        <tr>
-                            <td>Order Id</td>
-                            <td>{{i.Order_Id}}</td>
-                        </tr>
+                    <a href="/staff" type="button" class="btn btn-outline-light">Back</a>
+                    
+                </div>
+                {%for i in orders%}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="order_card">
+                        
+                        <table>
+                            <tr>
+                                <td>Order Id</td>
+                                <td>{{i.Order_Id}}</td>
+                            </tr>
                         <tr>
                             <td>Address</td>
                             <td>{{i.To_House_No}},{{i.To_Street}},{{i.To_City}},{{i.To_State}},{{i.To_Pin_Code}}</td>
@@ -75,16 +78,24 @@
                         </tr>
                         <tr>
                             <td>Order Status</td>
-                            <td>{{i.Order_Status}}</td>
+                            
+                            <input type="hidden" name="OrderId" value="{{ i.Order_Id }}">
+                            <td> <input type="text" name="status" id="email" value="{{ i.Order_Status }}"></td>
                         </tr>
                         <tr>
                             <td>Current Location</td>
-                            <td>{{i.Order_location.name}}</td>
+                            <td> <input type="text" name="location" id="email" value="{{i.Order_location.name}}"></td>
+                            
+                            
                         </tr>
-
+                        
                     </table>
+                    
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
                 </div>
-                {%endfor%}
+            </form>
+            {%endfor%}
+
                 {%else%}
                 <div><p style="color: #fff;">You Have No orders To be Delivered.</p></div>
                 {%endif%}
