@@ -313,7 +313,6 @@ def edit_orders(request):
  if user.is_staff:
     employee=Employees.objects.get(Employee_Id=user.username)
     orders=Orders.objects.filter(Sender_Employee_Id=employee)
-    
     context={
         'orders':orders,
         'e':employee,
@@ -326,6 +325,9 @@ def edit_orders(request):
         order=Orders.objects.filter(Order_Id=orderid)[0]
         order.Order_Status=status
         order.Order_location=cities.objects.filter(name=loc)[0]
+        branch=Branches.objects.get(City=loc)
+        employee=Employees.objects.filter(Branch_Id=branch)[0]
+        order.Sender_Employee_Id=employee
         order.save()
         return redirect('staff')
     return render(request, 'edit_orders.html',context)
