@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static "css/employee.css" %}">
+{% endblock %}
+   
+    <title>Employee</title>
+   
+</head>
+{% block pagebody %}
+    <div class="employee_container">
+        <div class="employee_container_control">
+            <div class="employee_details">
+                <!--To provide the image of employee please provide the style of below div background image-->
+                <div class="emp_img"></div>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1>
+                <div class="emp_detail_container">
+                    <table>
+                        <tr>
+                        <td>Name </td>
+                        <td>{{e.Name}}</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels delivered</td>
+                        <td>0</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels pending to be delivered</td>
+                        <td>{{y}}</td>
+                        </tr>
+                        <tr>
+                        <td>Rating</td>
+                        <td>4</td>
+                        </tr>
+                        <tr>
+                        <td>Average Working Hours</td>
+                        <td>8</td>
+                        </tr>
+                        <tr>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="parcel_details">
+                <h3 style="color: aliceblue;">Details of next parcels to be delivered</h3>
+              
+               
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <a href="/add_employee" type="button" class="btn btn-outline-light">Add Employees</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Departments</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Cities</a>
+                
+                  </div>
+              
+            </div>
+        </div>
+    </div>
+{%endblock%}
+

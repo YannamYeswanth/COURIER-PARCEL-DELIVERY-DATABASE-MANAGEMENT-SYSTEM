@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render,redirect,HttpResponse
-from courier_service.models import user_details,Contacts,Orders,cities,Branches,Employees
+from courier_service.models import user_details,Contacts,Orders,cities,Branches,Employees,Department
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
@@ -309,6 +309,7 @@ def staff(request):
     # Handle this case as needed
     return render(request, 'Home.html')
 def edit_orders(request):
+#  places = Branches.objects.all()
  user = request.user
  if user.is_staff:
     employee=Employees.objects.get(Employee_Id=user.username)
@@ -316,7 +317,8 @@ def edit_orders(request):
     context={
         'orders':orders,
         'e':employee,
-        'y':len(orders)
+        'y':len(orders),
+        # 'places':places
     }
     if request.method=='POST':
         orderid=request.POST.get('OrderId')
@@ -335,3 +337,53 @@ def edit_orders(request):
     # User is not in the 'staff' group
     # Handle this case as needed
     return render(request, 'Home.html')
+def admin(request):
+    return render(request, 'admin.html')
+def add_employee(request):
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    context={
+        'departments' : departments,
+        'branches' : branches,
+        'employees' : employees
+    }
+    if request.method=='POST':
+        Employee_Id=request.POST.get('Employee_Id')
+        name=request.POST.get('name')
+        password=request.POST.get('password')
+        Contact_Number=request.POST.get('Contact_Number')
+        email=request.POST.get('email')
+        House_No=request.POST.get('House_No')
+        
+        Street=request.POST.get('Street')
+        City=request.POST.get('City')
+        State=request.POST.get('State')
+        Pincode=request.POST.get('Pincode')
+        Salary=request.POST.get('Salary')
+        department=request.POST.get('department')
+        dep=Department.objects.get(Department_Id=department)
+        Branch=request.POST.get('Branch')
+        Branch1=Branches.objects.get(Branch_Id=Branch)
+        Manager=request.POST.get('Manager')
+        Man=Employees.objects.get(Employee_Id=Manager)
+        add_employee=Employees.objects.create(
+            Employee_Id=Employee_Id,
+            Name=name,
+            password=password,
+            Contact_Number=Contact_Number,
+            Email=email,
+            House_No=House_No,
+            Street=Street,
+            City=City,
+            State=State,
+            Pin_Code=Pincode,
+            Salary=Salary,
+            
+            Department_Id=dep,
+            Manager_Id=Man,
+            Branch_Id=Branch1,
+        )
+        add_employee.save()
+        return render(request, 'admin.html',context)
+    return render(request, 'add_employee.html',context)
