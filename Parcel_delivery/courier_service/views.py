@@ -338,7 +338,20 @@ def edit_orders(request):
     # Handle this case as needed
     return render(request, 'Home.html')
 def admin(request):
-    return render(request, 'admin.html')
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
+    context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders)
+
+    }
+    return render(request, 'admin.html',context)
 def add_employee(request):
     employees=Employees.objects.all()
     branches=Branches.objects.all()
@@ -387,3 +400,58 @@ def add_employee(request):
         add_employee.save()
         return render(request, 'admin.html',context)
     return render(request, 'add_employee.html',context)
+
+def add_branch(request):
+    if request.method=='POST':
+        Branch_Id=request.POST.get('Branch_Id')
+        name=request.POST.get('name')
+        Contact_Number=request.POST.get('Contact_Number')
+        email=request.POST.get('email')
+        House_No=request.POST.get('House_No')
+        Street=request.POST.get('Street')
+        City=request.POST.get('City')
+        State=request.POST.get('State')
+        Pincode=request.POST.get('Pincode')
+        add_branch=Branches.objects.create(
+            Branch_Id=Branch_Id,
+            Branch_Name=name,
+            Contact_Number=Contact_Number,
+            Email=email,
+            House_No=House_No,
+            Street=Street,
+            City=City,
+            State=State,
+            Pin_Code=Pincode,
+           
+        )
+        add_branch.save()
+        return render(request, 'admin.html')
+    return render(request, 'add_branch.html')
+
+def add_department(request):
+    if request.method=='POST':
+        Dept_Id=request.POST.get('Dept_Id')
+        name=request.POST.get('name')
+        
+        add_dept=Department.objects.create(
+            Department_Id=Dept_Id,
+            Department_Name=name,
+        )
+        add_dept.save()
+        return render(request, 'admin.html')
+    return render(request, 'add_department.html')
+
+def add_city(request):
+    if request.method=='POST':
+        city=request.POST.get('city')
+        latitude=request.POST.get('latitude')
+        longitude=request.POST.get('longitude')
+        
+        add_city=cities.objects.create(
+            name=city,
+            latitude=latitude,
+            longitude=longitude
+        )
+        add_city.save()
+        return render(request, 'admin.html')
+    return render(request, 'add_city.html')

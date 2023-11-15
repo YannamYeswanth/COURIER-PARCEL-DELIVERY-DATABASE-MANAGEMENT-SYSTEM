@@ -13,33 +13,33 @@
             <div class="employee_details">
                 <!--To provide the image of employee please provide the style of below div background image-->
                 <div class="emp_img"></div>
-                <h1 style="color: aliceblue;">{{e.Name}}</h1>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1> 
                 <div class="emp_detail_container">
-                    <table>
+                    <table>/
                         <tr>
                         <td>Name </td>
                         <td>{{e.Name}}</td>
                         </tr>
                         <tr>
-                        <td>No. of Parcels delivered</td>
-                        <td>0</td>
+                        <td>No. of Employees</td>
+                        <td>{{x}}</td>
                         </tr>
                         <tr>
-                        <td>No. of Parcels pending to be delivered</td>
+                        <td>No. of Branches</td>
                         <td>{{y}}</td>
                         </tr>
                         <tr>
-                        <td>Rating</td>
-                        <td>4</td>
+                        <td>No. of Departments</td>
+                        <td>{{z}}</td>
                         </tr>
                         <tr>
-                        <td>Average Working Hours</td>
-                        <td>8</td>
+                        <td>No. of Cities Served</td>
+                        <td>{{c}}</td>
                         </tr>
                         <tr>
-                        {% comment %} <td>Attendance</td> {% endcomment %}
-                        {% comment %} <td>a</td> {% endcomment %}
-                        </tr>
+                            <td>No. of Orders</td>
+                            <td>{{o}}</td>
+                            </tr>
                     </table>
                 </div>
             </div>
@@ -50,9 +50,9 @@
                
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <a href="/add_employee" type="button" class="btn btn-outline-light">Add Employees</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Departments</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Cities</a>
+                    <a href="/add_branch" type="button" class="btn btn-outline-light">Add Branches</a>
+                    <a href="/add_department" type="button" class="btn btn-outline-light">Add Departments</a>
+                    <a href="/add_city" type="button" class="btn btn-outline-light">Add Cities</a>
                 
                   </div>
               

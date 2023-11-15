@@ -20,7 +20,10 @@ urlpatterns = [
     path('staff', views.staff, name='staff'),
     path('edit_orders', views.edit_orders, name='edit_orders'),
     path('add_employee', views.add_employee, name='add_employee'), 
-     path('admin', views.admin, name='admin'),
+    path('admin', views.admin, name='admin'),
+    path('add_branch', views.add_branch, name='add_branch'),
+    path('add_department', views.add_department, name='add_department'),
+    path('add_city', views.add_city, name='add_city'),
     
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
 ]

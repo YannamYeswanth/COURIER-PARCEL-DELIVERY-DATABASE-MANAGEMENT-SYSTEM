@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static "css/employee.css" %}">
+{% endblock %}
+   
+    <title>Employee</title>
+   
+</head>
+{% block pagebody %}
+    <div class="employee_container">
+        <div class="employee_container_control">
+            <div class="employee_details">
+                <!--To provide the image of employee please provide the style of below div background image-->
+                <div class="emp_img"></div>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1>
+                <div class="emp_detail_container">
+                    <table>
+                        <tr>
+                        <td>Name </td>
+                        <td>{{e.Name}}</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels delivered</td>
+                        <td>0</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels pending to be delivered</td>
+                        <td>{{y}}</td>
+                        </tr>
+                        <tr>
+                        <td>Rating</td>
+                        <td>4</td>
+                        </tr>
+                        <tr>
+                        <td>Average Working Hours</td>
+                        <td>8</td>
+                        </tr>
+                        <tr>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="parcel_details">
+               
+              
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="order_card">
+                        
+                        <table>
+                            <tr>
+                                <td>Branch Id</td>
+                                <td><input type="text" name="Branch_Id" id="id_name" required></td>
+                            </tr>
+                        <tr>
+                            <td>Branch Name</td>
+                            <td><input type="text" name="name" id="id_name" required>
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Contact</td>
+                            <td><input type="text" name="Contact_Number" id="id_name" required></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            
+                            <td>  <input type="email" name="email" id="id_email" required></td>
+                        </tr>
+                        <tr>
+                            <td>House No</td>
+                            <td><input type="text" name="House_No" id="id_position" required></td>
+                        </tr>
+                    <tr>
+                        <td>Street</td>
+                        <td><input type="text" name="Street" id="id_name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td><input type="text" name="City" id="id_name" required></td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td><input type="text" name="State" id="id_email" required></td>
+                    </tr>
+                    <tr>
+                        <td>Pincode</td>
+                        <td><input type="text" name="Pincode" id="id_position" required></td>
+                    </tr>
+                    
+                      
+                    </table>
+                    
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                </div>
+                </form>
+                {% comment %} <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Employees</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Departments</a>
+                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Cities</a>
+                
+                  </div> {% endcomment %}
+              
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
