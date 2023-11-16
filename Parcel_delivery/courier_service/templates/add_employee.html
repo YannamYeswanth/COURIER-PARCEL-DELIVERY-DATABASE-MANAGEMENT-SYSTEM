@@ -30,17 +30,17 @@
                         <td>{{z}}</td>
                         </tr>
                         <tr>
-                        <td><a href="/cities_details" type="button" style="color:white">No. of Cities Served</a></td>
-                        <td>{{c}}</td>
+                            <td><a href="/cities_details" type="button" style="color:white">No. of Cities Served</a></td>
+                            <td>{{c}}</td>
                         </tr>
-                       
+                        
                     </table>
                 </div>
             </div>
-
+            
             <div class="parcel_details">
-               
-              
+                
+                
                 <form method="post">
                     {% csrf_token %}
                     <div class="order_card">
@@ -50,7 +50,7 @@
                                 <td>Employee Id</td>
                                 <td><input type="text" name="Employee_Id" id="id_name" required></td>
                             </tr>
-                        <tr>
+                            <tr>
                             <td>Name</td>
                             <td><input type="text" name="name" id="id_name" required>
                             </td>
@@ -98,7 +98,7 @@
                         <td>Department</td>
                         <td><select name="department" id="id_department" required>
                             {% for department in departments %}
-                                <option value="{{ department.Department_Id }}">{{ department.Department_Name }}</option>
+                            <option value="{{ department.Department_Id }}">{{ department.Department_Name }}</option>
                             {% endfor %}
                         </select></td>
                     </tr>
@@ -106,7 +106,7 @@
                         <td>Branch</td>
                         <td><select name="Branch" id="id_department" required>
                             {% for branch in branches %}
-                                <option value="{{ branch.Branch_Id}}">{{ branch.Branch_Name }}</option>
+                            <option value="{{ branch.Branch_Id}}">{{ branch.Branch_Name }}</option>
                             {% endfor %}
                         </select></td>
                     </tr>
@@ -114,7 +114,7 @@
                         <td>Manager</td>
                         <td><select name="Manager" id="id_department">
                             {% for employee in employees %}
-                                <option value="{{ employee.Employee_Id }}">{{ employee.Name }}</option>
+                            <option value="{{ employee.Employee_Id }}">{{ employee.Name }}</option>
                             {% endfor %}
                         </select></td>
                     </tr>  
@@ -122,7 +122,8 @@
                     <div style="color:white;">{{mssg}}</div>
                     <button type="submit" class="btn btn-outline-light">Submit</button>
                 </div>
-                </form>
+            </form>
+            <a href="admin_made">Back</button>
                 {% comment %} <div class="btn-group mr-2" role="group" aria-label="First group">
                     <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Employees</a>
                     <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
