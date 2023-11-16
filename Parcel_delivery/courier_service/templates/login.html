@@ -1,51 +1,158 @@
-<!doctype html>
-<html lang="en" >
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E Delivery | Login page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-
-    <body class=" align-items-center p-4" style="background-image: url(https://media.istockphoto.com/id/1411757433/vector/3d-vector-delivery-van-with-box-cargo-delivery-and-online-shopping-concept.jpg?s=612x612&w=0&k=20&c=ZWmugzSvVn5OrCKdjA6HKnJt_HFIYAtGH2885V0xTlc=); background-repeat: no-repeat; background-size: cover;">
-       
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    /* Basic page styling */
+   
+    /* Left side with background image and text */
+    .left-side {
+      background: url('https://blog.tatanexarc.com/wp-content/uploads/2023/01/Trends-in-Indian-logistics-srevices-in-2023-and-beyond.jpg') center/cover no-repeat;
 
-        
-        <main class="form-signin m-5">
-        <form method="post">
-            {% csrf_token %}
-            <h1 class="navbar-brand" style="font-size: 100px"><span style=" color: rgb(251, 251, 7); font-size: 150px">E</span> delivery</h1>
-            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+      color: white;
+      flex: 1;
+      padding: 20px;
+      font-weight:bold;
+      text-align: center;
+      height: 100%; /* Set the height to 100% of viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Set the height to 100% of viewport height */
+    }
 
-            <div class="form-floating mb-1" style="width: 40%;">
-            <input type="text" class="form-control" id="floatingInput" name='username'>
-            <label for="floatingInput">Username</label>
-            </div>
-            <div class="form-floating" style="width: 40%;">
-            <input type="password" class="form-control" id="floatingPassword" name="password">
-            <label for="floatingPassword">Password</label>
-            </div>
-            <select class="form-select" name="type" aria-label="Default select example">
-              <option value="Customer">Login as a Customer</option>
-              <option value="Staff">Login as an Employee</option>
-              <option value="Admin">Login as an Admin</option>
-            </select>
-            <div class="container m-3" style="color: red;">{{message}}</div>
-            <button class="btn btn-primary w-20 py-2" type="submit">Login</button>
-        </form>
-        </main>
-        <div class="m-5">
-            <h4>Don't have an account? Sign up now.</h4>
-            <a class="btn btn-primary" href="signup" role="button">Sign up</a>
+    .left-side h1 {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+
+    /* Right side with login form */
+    .right-side {
+      flex: 1;
+      padding: 20px;
+    }
+
+    body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(33, 30, 30);
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(7, 7, 7);
+    border: 1px solid #ccc;
+    color:white;
+    /* {% comment %} border-radius: 5px; {% endcomment %} */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #fe0606;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+select {
+    appearance: none;
+    /* color:white; */
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    /* background: url('down-arrow.png') no-repeat right; */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+button:hover {
+    background-color: rgb(208, 57, 57);
+}
+  </style>
+</head>
+<body>
+  <div class="left-side">
+    <h1 style="color:rgb(255, 0, 0); font-weight:bold; font-family: 'Times New Roman', Times, serif; font-size:100px">E DELIVERY</h1>
+    <h2 style="color:rgb(11, 11, 11); font-weight:bold;">India's Largest Courier Delivery Partner</h2>
+  </div>
+  <div class="right-side">
+    <div class="container">
+      <h2>User Login</h2>
+      <form method="post">
+        {% csrf_token %}
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="id_email">Username:</label>
+          <input type="text" name="username" id="id_email" required>
         </div>
 
-        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="id_password">Password:</label>
+          <input type="password" name="password" id="id_password" required>
+        </div>
 
-        
+        <!-- Role Selection -->
+        <div class="form-group">
+          <label for="id_role">Role:</label>
+          <select name="type" id="id_role" required>
+            <option value="Customer">Login as a Customer</option>
+            <option value="Staff">Login as an Employee</option>
+            <option value="Admin">Login as an Admin</option>
+          </select>
+        </div>
 
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
+        <button type="submit">Log In</button>
+        <div style="color:red;">{{message}}</div>
+      </form>
+      <div class="m-5">
+        <h4>Don't have an account? Sign up now.</h4>
+        <a class="btn btn-primary" href="signup" role="button" style="background-color: #ff0000;" >Sign up</a>
+    </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>

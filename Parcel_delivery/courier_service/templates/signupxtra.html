@@ -1,65 +1,170 @@
-<!doctype html>
+
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-    <form method="post">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    /* Basic page styling */
+   
+    /* Left side with background image and text */
+    .left-side {
+      background: url('https://blog.tatanexarc.com/wp-content/uploads/2023/01/Trends-in-Indian-logistics-srevices-in-2023-and-beyond.jpg') center/cover no-repeat;
+      color: white;
+      flex: 1;
+      padding: 20px;
+      font-weight:bold;
+      text-align: center;
+      height: 100%; /* Set the height to 100% of viewport height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Set the height to 100% of viewport height */
+     
+
+    }
+
+    .left-side h1 {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+
+    /* Right side with login form */
+    .right-side {
+      flex: 1;
+      padding: 10px;
+    }
+
+    body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(33, 30, 30);
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    height: 100vh;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(7, 7, 7);
+    border: 1px solid #ccc;
+    color:white;
+    /* {% comment %} border-radius: 5px; {% endcomment %} */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #fe0606;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+select {
+    appearance: none;
+    /* color:white; */
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+    /* background: url('down-arrow.png') no-repeat right; */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+button:hover {
+    background-color: rgb(208, 57, 57);
+}
+  </style>
+</head>
+<body>
+  <div class="left-side">
+    <h1 style="color:rgb(255, 0, 0); font-weight:bold; font-family: 'Times New Roman', Times, serif; font-size:100px">E DELIVERY</h1>
+    <h2 style="color:rgb(11, 11, 11); font-weight:bold;">India's Largest Courier Delivery Partner</h2>
+  </div>
+  <div class="right-side">
+    <div class="container">
+      <h2>Additional Details</h2>
+      <form method="post">
         {% csrf_token %}
-        <div class="border border-2 shadow rounded rounded-5 border-black p-3 my-4" style="background-color: rgb(236, 234, 234);">
-            
-  
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" name="email">
-              <label for="floatingInput">Email Id</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="number" class="form-control" id="floatingInput" name="c_no">
-              <label for="floatingInput">Contact number</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" name="H_No">
-              <label for="floatingInput">House/Room/Door No.</label>
-            </div>
-              
-            
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" name="street">
-              <label for="floatingInput">Street</label>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="city">
-                    <label for="floatingInput">City</label>
-                  </div>
-                <!-- <input type="text" class="form-control" placeholder="First name" aria-label="First name"> -->
-              </div>
-              <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="state">
-                    <label for="floatingInput">State</label>
-                  </div>
-                <!-- <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"> -->
-              </div>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="number" class="form-control" id="floatingInput" name="pincode">
-              <label for="floatingInput">Pincode</label>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary w-20 py-2" type="submit">Submit</button>
-                </div>
-                <div class="col">
-                    <a class="btn btn-primary w-20 py-2" href="Home">Skip</a>
-                </div>
-              </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="id_email">Email</label>
+          <input type="text" name="email" id="id_email" required>
+        </div>
+        <div class="form-group">
+            <label for="id_email">Contact Number</label>
+            <input type="text" name="c_no" id="id_email" required>
           </div>
+          <div class="form-group">
+            <label for="id_email">House/Room/Door No.</label>
+            <input type="text" name="H_No" id="id_email" required>
+          </div>
+        <div class="form-group">
+            <label for="id_email">Street</label>
+            <input type="text" name="street" id="id_email" required>
+          </div>
+          <div class="form-group">
+            <label for="id_email">City</label>
+            <input type="text" name="city" id="id_email" required>
+          </div>
+          
+        <div class="form-group">
+            <label for="id_email">State</label>
+            <input type="text" name="state" id="id_email" required>
+          </div>
+          <div class="form-group">
+            <label for="id_email">Pincode</label>
+            <input type="text" name="pincode" id="id_email" required>
+          </div>
+
+       
+        
+
+        <button type="submit">Submit</button>
       </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+      <p></p>
+      <div>
+      <a class="btn btn-primary w-20 py-2" href="Home" style="background-color: #ff0000;">Skip</a>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>
