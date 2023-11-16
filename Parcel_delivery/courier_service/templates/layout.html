@@ -59,9 +59,19 @@
             <li><a href="/About"><button><p>About</p></button></a></li>
             <li><a href="/ContactUs"><button><p>Contact</p></button></a></li>
             <li><a href="/Help"><button><p>Help</p></button></a></li>
-            <li id="login"><a href="/login"><button><p>Login</p></button></a></li>
-            <li id="logout"><a href="/login"><button><p>Logout</p></button></a></li>
+            {% if user.is_authenticated %}
+           
+            <li id="logout"><a href="{% url 'logout' %}"><button><p>Logout</p></button></a></li>
+            {% if user.is_superuser %}
+           <li id="admin"><a href="/admin_made"><button><p>Admin</p></button></a></li>
+           {% elif user.is_staff %}
+           <li id="admin"><a href="/staff"><button><p>Staff</p></button></a></li>
+           {% else %}
             <li id="user"><a href="/user_profile"><button><p>User</p></button></a></li>
+            {% endif %}
+            {%else%}
+            <li id="login"><a href="/login"><button><p>Login</p></button></a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>

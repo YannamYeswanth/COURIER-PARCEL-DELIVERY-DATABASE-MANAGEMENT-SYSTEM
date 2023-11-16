@@ -402,11 +402,18 @@ def admin(request):
     return render(request, 'admin.html',context)
 
 def add_employee(request):
+    orders=Orders.objects.all()
     employees=Employees.objects.all()
     branches=Branches.objects.all()
     departments=Department.objects.all()
+    city=cities.objects.all()
     context={
-        'departments' : departments,
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
+         'departments' : departments,
         'branches' : branches,
         'employees' : employees,
         'mssg':''
@@ -458,8 +465,19 @@ def add_employee(request):
     return render(request, 'add_employee.html',context)
 
 def add_branch(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'mssg':'',
+
     }
     if request.method=='POST':
         Branch_Id=request.POST.get('Branch_Id')
@@ -491,12 +509,24 @@ def add_branch(request):
     return render(request, 'add_branch.html',context)
 
 def add_department(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'mssg':''
+
     }
+   
     if request.method=='POST':
         Dept_Id=request.POST.get('Dept_Id')
-        if Department.objects.filter(Department_id=Dept_Id).exists():
+        if Department.objects.filter(Department_Id=Dept_Id).exists():
             context['mssg']='This Department Id already exists'
             return render(request,'add_department.html',context)
         name=request.POST.get('name')
@@ -506,18 +536,27 @@ def add_department(request):
             Department_Name=name,
         )
         add_dept.save()
-        context['mssg']='The Department is successfully added'
+        context['mssg']="The Department is successfully added"
     return render(request, 'add_department.html',context)
 
 def add_city(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'mssg':''
     }
     if request.method=='POST':
         city=request.POST.get('city')
         latitude=request.POST.get('latitude')
         longitude=request.POST.get('longitude')
-        
         add_city=cities.objects.create(
             name=city,
             latitude=latitude,
@@ -525,32 +564,71 @@ def add_city(request):
         )
         add_city.save()
         context['mssg']='The city is successfully added'
-    return render(request, 'add_city.html')
+    return render(request, 'add_city.html',context)
 
 def emp_details(request):
+    orders=Orders.objects.all()
     employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'employees' : employees
+
     }
     return render(request, 'emp_details.html',context)
 
 def branch_details(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
     branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'branches' : branches
     }
     return render(request, 'branch_details.html',context)
 
 def dept_details(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
     departments=Department.objects.all()
+    city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'departments' : departments
+
     }
     return render(request, 'dept_details.html',context)
 
 def cities_details(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
     city=cities.objects.all()
     context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
         'cities' : city
+
     }
     return render(request, 'cities_details.html',context)
