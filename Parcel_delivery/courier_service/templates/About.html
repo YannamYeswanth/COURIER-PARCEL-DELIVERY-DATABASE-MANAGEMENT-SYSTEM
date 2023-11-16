@@ -75,3 +75,10 @@ body{
     </ul>
 </section>
 {% endblock %}
+{%block endpagescript %}
+    <script>
+        const x=document.getElementsByClassName("end_footer")
+        const y=(Array.from(x))[0]
+        y.style.backgroundColor="transparent"
+    </script>
+{% endblock %}

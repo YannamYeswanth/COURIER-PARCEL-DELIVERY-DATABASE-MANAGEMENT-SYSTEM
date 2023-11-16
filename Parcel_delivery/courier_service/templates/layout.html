@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- another link -->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     {% block csslink %} {% endblock %}
     <style>
         {% block inpagestyle %} {% endblock %}
@@ -69,15 +70,73 @@
     <!--body-->
     {% block pagebody %} {% endblock %}
     <!-- footer -->
-    <footer class="text-center py-4">
+    {% comment %} <footer class="text-center py-4">
       <hr style="border-top: 1px solid white; margin: 20px 0;">
       
       <p style="color: white">&copy; 2023 E Delivery Services. All rights reserved.</p>
-  </footer>
+    </footer> {% endcomment %}
     
-    
+    <div class="end_footer">
+      <div class="end_footer_heading">
+        <h2>E delivery</h2>
+      </div>
+      <div class="end_footer_content">
+        <div class="end_footer_services">
+          <h4>Services</h4>
+          <p class="end_footer_direct_page_links"><a href="/place_parcel">Place Order</a></p>
+          <p class="end_footer_direct_page_links"><a href="/track_parcel">Track Parcel</a></p>
+          <p class="end_footer_direct_page_links"><a href="/estimate">Estimate Price</a></p>
+        </div>
+        <div class="social-media">
+          <h4>Social</h4>
+          <p class="end_footer_direct_page_links">
+            <a href="https://twitter.com/"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+          </p>
+          <p class="end_footer_direct_page_links">
+            <a href="https://github.com/YannamYeswanth/COURIER-PARCEL-DELIVERY-DATABASE-MANAGEMENT-SYSTEM.git"
+              ><i class="fab fa-github"></i> Github</a
+            >
+          </p>
+          <p class="end_footer_direct_page_links">
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook"></i> Facebook</a
+            >
+          </p>
+          <p class="end_footer_direct_page_links">
+            <a href="https://www.instagram.com/"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+          </p>
+        </div>
+        <div class="end_footer_links">
+          <h4>Quick links</h4>
+          <p class="end_footer_direct_page_links"><a href="/">Home</a></p>
+          <p class="end_footer_direct_page_links"><a href="/About">About</a></p>
+          <p class="end_footer_direct_page_links"><a href="/ContactUs">Contact</a></p>
+          <p class="end_footer_direct_page_links"><a href="/Help">Help</a></p>
+        </div>
+        <div class="end_footer_details">
+          <h4 class="end_footer_address">Address</h4>
+          <p class="end_footer_direct_page_links">
+            VSB Hostel, IIT Indore, Simrol,Indore,Pin-452020
+          </p>
+          <h4 class="mobile">Mobile</h4>
+          <p class="end_footer_direct_page_links"><a href="#">+91-xxxxxxxxxx</a></p>
+          <h4 class="mail">Email</h4>
+          <p class="end_footer_direct_page_links"><a href="#">xxxxx@gmail.com</a></p>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        &copy; 2023 E Delivery Services. All rights reserved.
+      </footer>
+    </div>
+  
 </body>
 <!-- another script -->
+{% block endpagescript %} {% endblock %}
 <script src="{% static 'script/navscript.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>
