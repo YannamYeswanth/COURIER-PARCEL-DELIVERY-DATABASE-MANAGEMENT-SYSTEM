@@ -37,7 +37,7 @@
             <li class="navbar_end_links" id="elogout"><a href="{% url 'logout' %}"><button class="navbar_end_buttons">Logout</button></a></li>
             <li class="navbar_end_links" id="euser"><a href="/user_profile"><button class="navbar_end_buttons" id="user_icon_button"><i class="fa-solid fa-user"></i></button></a></li>
             {% if user.is_superuser %}
-            <li class="navbar_end_links" id="elogout"><a href="/admin"><button class="navbar_end_buttons">Admin</button></a></li>
+            <li class="navbar_end_links" id="elogout"><a href="/admin_made"><button class="navbar_end_buttons">Admin</button></a></li>
             {% elif user.is_staff %}
             <li class="navbar_end_links" id="elogout"><a href="/staff"><button class="navbar_end_buttons">Staff</button></a></li>
 

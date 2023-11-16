@@ -51,7 +51,21 @@ Choose from a variety of delivery modes, including normal, fast, and more, tailo
 ### 7. Order History
 Access your order history and keep track of your previous deliveries, providing a comprehensive overview of your E Delivery experience.
 
+
 ## Guidelines to Open the Website
 
-
+Installation:
+•	Install Python3.9 from [here](https://www.python.org/downloads/) manually.
+•	Install project dependencies by running `py -m pip install -r requirements.txt`.
+•	Install geopy distance by running `pip install geopy`.
+•	Open a new terminal and Check if you are in Parcel_delivery folder. If not, run the command `cd Parcel_delivery` to open the folder
+•	Run the commands `py manage.py makemigrations` and `py manage.py migrate`  in the project directory to make and apply migrations.
+•	Create superuser with `py manage.py createsuperuser`. This step is optional.
+•	Run the command `py manage.py runserver` to run the web server.
+•	Open web browser and goto `127.0.0.1:8000` url to start using the web application.
+•	For logging in as admin, you must have a superuser account. You can create super user using command `py manage.py createsuperuser` in the      terminal after opening Face_recognition folder(`cd Face_recognition`). We have already created a superuser. You can use that:
+   Username: Edelivery
+   Password: Edelivery 
+•	For logging in as employee, you can know the employee ids and passwords in admin page if you login as admin.
+•	For logging in as customer, you can create an account in sign up button.
 
