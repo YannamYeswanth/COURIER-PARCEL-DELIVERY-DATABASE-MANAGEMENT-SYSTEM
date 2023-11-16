@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block csslink %}
+{% load static %}
 {% endblock %}
 {% block inpagestyle %}
 body{
-    background-image: url(https://i.pinimg.com/474x/ec/5c/d9/ec5cd9f0428c94b39a271f0d73fa5e50.jpg);
+    background-image: url('{% static "media/about_page_images/about_background.jpg" %}');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     color:white;
