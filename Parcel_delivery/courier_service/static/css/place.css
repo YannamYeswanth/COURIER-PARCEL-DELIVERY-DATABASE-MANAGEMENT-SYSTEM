@@ -5,8 +5,21 @@
     font-family: 'Open-Sans',sans-serif;
 }
 
-body{
+/* body{
     background-color: #0a0027;
+} */
+
+.application_of_background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -99999;
+    background-image:url("https://png.pngtree.com/thumb_back/fh260/background/20230622/pngtree-deliveryman-in-3d-transporting-a-parcel-image_3654375.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(3px);
 }
 
 .place_order_container {
