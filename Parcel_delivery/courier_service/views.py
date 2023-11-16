@@ -408,10 +408,14 @@ def add_employee(request):
     context={
         'departments' : departments,
         'branches' : branches,
-        'employees' : employees
+        'employees' : employees,
+        'mssg':''
     }
     if request.method=='POST':
         Employee_Id=request.POST.get('Employee_Id')
+        if Employees.objects.filter(Employee_Id=Employee_Id).exists():
+            context['mssg']='This Employee Already exists'
+            return render(request,'add_employee.html',context)
         name=request.POST.get('name')
         password=request.POST.get('password')
         Contact_Number=request.POST.get('Contact_Number')
@@ -450,12 +454,18 @@ def add_employee(request):
         add_user=User.objects.create(username=Employee_Id,password=make_password(Employee_Id))
         add_user.is_staff=True
         add_user.save()
-        return redirect('admin')
+        context['mssg']='The Employee is successfully added'
     return render(request, 'add_employee.html',context)
 
 def add_branch(request):
+    context={
+        'mssg':'',
+    }
     if request.method=='POST':
         Branch_Id=request.POST.get('Branch_Id')
+        if Branches.objects.filter(Branch_Id=Branch_Id).exists():
+            context['mssg']='This Branch Id already exists'
+            return render(request,'add_branch.html',context)
         name=request.POST.get('name')
         Contact_Number=request.POST.get('Contact_Number')
         email=request.POST.get('email')
@@ -477,12 +487,18 @@ def add_branch(request):
            
         )
         add_branch.save()
-        return redirect('admin')
-    return render(request, 'add_branch.html')
+        context['mssg']='The Branch is successfully added'
+    return render(request, 'add_branch.html',context)
 
 def add_department(request):
+    context={
+        'mssg':''
+    }
     if request.method=='POST':
         Dept_Id=request.POST.get('Dept_Id')
+        if Department.objects.filter(Department_id=Dept_Id).exists():
+            context['mssg']='This Department Id already exists'
+            return render(request,'add_department.html',context)
         name=request.POST.get('name')
         
         add_dept=Department.objects.create(
@@ -490,10 +506,13 @@ def add_department(request):
             Department_Name=name,
         )
         add_dept.save()
-        return redirect('admin')
-    return render(request, 'add_department.html')
+        context['mssg']='The Department is successfully added'
+    return render(request, 'add_department.html',context)
 
 def add_city(request):
+    context={
+        'mssg':''
+    }
     if request.method=='POST':
         city=request.POST.get('city')
         latitude=request.POST.get('latitude')
@@ -505,7 +524,7 @@ def add_city(request):
             longitude=longitude
         )
         add_city.save()
-        return redirect('admin')
+        context['mssg']='The city is successfully added'
     return render(request, 'add_city.html')
 
 def emp_details(request):
