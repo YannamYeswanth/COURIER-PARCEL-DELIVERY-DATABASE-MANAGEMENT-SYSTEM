@@ -24,6 +24,9 @@ urlpatterns = [
     path('add_branch', views.add_branch, name='add_branch'),
     path('add_department', views.add_department, name='add_department'),
     path('add_city', views.add_city, name='add_city'),
-    
+    path('emp_details', views.emp_details, name='emp_details'),
+    path('branch_details', views.branch_details, name='branch_details'),
+    path('dept_details', views.dept_details, name='dept_details'),
+    path('cities_details', views.cities_details, name='city_details'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
 ]

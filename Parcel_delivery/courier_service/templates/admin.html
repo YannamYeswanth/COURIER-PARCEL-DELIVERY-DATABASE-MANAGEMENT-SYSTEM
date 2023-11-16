@@ -5,7 +5,7 @@
 {% endblock %}
    
     <title>Employee</title>
-   
+    
 </head>
 {% block pagebody %}
     <div class="employee_container">
@@ -15,31 +15,29 @@
                 <div class="emp_img"></div>
                 <h1 style="color: aliceblue;">{{e.Name}}</h1> 
                 <div class="emp_detail_container">
-                    <table>/
+                    <table>
                         <tr>
                         <td>Name </td>
                         <td>{{e.Name}}</td>
                         </tr>
                         <tr>
-                        <td>No. of Employees</td>
-                        <td>{{x}}</td>
+                        
+                        <td><a href="/emp_details" type="button" style="color:white">No. of Employees</a></td>
+                        <td>{{x}}</td></a>
                         </tr>
                         <tr>
-                        <td>No. of Branches</td>
+                        <td><a href="/branch_details" type="button" style="color:white">No. of Branches</a></td>
                         <td>{{y}}</td>
                         </tr>
                         <tr>
-                        <td>No. of Departments</td>
+                        <td><a href="/dept_details" type="button" style="color:white">No. of Departments</a></td>
                         <td>{{z}}</td>
                         </tr>
                         <tr>
-                        <td>No. of Cities Served</td>
+                        <td><a href="/cities_details" type="button" style="color:white">No. of Cities Served</a></td>
                         <td>{{c}}</td>
                         </tr>
-                        <tr>
-                            <td>No. of Orders</td>
-                            <td>{{o}}</td>
-                            </tr>
+                       
                     </table>
                 </div>
             </div>

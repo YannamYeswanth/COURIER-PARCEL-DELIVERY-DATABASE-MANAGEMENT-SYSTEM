@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static "css/employee.css" %}">
+{% endblock %}
+   
+    <title>Employee</title>
+   
+</head>
+{% block pagebody %}
+    <div class="employee_container">
+        <div class="employee_container_control">
+            <div class="employee_details">
+                <!--To provide the image of employee please provide the style of below div background image-->
+                <div class="emp_img"></div>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1>
+                <div class="emp_detail_container">
+                    <table>
+                        <tr>
+                        <td>Name </td>
+                        <td>{{e.Name}}</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels delivered</td>
+                        <td>0</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels pending to be delivered</td>
+                        <td>{{y}}</td>
+                        </tr>
+                        <tr>
+                        <td>Rating</td>
+                        <td>4</td>
+                        </tr>
+                        <tr>
+                        <td>Average Working Hours</td>
+                        <td>8</td>
+                        </tr>
+                        <tr>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="parcel_details">
+               
+                   {%for i in cities%}
+               
+                    <div class="order_card">
+                        
+                        <table>
+                            <tr>
+                                <td>City </td>
+                                <td>{{i.name}}</td>
+                            </tr>
+                        <tr>
+                            <td>latitude</td>
+                            <td>{{i.latitude}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>longitude</td>
+                            <td>{{i.longitude}}</td>
+                        </tr>
+                       
+                   
+                    </table>
+                    
+                   
+                </div>
+                
+               {%endfor%}  
+              
+            </div>
+        </div>
+    </div>
+{%endblock%}
+

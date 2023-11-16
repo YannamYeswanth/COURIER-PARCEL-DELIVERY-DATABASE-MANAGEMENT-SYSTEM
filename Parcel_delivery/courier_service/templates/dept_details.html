@@ -21,60 +21,52 @@
                         <td>{{e.Name}}</td>
                         </tr>
                         <tr>
-                        
-                        <td><a href="/emp_details" type="button" style="color:white">No. of Employees</a></td>
-                        <td>{{x}}</td></a>
+                        <td>No. of Parcels delivered</td>
+                        <td>0</td>
                         </tr>
                         <tr>
-                        <td><a href="/branch_details" type="button" style="color:white">No. of Branches</a></td>
+                        <td>No. of Parcels pending to be delivered</td>
                         <td>{{y}}</td>
                         </tr>
                         <tr>
-                        <td><a href="/dept_details" type="button" style="color:white">No. of Departments</a></td>
-                        <td>{{z}}</td>
+                        <td>Rating</td>
+                        <td>4</td>
                         </tr>
                         <tr>
-                        <td><a href="/cities_details" type="button" style="color:white">No. of Cities Served</a></td>
-                        <td>{{c}}</td>
+                        <td>Average Working Hours</td>
+                        <td>8</td>
                         </tr>
-                       
+                        <tr>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
+                        </tr>
                     </table>
                 </div>
             </div>
 
             <div class="parcel_details">
                
-              
-                <form method="post">
-                    {% csrf_token %}
+                   {%for i in departments%}
+               
                     <div class="order_card">
                         
                         <table>
                             <tr>
                                 <td>Department Id</td>
-                                <td><input type="text" name="Dept_Id" id="id_name" required></td>
+                                <td>{{i.Department_Id}}</td>
                             </tr>
                         <tr>
                             <td>Department Name</td>
-                            <td><input type="text" name="name" id="id_name" required>
+                            <td>{{i.Department_Name}}
                             </td>
                         </tr>
-                       
-                      
-                    
-                      
+                        
                     </table>
                     
-                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                   
                 </div>
-                </form>
-                {% comment %} <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Employees</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Departments</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Cities</a>
                 
-                  </div> {% endcomment %}
+               {%endfor%}  
               
             </div>
         </div>

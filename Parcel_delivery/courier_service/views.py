@@ -455,3 +455,30 @@ def add_city(request):
         add_city.save()
         return render(request, 'admin.html')
     return render(request, 'add_city.html')
+def emp_details(request):
+    employees=Employees.objects.all()
+    context={
+        'employees' : employees
+    }
+    return render(request, 'emp_details.html',context)
+
+def branch_details(request):
+    branches=Branches.objects.all()
+    context={
+        'branches' : branches
+    }
+    return render(request, 'branch_details.html',context)
+
+def dept_details(request):
+    departments=Department.objects.all()
+    context={
+        'departments' : departments
+    }
+    return render(request, 'dept_details.html',context)
+
+def cities_details(request):
+    city=cities.objects.all()
+    context={
+        'cities' : city
+    }
+    return render(request, 'cities_details.html',context)

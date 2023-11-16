@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block csslink %}
+<link rel="stylesheet" href="{% static "css/employee.css" %}">
+{% endblock %}
+   
+    <title>Employee</title>
+   
+</head>
+{% block pagebody %}
+    <div class="employee_container">
+        <div class="employee_container_control">
+            <div class="employee_details">
+                <!--To provide the image of employee please provide the style of below div background image-->
+                <div class="emp_img"></div>
+                <h1 style="color: aliceblue;">{{e.Name}}</h1>
+                <div class="emp_detail_container">
+                    <table>
+                        <tr>
+                        <td>Name </td>
+                        <td>{{e.Name}}</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels delivered</td>
+                        <td>0</td>
+                        </tr>
+                        <tr>
+                        <td>No. of Parcels pending to be delivered</td>
+                        <td>{{y}}</td>
+                        </tr>
+                        <tr>
+                        <td>Rating</td>
+                        <td>4</td>
+                        </tr>
+                        <tr>
+                        <td>Average Working Hours</td>
+                        <td>8</td>
+                        </tr>
+                        <tr>
+                        {% comment %} <td>Attendance</td> {% endcomment %}
+                        {% comment %} <td>a</td> {% endcomment %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="parcel_details">
+               
+                   {%for i in employees%}
+               
+                    <div class="order_card">
+                        
+                        <table>
+                            <tr>
+                                <td>Employee Id</td>
+                                <td>{{i.Employee_Id}}</td>
+                            </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{i.Name}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>{{i.password}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact</td>
+                            <td>{{i.Contact_Number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            
+                            <td>{{i.Email}}</td>
+                        </tr>
+                        <tr>
+                            <td>House No</td>
+                            <td>{{i.House_No}}</td>
+                        </tr>
+                    <tr>
+                        <td>Street</td>
+                        <td>{{i.Street}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{{i.City}}</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>{{i.State}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pincode</td>
+                        <td>{{i.Pin_Code}}</td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td>{{i.Salary}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>{{i.Department_Id.Department_Name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>{{i.Branch_Id.Branch_Name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Manager</td>
+                        <td>{{i.Manager_Id.Name}}</td>
+                    </tr>  
+                    </table>
+                    
+                   
+                </div>
+                
+               {%endfor%}  
+              
+            </div>
+        </div>
+    </div>
+{%endblock%}
+
