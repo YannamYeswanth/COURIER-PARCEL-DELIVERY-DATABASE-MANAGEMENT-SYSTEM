@@ -27,7 +27,11 @@
             <input type="password" class="form-control" id="floatingPassword" name="password">
             <label for="floatingPassword">Password</label>
             </div>
-
+            <select class="form-select" name="type" aria-label="Default select example">
+              <option value="Customer">Login as a Customer</option>
+              <option value="Staff">Login as an Employee</option>
+              <option value="Admin">Login as an Admin</option>
+            </select>
             <div class="container m-3" style="color: red;">{{message}}</div>
             <button class="btn btn-primary w-20 py-2" type="submit">Login</button>
         </form>

@@ -16,6 +16,49 @@ def Login(request):
     if request.method=='POST':
         name=request.POST.get('username')
         pas=request.POST.get('password')
+        acc=request.POST.get('type')
+        if acc=='Customer':
+            user=authenticate(username=name, password=pas)
+            if user is not None:
+                if user.is_staff or user.is_superuser:
+                    context['message']='Wrong Username or password'
+                    return render(request, 'login.html',context)
+
+                login(request,user)
+                return redirect('home')
+            else:
+                context['message']='Wrong Username or password'
+                return render(request, 'login.html',context)
+        elif acc=='Staff':
+            user=authenticate(username=name, password=pas)
+            if user is not None:
+                if user.is_staff==False or user.is_superuser:
+                    context['message']='Wrong Username or password'
+                    return render(request, 'login.html',context)
+
+                login(request,user)
+                return redirect('home')
+            else:
+                context['message']='Wrong Username or password'
+                return render(request, 'login.html',context)
+        else:
+            user=authenticate(username=name, password=pas)
+            if user is not None:
+                if user.is_superuser:
+                    login(request,user)
+                    return redirect('home')
+                context['message']='Wrong Username or password'
+                return render(request, 'login.html',context)
+
+            else:
+                context['message']='Wrong Username or password'
+                return render(request, 'login.html',context)
+
+
+
+
+
+
         user=authenticate(username=name, password=pas)
         if user is not None:
             login(request,user)
@@ -150,8 +193,7 @@ def place_parcel(request):
         new_order.save()
         context = {
         'places': places,
-        'message' : "Your order details has been recorded. Our delivery boy comes to your doorstep by tomorrow.",
-        # 'user': user,
+        'message' : "Your order details has been recorded. Our delivery boy comes to your doorstep by tomorrow. Your Order Id is "+str(n),
     }
         return render(request, 'place_parcel.html', context)
 
@@ -289,9 +331,6 @@ def my_orders(request):
         'orders' : orders
     }
     return render(request, 'my_orders.html',context)
-
-
-# Check if the user is in the 'staff' group
 def staff(request):
  user = request.user
  if user.is_staff:
@@ -398,9 +437,11 @@ def add_employee(request):
             Branch_Id=Branch1,
         )
         add_employee.save()
+        add_user=User.objects.create(username=Employee_Id,password=make_password(Employee_Id))
+        add_user.is_staff=True
+        add_user.save()
         return render(request, 'admin.html',context)
     return render(request, 'add_employee.html',context)
-
 def add_branch(request):
     if request.method=='POST':
         Branch_Id=request.POST.get('Branch_Id')
@@ -427,7 +468,6 @@ def add_branch(request):
         add_branch.save()
         return render(request, 'admin.html')
     return render(request, 'add_branch.html')
-
 def add_department(request):
     if request.method=='POST':
         Dept_Id=request.POST.get('Dept_Id')
@@ -440,7 +480,6 @@ def add_department(request):
         add_dept.save()
         return render(request, 'admin.html')
     return render(request, 'add_department.html')
-
 def add_city(request):
     if request.method=='POST':
         city=request.POST.get('city')
