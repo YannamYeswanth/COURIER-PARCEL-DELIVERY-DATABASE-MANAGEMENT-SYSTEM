@@ -10,6 +10,7 @@ import geopy.distance
 # Create your views here.
 def home(request):
     return render(request, 'Home.html')
+
 def Login(request):
 
     context={'message':''}
@@ -67,6 +68,7 @@ def Login(request):
             context['message']='Wrong Username or password'
             return render(request, 'login.html',context)
     return render(request,'login.html',context)
+
 def signup(request):
       context={'message':''}
       if request.method=="POST":
@@ -91,6 +93,7 @@ def signup(request):
             login(request,users)
             return redirect('signupxtra')
       return render(request,'signup.html',context)
+
 def signupxtra(request):
     if request.method=="POST":
         h_no=request.POST.get('H_No')
@@ -116,6 +119,7 @@ def signupxtra(request):
         new_user.save()
         return redirect('home')
     return render(request,'signupxtra.html')
+
 def ContactUs(request):
     if request.method=="POST":
         name=request.POST.get('name')
@@ -125,18 +129,19 @@ def ContactUs(request):
         mssg.save()
         messages.success(request, 'Your message has been delivered')
     return render(request, 'ContactUs.html')
+
 def About(request):
     return render(request, 'About.html')
+
 def Help(request):
     return render(request, 'Help.html')
 
-
 def place_parcel(request):
     places = Branches.objects.all()
-    user = None
+    # user = None
 
     if request.user.is_authenticated:
-      user = user_details.objects.get(user=request.user)
+    #   user = user_details.objects.get(user=request.user)
 
       if request.method == 'POST':
         ordername = request.POST.get('ordername')
@@ -234,6 +239,7 @@ def track_parcel(request):
         return render(request, 'track_parcel.html',{"order_location": order_location})
     order_location = None
     return render(request, 'track_parcel.html',{"order_location": order_location})
+
 def estimate(request):
     places=Branches.objects.all()
     context={
@@ -331,6 +337,7 @@ def my_orders(request):
         'orders' : orders
     }
     return render(request, 'my_orders.html',context)
+
 def staff(request):
  user = request.user
  if user.is_staff:
@@ -347,6 +354,7 @@ def staff(request):
     # User is not in the 'staff' group
     # Handle this case as needed
     return render(request, 'Home.html')
+
 def edit_orders(request):
 #  places = Branches.objects.all()
  user = request.user
@@ -376,6 +384,7 @@ def edit_orders(request):
     # User is not in the 'staff' group
     # Handle this case as needed
     return render(request, 'Home.html')
+
 def admin(request):
     orders=Orders.objects.all()
     employees=Employees.objects.all()
@@ -391,6 +400,7 @@ def admin(request):
 
     }
     return render(request, 'admin.html',context)
+
 def add_employee(request):
     employees=Employees.objects.all()
     branches=Branches.objects.all()
@@ -440,8 +450,9 @@ def add_employee(request):
         add_user=User.objects.create(username=Employee_Id,password=make_password(Employee_Id))
         add_user.is_staff=True
         add_user.save()
-        return render(request, 'admin.html',context)
+        return redirect('admin')
     return render(request, 'add_employee.html',context)
+
 def add_branch(request):
     if request.method=='POST':
         Branch_Id=request.POST.get('Branch_Id')
@@ -466,8 +477,9 @@ def add_branch(request):
            
         )
         add_branch.save()
-        return render(request, 'admin.html')
+        return redirect('admin')
     return render(request, 'add_branch.html')
+
 def add_department(request):
     if request.method=='POST':
         Dept_Id=request.POST.get('Dept_Id')
@@ -478,8 +490,9 @@ def add_department(request):
             Department_Name=name,
         )
         add_dept.save()
-        return render(request, 'admin.html')
+        return redirect('admin')
     return render(request, 'add_department.html')
+
 def add_city(request):
     if request.method=='POST':
         city=request.POST.get('city')
@@ -492,8 +505,9 @@ def add_city(request):
             longitude=longitude
         )
         add_city.save()
-        return render(request, 'admin.html')
+        return redirect('admin')
     return render(request, 'add_city.html')
+
 def emp_details(request):
     employees=Employees.objects.all()
     context={
