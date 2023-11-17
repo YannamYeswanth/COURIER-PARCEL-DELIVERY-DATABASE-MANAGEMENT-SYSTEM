@@ -50,7 +50,7 @@
             </div>
 
             <div class="parcel_details">
-                <a href="admin_made">Back</button>
+                {% comment %} <a href="admin_made">Back</button> {% endcomment %}
                    {%for i in employees%}
                
                     <div class="order_card">
@@ -117,7 +117,13 @@
                         <td>{{i.Manager_Id.Name}}</td>
                     </tr>  
                     </table>
-                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="hiddenInput" style="display: none;">Hidden Input:</label>
+                        <input type="text" id="hiddenInput" name="hiddenInput" value="{{i.Employee_Id}}" style="display: none;">
+
+                        <input type="submit" value="Delete">
+                    </form>
                    
                 </div>
                 

@@ -621,6 +621,11 @@ def emp_details(request):
         'employees' : employees
 
     }
+    if request.method=='POST':
+        emp_id=request.POST.get('hiddenInput')
+        employee=Employees.objects.filter(Employee_Id=emp_id)[0]
+        employee.delete()
+        return redirect('emp_details')
     return render(request, 'emp_details.html',context)
 
 def branch_details(request):
@@ -708,6 +713,7 @@ def not_deliv(request):
         'not_del':not_delivered
     }
     return render(request,'not_delivered.html',context)
+
 def deliv(request):
     orders=Orders.objects.all()
     employees=Employees.objects.all()
