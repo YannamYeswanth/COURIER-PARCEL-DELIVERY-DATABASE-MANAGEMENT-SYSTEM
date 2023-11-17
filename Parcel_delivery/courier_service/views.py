@@ -169,7 +169,17 @@ def place_parcel(request):
         branch=Branches.objects.filter(City=city)[0]
         employee=Employees.objects.filter(Branch_Id=branch)[0]
         branch2=Branches.objects.filter(City=city2)[0]
-        employee2=Employees.objects.filter(Branch_Id=branch2)[0]
+        employee2=Employees.objects.filter(Branch_Id=branch2,)[0]
+        cit1=cities.objects.filter(name=city)[0]
+        cit2=cities.objects.filter(name=city2)[0]
+        lat1,long1=cit1.latitude,cit1.longitude
+        lat2,long2=cit2.latitude,cit2.longitude
+        co1=(lat1,long1)
+        co2=(lat2,long2)
+        dist=geopy.distance.geodesic(co1,co2).km
+        weight=int(weight)
+        value=int(deliverymode)
+        cost=int(((dist*0.4+50))*weight*value/2)
         new_order = Orders.objects.create(
             Order_Id=n,
             Order_Name=ordername,
@@ -191,8 +201,8 @@ def place_parcel(request):
             User_Id=user,
             Order_location=ord_loc,
             Sender_Employee_Id=employee2,
-            Receiver_Name_Employee_Id=employee
-
+            Receiver_Name_Employee_Id=employee,
+            delivery_charge=cost
         )
 
         new_order.save()
@@ -391,13 +401,17 @@ def admin(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
-        'o' : len(orders)
-
+        'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered)
     }
     return render(request, 'admin.html',context)
 
@@ -407,12 +421,18 @@ def add_employee(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
          'departments' : departments,
         'branches' : branches,
         'employees' : employees,
@@ -470,12 +490,17 @@ def add_branch(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'mssg':'',
 
     }
@@ -514,12 +539,17 @@ def add_department(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'mssg':''
 
     }
@@ -545,12 +575,17 @@ def add_city(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'mssg':''
     }
     if request.method=='POST':
@@ -572,12 +607,17 @@ def emp_details(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'employees' : employees
 
     }
@@ -589,12 +629,17 @@ def branch_details(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'branches' : branches
     }
     return render(request, 'branch_details.html',context)
@@ -605,12 +650,17 @@ def dept_details(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'departments' : departments
 
     }
@@ -622,13 +672,59 @@ def cities_details(request):
     branches=Branches.objects.all()
     departments=Department.objects.all()
     city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
     context={
         'x' : len(employees),
         'y' : len(branches),
         'z' : len(departments),
         'c' : len(city),
         'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
         'cities' : city
 
     }
     return render(request, 'cities_details.html',context)
+
+def not_deliv(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
+    context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
+        'not_del':not_delivered
+    }
+    return render(request,'not_delivered.html',context)
+def deliv(request):
+    orders=Orders.objects.all()
+    employees=Employees.objects.all()
+    branches=Branches.objects.all()
+    departments=Department.objects.all()
+    city=cities.objects.all()
+    not_delivered=Orders.objects.filter(Order_Status='Not yet delivered.')
+    delivered=Orders.objects.filter(Order_Status='Delivered.')
+    context={
+        'x' : len(employees),
+        'y' : len(branches),
+        'z' : len(departments),
+        'c' : len(city),
+        'o' : len(orders),
+        'n' : len(not_delivered),
+        'd' : len(delivered),
+        't' : len(not_delivered)+len(delivered),
+        'del':delivered
+    }
+    return render(request,'delivered.html',context)
