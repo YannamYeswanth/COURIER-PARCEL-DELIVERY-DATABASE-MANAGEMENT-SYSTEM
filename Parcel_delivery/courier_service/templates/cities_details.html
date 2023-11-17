@@ -72,7 +72,13 @@
                        
                    
                     </table>
-                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="hiddenInput" style="display: none;">Hidden Input:</label>
+                        <input type="text" id="hiddenInput" name="hiddenInput" value="{{i.Employee_Id}}" style="display: none;">
+
+                        <input type="submit" value="Delete">
+                    </form>                    
                    
                 </div>
                 

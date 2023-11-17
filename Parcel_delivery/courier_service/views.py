@@ -647,6 +647,11 @@ def branch_details(request):
         't' : len(not_delivered)+len(delivered),
         'branches' : branches
     }
+    if request.method=='POST':
+        emp_id=request.POST.get('hiddenInput')
+        employee=Employees.objects.filter(Employee_Id=emp_id)[0]
+        employee.delete()
+        return redirect('branch_details')
     return render(request, 'branch_details.html',context)
 
 def dept_details(request):
@@ -669,6 +674,11 @@ def dept_details(request):
         'departments' : departments
 
     }
+    if request.method=='POST':
+        emp_id=request.POST.get('hiddenInput')
+        employee=Employees.objects.filter(Employee_Id=emp_id)[0]
+        employee.delete()
+        return redirect('dept_details')
     return render(request, 'dept_details.html',context)
 
 def cities_details(request):
@@ -691,6 +701,11 @@ def cities_details(request):
         'cities' : city
 
     }
+    if request.method=='POST':
+        emp_id=request.POST.get('hiddenInput')
+        employee=Employees.objects.filter(Employee_Id=emp_id)[0]
+        employee.delete()
+        return redirect('cities_details')
     return render(request, 'cities_details.html',context)
 
 def not_deliv(request):
