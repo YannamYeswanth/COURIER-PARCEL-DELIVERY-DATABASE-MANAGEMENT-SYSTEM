@@ -349,7 +349,7 @@ def staff(request):
         'e':employee,
         'y':len(orders)
     }
-    return render(request, 'employee1.html',context)
+    return render(request, 'employee.html',context)
  else:
     # User is not in the 'staff' group
     # Handle this case as needed
