@@ -166,9 +166,9 @@ def place_parcel(request):
         n+=26734595
         curr_datetime = datetime.now()
         user = user_details.objects.get(user=request.user)
-        branch=Branches.objects.get(City=city)
+        branch=Branches.objects.filter(City=city)[0]
         employee=Employees.objects.filter(Branch_Id=branch)[0]
-        branch2=Branches.objects.get(City=city2)
+        branch2=Branches.objects.filter(City=city2)[0]
         employee2=Employees.objects.filter(Branch_Id=branch2)[0]
         new_order = Orders.objects.create(
             Order_Id=n,
