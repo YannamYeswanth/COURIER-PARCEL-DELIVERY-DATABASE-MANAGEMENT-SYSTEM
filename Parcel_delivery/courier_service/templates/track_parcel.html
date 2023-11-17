@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block loadstatic %} {% load static %} {% endblock %}
 {% block inpagestyle %}
+{% load static %}
 #map {
   width: 100%;
   height: 400px;
@@ -141,7 +142,7 @@ See What our users say about us
     <p class="lead" style="color: aliceblue;">Order that will come to your doorsteps. No need to travel anywhere even not to the colony gate 50 meters away from your doorstep.</p>
   </div>
   <div class="col-md-5">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://media.istockphoto.com/id/1092392668/photo/woman-receiving-packages-from-courier.jpg?s=612x612&w=0&k=20&c=XxS8piIp_jog7ka-mknNa6XOQPc1VLStEJ6PJ6vrqbc=" style="height: 500px; width: 500px;">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static "\media\trackPage_images\trackFeature1.jpg" %}" style="height: 500px; width: 500px;">
   </div>
 </div>
 
@@ -153,7 +154,7 @@ See What our users say about us
     <p class="lead" style="color: aliceblue;">Wrapers won't cost you. You can keep or give back the wraapers as per your wish.</p>
   </div>
   <div class="col-md-5 order-md-1">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://st.depositphotos.com/1177973/2564/i/450/depositphotos_25641913-stock-photo-workers-working-with-boxes-at.jpg" style="height: 500px; width: 500px;">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{% static "\media\trackPage_images\trackFeature2.jpg"%}" style="height: 500px; width: 500px;">
   </div>
 </div>
 
@@ -165,14 +166,12 @@ See What our users say about us
     <p class="lead" style="color: aliceblue;">"Be assured that you get the correct item. You can demand for open delivery to the delivery boy in front of a vedio camera."</p>
   </div>
   <div class="col-md-5">
-    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="https://img.hi.91mobiles.com/uploads/2022/10/Online-shopping.jpg" style="height: 500px; width: 500px;">
+    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{%static "\media\trackPage_images\trackFeature3.jpg"%}" style="height: 500px; width: 500px;">
   </div>
 </div>
 
 <hr class="featurette-divider">
-
 <!-- /END THE FEATURETTES -->
-
 </div>
 </div>
 </div>
