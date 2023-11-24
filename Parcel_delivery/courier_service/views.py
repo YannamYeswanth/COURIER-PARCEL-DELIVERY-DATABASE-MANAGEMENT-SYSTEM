@@ -371,11 +371,12 @@ def edit_orders(request):
  if user.is_staff:
     employee=Employees.objects.get(Employee_Id=user.username)
     orders=Orders.objects.filter(Sender_Employee_Id=employee)
+    places=Branches.objects.all()
     context={
         'orders':orders,
         'e':employee,
         'y':len(orders),
-        # 'places':places
+        'places':places
     }
     if request.method=='POST':
         orderid=request.POST.get('OrderId')
