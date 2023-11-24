@@ -42,20 +42,18 @@ Enjoy the convenience of real-time parcel tracking using our integrated maps fea
 ### 4. Estimation of Delivery Price
 Users can know the delivery charges that would be applied for their parcel delivery.
 
-### 5. Secure Packaging
-We prioritize the safety of your parcels with our secure packaging options, ensuring items reach their destination in pristine condition.
 
-### 6. Flexible Delivery Modes
+### 5. Flexible Delivery Modes
 Choose from a variety of delivery modes, including normal, fast, and more, tailored to your specific delivery needs.
 
-### 7. Order History
+### 6. Order History
 Access your order history and keep track of your previous deliveries, providing a comprehensive overview of your E Delivery experience.
 
 
 ## Guidelines to Open the Website
 
 Installation:
-•	Install Python3.9 from [here](https://www.python.org/downloads/) manually.
+•	Install Python from [here](https://www.python.org/downloads/) manually.
 •	Install project dependencies by running `py -m pip install -r requirements.txt`.
 •	Install geopy distance by running `pip install geopy`.
 •	Open a new terminal and Check if you are in Parcel_delivery folder. If not, run the command `cd Parcel_delivery` to open the folder
