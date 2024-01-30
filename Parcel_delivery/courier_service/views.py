@@ -632,3 +632,7 @@ def cities_details(request):
 
     }
     return render(request, 'cities_details.html',context)
+
+def getIssues(request):
+    issuesRaised=Contacts.objects.all()
+    return render(request,'issues_raised.html',{"issuesRaised":issuesRaised})

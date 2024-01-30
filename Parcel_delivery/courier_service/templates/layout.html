@@ -28,7 +28,11 @@
           <ul>
             <li class="navbar_middle_links"><a href="/"><button class="navbar_middle_buttons">Home</button></a></li>
             <li class="navbar_middle_links"><a href="/About"><button class="navbar_middle_buttons">About</button></a></li>
+            {% if user.is_superuser %}
+            <li class="navbar_middle_links"><a href="/issues"><button class="navbar_middle_buttons">Issues</button></a></li>
+            {% else %}
             <li class="navbar_middle_links"><a href="/ContactUs"><button class="navbar_middle_buttons">Contact</button></a></li>
+            {% endif %}
             <li class="navbar_middle_links"><a href="/Help"><button class="navbar_middle_buttons">Help</button></a></li>
           </ul>
         </div>
@@ -148,5 +152,6 @@
 <!-- another script -->
 {% block endpagescript %} {% endblock %}
 <script src="{% static 'script/navscript.js' %}"></script>
+{% block endpagestaticscript %} {% endblock %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>

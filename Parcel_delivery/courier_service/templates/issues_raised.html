@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block pagebody %}
+<div style="margin-top:100px">
+    <ul> 
+        {% for issue in issuesRaised %}
+        <li>
+            <ul>
+                 
+                    <li style="color:white">{{ issue.name }}</li>
+                    <li style="color:white">{{ issue.email }}</li>
+                    <li style="color:white">{{ issue.message }}</li>
+                
+            </ul>
+        </li>
+        <br/><br/>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

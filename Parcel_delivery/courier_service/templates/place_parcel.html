@@ -21,9 +21,9 @@
           <li id="four">Reliable Statistics</li>
       </ul>
       <ul class="achievements">
-          <li><i class="fa-solid fa-box"></i><p>20+ Parcels Ordered</p></li>
-          <li><i class="fa-solid fa-location-dot"></i><p>10+ Major Cities Covered</p></li>
-          <li><i class="fa-solid fa-house"></i><p>10+ Delivery Centers</p></li>
+          <li><i class="fa-solid fa-box"></i><p><span class="counterEffected" data-endValCounter=20>0</span>+ Parcels Ordered</p></li>
+          <li><i class="fa-solid fa-location-dot"></i><p><span class="counterEffected" data-endValCounter=10>0</span>+ Major Cities Covered</p></li>
+          <li><i class="fa-solid fa-house"></i><p><span class="counterEffected" data-endValCounter=20>0</span>+ Delivery Centers</p></li>
       </ul>
   </div>
   <div class="place_order_forms">
@@ -233,4 +233,7 @@
 
     <!-- Include Bootstrap JS (for any required functionality) -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+{% endblock %}
+{% block endpagestaticscript %}
+  <script src="{% static 'script/counterScript.js' %}"></script>
 {% endblock %}
