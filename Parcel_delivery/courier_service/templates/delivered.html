@@ -16,7 +16,7 @@
                 <h1 style="color: aliceblue;">{{e.Name}}</h1>
                 <div class="emp_detail_container">
                     <table>
-                     
+                       
                         
                         <td><a href="/emp_details" type="button" style="color:white">No. of Employees</a></td>
                         <td>{{x}}</td></a>
@@ -44,86 +44,123 @@
                             <tr>
                             <td><a href="/deliv" type="button" style="color:white">No. of Orders Delivered</a></td>
                             <td>{{d}}</td>
-                            </tr>                      
+                            </tr>
                     </table>
                 </div>
             </div>
 
             <div class="parcel_details">
-                <div><a href="admin_made" class="btn btn-outline-light">Back</a></div>
-                   {%for i in employees%}
+                <div><a href="admin_made" class="btn btn-outline-light">Back</a></div> 
+                   {%for i in del%}
                
                     <div class="order_card">
                         
                         <table>
                             <tr>
-                                <td>Employee Id</td>
-                                <td>{{i.Employee_Id}}</td>
+                                <td>Order Id</td>
+                                <td>{{i.Order_Id}}</td>
                             </tr>
                         <tr>
                             <td>Name</td>
-                            <td>{{i.Name}}
+                            <td>{{i.Order_Name}}
                             </td>
                         </tr>
                         <tr>
-                            <td>Password</td>
-                            <td>{{i.password}}</td>
+                            <td>Parcel weight</td>
+                            <td>{{i.Parcel_Weight}}</td>
                         </tr>
                         <tr>
-                            <td>Contact</td>
-                            <td>{{i.Contact_Number}}</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
+                            <td>Booked date</td>
                             
-                            <td>{{i.Email}}</td>
+                            <td>{{i.booked_date}}</td>
                         </tr>
                         <tr>
-                            <td>House No</td>
-                            <td>{{i.House_No}}</td>
+                            <td>Shipped date</td>
+                            
+                            <td>{{i.shipped_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Delivered date</td>
+                            
+                            <td>{{i.delivered_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Reciever Name</td>
+                            <td>{{i.Receiver_Name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Receiver Contact number</td>
+                            <td>{{i.Receiver_Contact_Number}}</td>
+                        </tr>
+                        <tr>
+                            <td>To House No</td>
+                            <td>{{i.To_House_No}}</td>
                         </tr>
                     <tr>
-                        <td>Street</td>
-                        <td>{{i.Street}}
+                        <td>To Street</td>
+                        <td>{{i.To_Street}}
                         </td>
                     </tr>
                     <tr>
-                        <td>City</td>
-                        <td>{{i.City}}</td>
+                        <td>To City</td>
+                        <td>{{i.To_City}}</td>
                     </tr>
                     <tr>
-                        <td>State</td>
-                        <td>{{i.State}}</td>
+                        <td>To State</td>
+                        <td>{{i.To_State}}</td>
                     </tr>
                     <tr>
-                        <td>Pincode</td>
-                        <td>{{i.Pin_Code}}</td>
+                        <td>To Pincode</td>
+                        <td>{{i.To_Pin_Code}}</td>
                     </tr>
+                        <tr>
+                            <td>From House No</td>
+                            <td>{{i.From_House_No}}</td>
+                        </tr>
                     <tr>
-                        <td>Salary</td>
-                        <td>{{i.Salary}}
+                        <td>From Street</td>
+                        <td>{{i.From_Street}}
                         </td>
                     </tr>
                     <tr>
-                        <td>Department</td>
-                        <td>{{i.Department_Id.Department_Name}}</td>
+                        <td>From City</td>
+                        <td>{{i.From_City}}</td>
                     </tr>
                     <tr>
-                        <td>Branch</td>
-                        <td>{{i.Branch_Id.Branch_Name}}</td>
+                        <td>From State</td>
+                        <td>{{i.From_State}}</td>
                     </tr>
                     <tr>
-                        <td>Manager</td>
-                        <td>{{i.Manager_Id.Name}}</td>
-                    </tr>  
+                        <td>From Pincode</td>
+                        <td>{{i.From_Pin_Code}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order type</td>
+                        <td>{{i.Order_Type}}</td>
+                    </tr>
+                    <tr>
+                        <td>Order Location</td>
+                        <td>{{i.Order_location.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Charge</td>
+                        <td>{{i.delivery_charge}}</td>
+                    </tr>
+                    <tr>
+                        <td>User</td>
+                        <td>{{i.User_Id.UserId}}</td>
+                    </tr>
+                    <tr>
+                        <td>Sender Employee</td>
+                        <td>{{i.Sender_Employee_Id.Employee_Id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Receiver Employee</td>
+                        <td>{{i.Receiver_Name_Employee_Id.Employee_Id}}</td>
+                    </tr>
+                   
                     </table>
-                    <form method="post">
-                        {% csrf_token %}
-                        <label for="hiddenInput" style="display: none;">Hidden Input:</label>
-                        <input type="text" id="hiddenInput" name="hiddenInput" value="{{i.Employee_Id}}" style="display: none;">
-
-                        <input type="submit" value="Delete">
-                    </form>
+                    
                    
                 </div>
                 

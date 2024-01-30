@@ -80,11 +80,19 @@
                             <td>Order Status</td>
                             
                             <input type="hidden" name="OrderId" value="{{ i.Order_Id }}">
-                            <td> <input type="text" name="status" id="email" value="{{ i.Order_Status }}"></td>
+                            <td>              <select name="status">
+                                <option value="{{i.Order_Status}}">{{i.Order_Status}}</option>
+                                
+                                <option value="Delivered.">Delivered</option></td>
+                                <option value="Not yet delivered.">Not yet Delivered</option></td>
                         </tr>
                         <tr>
                             <td>Current Location</td>
-                            <td> <input type="text" name="location" id="email" value="{{i.Order_location.name}}"></td>
+                            <td>              <select id="city1" name="location">
+                                <option value="{{i.Order_location.name}}">{{i.Order_location.name}}</option>
+                                {% for j in places %}
+                                <option value="{{j.City}}">{{j.City}}</option>
+                            {%endfor%}</td>
                             
                             
                         </tr>

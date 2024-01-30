@@ -33,7 +33,18 @@
                             <td><a href="/cities_details" type="button" style="color:white">No. of Cities Served</a></td>
                             <td>{{c}}</td>
                         </tr>
-                        
+                        <tr>
+                            <td>No. of Total Orders</td>
+                            <td>{{t}}</td>
+                            </tr>
+                            <tr>
+                            <td><a href="/not_deliv" type="button" style="color:white">No. of Orders pending</a></td>
+                            <td>{{n}}</td>
+                            </tr>
+                            <tr>
+                            <td><a href="/deliv" type="button" style="color:white">No. of Orders Delivered</a></td>
+                            <td>{{d}}</td>
+                            </tr>                        
                     </table>
                 </div>
             </div>
@@ -48,7 +59,7 @@
                         <table>
                             <tr>
                                 <td>Employee Id</td>
-                                <td><input type="text" name="Employee_Id" id="id_name" required></td>
+                                <td><input type="number" name="Employee_Id" id="id_name" required></td>
                             </tr>
                             <tr>
                             <td>Name</td>
@@ -61,7 +72,7 @@
                         </tr>
                         <tr>
                             <td>Contact</td>
-                            <td><input type="text" name="Contact_Number" id="id_name" required></td>
+                            <td><input type="number" name="Contact_Number" id="id_name" required></td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -87,11 +98,11 @@
                     </tr>
                     <tr>
                         <td>Pincode</td>
-                        <td><input type="text" name="Pincode" id="id_position" required></td>
+                        <td><input type="number" name="Pincode" id="id_position" required></td>
                     </tr>
                     <tr>
                         <td>Salary</td>
-                        <td><input type="text" name="Salary" id="id_email" required>
+                        <td><input type="number" name="Salary" id="id_email" required>
                         </td>
                     </tr>
                     <tr>
@@ -123,14 +134,7 @@
                     <button type="submit" class="btn btn-outline-light">Submit</button>
                 </div>
             </form>
-            <a href="admin_made">Back</button>
-                {% comment %} <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Employees</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Branches</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Departments</a>
-                    <a href="/edit_orders" type="button" class="btn btn-outline-light">Add Cities</a>
-                
-                  </div> {% endcomment %}
+            <div><a href="admin_made" class="btn btn-outline-light">Back</a></div>
               
             </div>
         </div>
