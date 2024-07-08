@@ -9,5 +9,8 @@
             "src": "/(.*)",
             "dest": "Parcel_delivery/wsgi.py"
         }
+    ],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/" }
     ]
 }
