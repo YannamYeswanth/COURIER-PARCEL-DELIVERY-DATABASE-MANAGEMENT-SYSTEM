@@ -129,6 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # settings.py
 GOOGLE_MAPS_API_KEY = 'AIzaSyD-nI876RngckEj4ztELG3u06mynpC6--o'
-# ALLOWED_HOSTS = ['localhost']  # Add your domain(s)
+ALLOWED_HOSTS = ['.vercel.app']  # Add your domain(s)
 
 
