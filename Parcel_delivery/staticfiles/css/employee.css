@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open-Sans',sans-serif;
+}
+
+body{
+   background-image: linear-gradient(to right,#000082,#000552,#000082);
+}
+
+.employee_container {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .employee_container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .employee_container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .employee_container {
+      width: 1170px;
+    }
+  }
+
+.employee_container_control{
+    display: flex;
+}
+
+@media (max-width: 900px){
+    .employee_container_control{
+        flex-direction: column;
+    }
+}
+
+.employee_details{
+    width: 100%;
+    background-color: #000097;
+    padding: 25px;
+    position : fixed;
+
+
+}
+
+@media (min-width: 900px){
+    .employee_details{
+        height: 100vh;
+    }
+}
+
+.emp_img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Sachin-Tendulkar_%28cropped%29.jpg/220px-Sachin-Tendulkar_%28cropped%29.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.emp_detail_container{
+    margin: 25px;
+    margin-left: 0;
+}
+
+.parcel_details{
+    margin: 25px;
+    width: 100%;
+}
+
+@media (max-width: 900px){
+    .parcel_details{
+        width: 80%;
+    }
+}
+
+.parcel_details>h3{
+  font-size: 2em;
+  padding: 8px;
+}
+
+.order_card{
+    margin: 20px 0;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td {
+    border: 1px solid #d5d5d5;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .emp_detail_container tr:nth-child(even) {
+    background-color: rgb(0, 38, 177);
+  }
+
+  .emp_detail_container tr:nth-child(odd) {
+    background-color: rgb(0, 58, 193);
+  }
+
+  .emp_detail_container td{
+    color: #fff;
+  }
+
+  .parcel_details table{
+    background-color: aliceblue;
+  }

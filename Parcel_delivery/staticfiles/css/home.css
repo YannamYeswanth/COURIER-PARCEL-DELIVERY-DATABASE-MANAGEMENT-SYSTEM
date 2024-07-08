@@ -1,0 +1,175 @@
+/* Hero section */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans',sans-serif;
+}
+
+body{
+    background-color: #0a0027;
+}
+
+ul{
+    list-style: none;
+}
+
+
+.hero_picture{
+  background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20220329/pngtree-home-delivery-service-concept-with-a-man-riding-scooter-flat-illustration-image_1069488.jpg"); 
+  height: 260px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero_text{
+    position: relative;
+    top: 60px;
+    left: 25px;
+    width: 30%;
+}
+
+@media screen and (max-width: 800px){
+    .hero_text{
+        width: 45%;
+    }
+}
+
+.hero_text h2{
+    font-size: 2em;
+    color: #213341;
+}
+
+.intro_text{
+    width: 100%;
+    background-color: #0a0027;
+    animation: slideUp 2s;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }    
+}
+
+.intro_text h3{
+    position: relative;
+    top:10px;
+    font-size: 1.75em;
+    font-weight: 400;
+}
+
+.intro_text h3, .intro_text h4{
+    margin-bottom: 10px;
+    margin-left: 15px;
+    padding: 10px;
+    color: #fff;
+}
+
+.intro_text h4{
+    margin-bottom: 7.5px;
+    font-size: 2em;
+    font-weight: 550;
+}
+
+
+.main_container{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #0a0027;
+}
+
+.page_cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin: 10px 0;
+    box-shadow: 0 0 10px 3px whitesmoke;
+    padding: 10px 0;
+}
+
+.page_cards h5{
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+.page_cards p{
+    font-size: 1.1em;
+    padding: 5px;
+}
+
+.page_cards button{
+    height: 35px;
+    width: 110px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(222,222,28);
+    font: 1.05em sans-serif;
+    cursor: pointer;
+}
+
+@media only screen and (min-width:200px) and (max-width:767px){
+    .main_container{
+        width: 350px;
+        flex-direction: column;
+    }
+
+    .page_cards{
+        margin: 10px;
+    }
+}
+
+
+.unique_features{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.company_feature_card{
+    width: 300px;
+    padding: 25px;
+}
+
+
+@media only screen and (max-width:800px){
+    .unique_features{
+        flex-direction: column;
+    }
+    
+    .company_feature_card{
+        width: 100%;
+    }
+    
+}
+
+.company_feature_card h3{
+    color: rgb(222,222,28);
+}
+
+.company_feature_card p{
+    color: #fff;
+}
+
+.caption-container {
+    background-color: black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.caption-text {
+    color: white;
+    text-align: center;
+}
+.row img {
+  width: 100%; 
+  height: 300px; 
+  object-fit: cover;
+}

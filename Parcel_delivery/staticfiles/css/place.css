@@ -1,0 +1,236 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open-Sans',sans-serif;
+}
+
+/* body{
+    background-color: #0a0027;
+} */
+
+.application_of_background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -99999;
+    background-image:url("https://png.pngtree.com/thumb_back/fh260/background/20230622/pngtree-deliveryman-in-3d-transporting-a-parcel-image_3654375.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    filter: blur(3px);
+}
+
+.place_order_container {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .place_order_container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .place_order_container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .place_order_container {
+      width: 1170px;
+    }
+  }
+
+
+.content_of_place_order{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1200px){
+    .content_of_place_order{
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1200px) {
+    .place_order_text {
+      width: 500px;
+    }
+  }
+
+
+
+p,li{
+    color: aliceblue;
+}
+li{
+    list-style: none;
+}
+
+.place_order_text >h3 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: aliceblue;
+    margin-top: 30px;
+}
+
+.intro-text{
+    font-size: 1.7em;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.characters > li{
+    padding: 10px 0;
+    margin: 5px 0;
+    text-align: center;
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    font-weight: 600;
+    background-image: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));;
+}
+
+.achievements{
+    margin-top: 60px;
+}
+
+.achievements i{
+    font-size: 2.5em;
+    padding: 25px;
+}
+
+.achievements p{
+    font-size: 1.6em;
+    margin-bottom: 25px;
+}
+
+@media (min-width: 1200px) {
+    .place_order_forms {
+      width: 500px;
+    }
+  }
+
+
+.parcel_details, .to_adress_details, .from_adress_details{
+    background-color: rgb(236,236,234);
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.parcel_detail_input{
+    width: 100%;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.parcel_detail_input input{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 7px 15px;
+}
+
+.parcel_detail_input label{
+    position: absolute;
+    left: 7px;
+    font-size: 1em;
+    top: 8px;
+    color: rgb(52, 52, 45);
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.parcel_detail_input input:focus + label,
+.parcel_detail_input input:valid + label
+{
+    top: -15px;
+    left: 10px;
+    font-size: 0.9em;
+    color: rgb(94, 94, 236);
+}
+
+.flex_double_items{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex_double_items select{
+    width: 42%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+form button{
+    height: 50px;
+    width: 100px;
+    background-color: yellow;
+    margin-bottom: 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+form button:hover{
+    background-color: orangered;
+}
+
+.place_order_text{
+    animation: moveRight 2s ;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    
+    100% {
+        transform: translateX(2%);
+    }
+}
+
+.pluspoints{
+    margin-bottom: 2%;
+    height: 40px;
+    /* border-top-left-radius: 60%; */
+    border-top-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+    background: linear-gradient(to right, rgb(51, 89, 197),rgb(18, 31, 115),rgb(51, 89, 197));
+    /* background-color: rgb(246, 146, 6); */
+    color: white;
+    
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    width: 70%;
+}
+#one{
+    animation: moveRight 0.6s linear forwards;
+}
+#two{
+    animation: moveRight 0.7s linear forwards;
+}
+#three{
+    animation: moveRight 0.8s linear forwards;
+}
+#four{
+    animation: moveRight 0.9s linear forwards;
+}
