@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%ws-eq%7+d0vg7qt7&qc!gy6w$lpm$x_qj)l4u9n*p&z%%hqb_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app','edelivery.vercel.app']
 
 
 # Application definition
@@ -129,6 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # settings.py
 GOOGLE_MAPS_API_KEY = 'AIzaSyD-nI876RngckEj4ztELG3u06mynpC6--o'
-ALLOWED_HOSTS = ['.vercel.app']  # Add your domain(s)
+ALLOWED_HOSTS = ['.vercel.app','edelivery.vercel.app']  # Add your domain(s)
 
 
